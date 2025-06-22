@@ -1,0 +1,530 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Databases & Entities - Quiz</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #f5f5f5;
+        }
+        .quiz-container {
+            background: white;
+            border-radius: 10px;
+            padding: 30px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        h1 {
+            color: #2c3e50;
+            text-align: center;
+            border-bottom: 3px solid #3498db;
+            padding-bottom: 10px;
+        }
+        .question {
+            margin: 25px 0;
+            padding: 20px;
+            border-left: 4px solid #3498db;
+            background-color: #f8f9fa;
+        }
+        .question h3 {
+            color: #2c3e50;
+            margin-top: 0;
+        }
+        .options {
+            list-style: none;
+            padding: 0;
+        }
+        .options li {
+            margin: 10px 0;
+            padding: 10px;
+            background: white;
+            border: 2px solid #e9ecef;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        .options li:hover {
+            border-color: #3498db;
+            background-color: #f0f8ff;
+        }
+        .options li.selected {
+            border-color: #3498db;
+            background-color: #e3f2fd;
+        }
+        .options li.correct {
+            border-color: #27ae60;
+            background-color: #d4edda;
+        }
+        .options li.incorrect {
+            border-color: #e74c3c;
+            background-color: #f8d7da;
+        }
+        input[type="radio"] {
+            margin-right: 10px;
+        }
+        .code-scenario {
+            background-color: #f4f4f4;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            padding: 15px;
+            margin: 15px 0;
+            font-family: 'Courier New', monospace;
+            font-size: 13px;
+            overflow-x: auto;
+        }
+        .submit-btn {
+            background-color: #3498db;
+            color: white;
+            padding: 12px 30px;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+            cursor: pointer;
+            display: block;
+            margin: 30px auto;
+            transition: background-color 0.3s ease;
+        }
+        .submit-btn:hover {
+            background-color: #2980b9;
+        }
+        .result {
+            margin: 20px 0;
+            padding: 15px;
+            border-radius: 5px;
+            text-align: center;
+            font-weight: bold;
+        }
+        .pass {
+            background-color: #d4edda;
+            color: #155724;
+            border: 1px solid #c3e6cb;
+        }
+        .fail {
+            background-color: #f8d7da;
+            color: #721c24;
+            border: 1px solid #f5c6cb;
+        }
+        .explanation {
+            margin-top: 10px;
+            padding: 10px;
+            background-color: #e9ecef;
+            border-radius: 5px;
+            font-size: 14px;
+            display: none;
+        }
+        .show-explanation {
+            display: block;
+        }
+        .short-answer {
+            width: 100%;
+            padding: 10px;
+            border: 2px solid #e9ecef;
+            border-radius: 5px;
+            font-size: 14px;
+        }
+        .navigation {
+            text-align: center;
+            margin: 30px 0;
+            padding-top: 20px;
+            border-top: 1px solid #ddd;
+        }
+        .navigation a {
+            color: #3498db;
+            text-decoration: none;
+            margin: 0 15px;
+            font-weight: 500;
+        }
+        .navigation a:hover {
+            text-decoration: underline;
+        }
+        .drag-drop {
+            display: flex;
+            gap: 20px;
+            margin: 20px 0;
+            flex-wrap: wrap;
+        }
+        .normalization-forms {
+            flex: 1;
+            min-width: 200px;
+        }
+        .violations {
+            flex: 1;
+            min-width: 200px;
+        }
+        .drop-zone {
+            min-height: 80px;
+            border: 2px dashed #ccc;
+            border-radius: 5px;
+            padding: 10px;
+            background-color: #f8f9fa;
+            margin: 5px 0;
+        }
+        .drag-item {
+            background: #3498db;
+            color: white;
+            padding: 8px 12px;
+            margin: 5px 0;
+            border-radius: 5px;
+            cursor: move;
+            user-select: none;
+            font-size: 13px;
+        }
+        .drop-zone.drag-over {
+            border-color: #3498db;
+            background-color: #e3f2fd;
+        }
+    </style>
+</head>
+<body>
+    <div class="quiz-container">
+        <h1>Level 2.3: Databases & Entities Quiz</h1>
+        
+        <div class="question">
+            <h3>Question 1: Entity Relationship Cardinality</h3>
+            <p>In a customer service system, what is the correct relationship between Customers and Support Tickets?</p>
+            <ul class="options">
+                <li><input type="radio" name="q1" value="a"> One-to-One (1:1) - Each customer has exactly one support ticket</li>
+                <li><input type="radio" name="q1" value="b"> One-to-Many (1:M) - Each customer can have multiple support tickets</li>
+                <li><input type="radio" name="q1" value="c"> Many-to-One (M:1) - Multiple customers share one support ticket</li>
+                <li><input type="radio" name="q1" value="d"> Many-to-Many (M:M) - Customers and tickets have complex relationships</li>
+            </ul>
+            <div class="explanation">
+                <strong>Correct Answer: B</strong><br>
+                In business contexts, one customer typically generates multiple support tickets over time, but each ticket belongs to only one customer. This is a classic one-to-many relationship where the "one" side (customer) can have multiple related records on the "many" side (tickets).
+            </div>
+        </div>
+
+        <div class="question">
+            <h3>Question 2: Database Normalization Analysis</h3>
+            <p>Consider this table structure for an order management system:</p>
+            <div class="code-scenario">
+Order_Table:
+OrderID | CustomerName | CustomerEmail | ProductName | ProductPrice | Quantity | LineTotal
+1001    | John Doe     | john@co.com   | Laptop      | $1200       | 2        | $2400
+1001    | John Doe     | john@co.com   | Mouse       | $25         | 1        | $25
+1002    | Jane Smith   | jane@co.com   | Laptop      | $1200       | 1        | $1200
+            </div>
+            <p>What normalization violations exist in this structure?</p>
+            <ul class="options">
+                <li><input type="radio" name="q2" value="a"> No violations - this is properly normalized</li>
+                <li><input type="radio" name="q2" value="b"> 1NF violation only - repeating groups in single cells</li>
+                <li><input type="radio" name="q2" value="c"> 2NF violation - customer data depends on OrderID, not the full composite key</li>
+                <li><input type="radio" name="q2" value="d"> Both 2NF and 3NF violations - partial and transitive dependencies exist</li>
+            </ul>
+            <div class="explanation">
+                <strong>Correct Answer: D</strong><br>
+                This table violates both 2NF and 3NF. CustomerName and CustomerEmail depend only on OrderID (partial dependency), violating 2NF. ProductPrice depends on ProductName rather than the key (transitive dependency), violating 3NF. Proper normalization would separate this into Orders, Customers, Products, and OrderItems tables.
+            </div>
+        </div>
+
+        <div class="question">
+            <h3>Question 3: Drag and Drop - Normalization Form Matching</h3>
+            <p>Match each database violation with the appropriate normalization form that addresses it:</p>
+            <div class="drag-drop">
+                <div class="violations">
+                    <h4>Database Violations:</h4>
+                    <div class="drag-item" draggable="true" data-violation="repeating">Multiple values in single field (colors: red,blue,green)</div>
+                    <div class="drag-item" draggable="true" data-violation="partial">Non-key attribute depends on part of composite key</div>
+                    <div class="drag-item" draggable="true" data-violation="transitive">Non-key attribute depends on another non-key attribute</div>
+                </div>
+                <div class="normalization-forms">
+                    <div class="drop-zone" data-form="1nf">
+                        <h4>First Normal Form (1NF)</h4>
+                        <p>Eliminates repeating groups</p>
+                    </div>
+                    <div class="drop-zone" data-form="2nf">
+                        <h4>Second Normal Form (2NF)</h4>
+                        <p>Eliminates partial dependencies</p>
+                    </div>
+                    <div class="drop-zone" data-form="3nf">
+                        <h4>Third Normal Form (3NF)</h4>
+                        <p>Eliminates transitive dependencies</p>
+                    </div>
+                </div>
+            </div>
+            <div class="explanation">
+                <strong>Correct Matches:</strong><br>
+                • Repeating groups → 1NF (each cell should contain single atomic value)<br>
+                • Partial dependencies → 2NF (non-key attributes must depend on entire key)<br>
+                • Transitive dependencies → 3NF (non-key attributes must depend directly on key, not other non-key attributes)
+            </div>
+        </div>
+
+        <div class="question">
+            <h3>Question 4: Database Performance Optimization</h3>
+            <p>Your automation system frequently runs this query to find pending orders for a specific customer:</p>
+            <div class="code-scenario">
+SELECT * FROM orders 
+WHERE customer_id = 12345 
+  AND status = 'pending' 
+  AND order_date >= '2024-01-01';
+            </div>
+            <p>Which index would provide the best performance optimization?</p>
+            <ul class="options">
+                <li><input type="radio" name="q4" value="a"> CREATE INDEX idx_customer ON orders(customer_id);</li>
+                <li><input type="radio" name="q4" value="b"> CREATE INDEX idx_status ON orders(status);</li>
+                <li><input type="radio" name="q4" value="c"> CREATE INDEX idx_composite ON orders(customer_id, status, order_date);</li>
+                <li><input type="radio" name="q4" value="d"> CREATE INDEX idx_date ON orders(order_date);</li>
+            </ul>
+            <div class="explanation">
+                <strong>Correct Answer: C</strong><br>
+                A composite index on (customer_id, status, order_date) optimizes this specific query pattern by allowing the database to efficiently filter on all three conditions. The order matters: start with the most selective condition (customer_id), then status, then the range condition (order_date) last. Single-column indexes would require multiple index lookups or table scans.
+            </div>
+        </div>
+
+        <div class="question">
+            <h3>Question 5: CRUD Operation Design</h3>
+            <p>In an automated inventory system, when a product's stock falls below the reorder level, which sequence of operations should occur?</p>
+            <ul class="options">
+                <li><input type="radio" name="q5" value="a"> CREATE purchase_order → UPDATE product_stock → DELETE old_inventory_records</li>
+                <li><input type="radio" name="q5" value="b"> CREATE purchase_order → CREATE inventory_movement_record → UPDATE product_reorder_status</li>
+                <li><input type="radio" name="q5" value="c"> UPDATE product_stock → CREATE reorder_alert → DELETE supplier_records</li>
+                <li><input type="radio" name="q5" value="d"> CREATE supplier_notification → UPDATE reorder_level → DELETE purchase_history</li>
+            </ul>
+            <div class="explanation">
+                <strong>Correct Answer: B</strong><br>
+                Proper inventory automation creates a purchase order for new stock, logs the inventory movement for audit trails, and updates the product's reorder status to prevent duplicate orders. This maintains data integrity and provides complete transaction history. Deleting records is generally avoided in business systems for compliance and audit requirements.
+            </div>
+        </div>
+
+        <div class="question">
+            <h3>Question 6: Database Technology Selection</h3>
+            <p>A 50-employee SME needs a database for their automation workflows with these requirements: complex reporting, ACID compliance, budget under $200/month, and integration with Power BI. Which option is most suitable?</p>
+            <ul class="options">
+                <li><input type="radio" name="q6" value="a"> MongoDB Atlas - flexible document structure</li>
+                <li><input type="radio" name="q6" value="b"> PostgreSQL on cloud hosting - open source with enterprise features</li>
+                <li><input type="radio" name="q6" value="c"> Microsoft SQL Server - premium enterprise database</li>
+                <li><input type="radio" name="q6" value="d"> Firebase - real-time updates and easy scaling</li>
+            </ul>
+            <div class="explanation">
+                <strong>Correct Answer: B</strong><br>
+                PostgreSQL offers the best combination for this scenario: strong ACID compliance, excellent reporting capabilities, Power BI integration, and costs under $200/month on cloud platforms. MongoDB lacks ACID guarantees, SQL Server exceeds the budget at enterprise level, and Firebase doesn't provide the complex reporting capabilities needed for business analytics.
+            </div>
+        </div>
+
+        <div class="question">
+            <h3>Question 7: Short Answer - Foreign Key Relationships</h3>
+            <p>In a service business database, explain why the time_entries table should have foreign keys to both employees and work_orders tables. Include the business benefits in your answer.</p>
+            <input type="text" class="short-answer" name="q7" placeholder="Enter your explanation (2-3 sentences)">
+            <div class="explanation">
+                <strong>Sample Answer:</strong><br>
+                Foreign keys to employees ensure time entries are linked to valid staff members for payroll and utilization tracking. Foreign keys to work_orders ensure billable time is properly allocated to customer projects/tickets for accurate invoicing. These relationships maintain data integrity and enable automated billing workflows while providing audit trails for time and cost tracking.
+                <br><br>
+                <em>Accept answers that mention data integrity, billing accuracy, and automation workflow support.</em>
+            </div>
+        </div>
+
+        <div class="question">
+            <h3>Question 8: Constraint Design for Business Rules</h3>
+            <p>Which SQL constraint would best enforce the business rule: "Employee hourly rates cannot exceed $200 and must be positive"?</p>
+            <ul class="options">
+                <li><input type="radio" name="q8" value="a"> CHECK (hourly_rate > 0 AND hourly_rate <= 200)</li>
+                <li><input type="radio" name="q8" value="b"> UNIQUE (hourly_rate)</li>
+                <li><input type="radio" name="q8" value="c"> FOREIGN KEY REFERENCES rate_table(rate_id)</li>
+                <li><input type="radio" name="q8" value="d"> NOT NULL</li>
+            </ul>
+            <div class="explanation">
+                <strong>Correct Answer: A</strong><br>
+                CHECK constraints enforce business rules by validating data values at insert/update time. This constraint ensures rates are positive (> 0) and within reasonable limits (≤ $200). UNIQUE prevents duplicates, FOREIGN KEY enforces relationships, and NOT NULL prevents empty values - none of these address the range validation requirement.
+            </div>
+        </div>
+
+        <div class="question">
+            <h3>Question 9: Automation Integration Design</h3>
+            <p>An automated invoice generation system needs to calculate totals from multiple related tables. Which database design pattern provides the most reliable automation?</p>
+            <ul class="options">
+                <li><input type="radio" name="q9" value="a"> Store calculated totals in invoice table, recalculate manually when needed</li>
+                <li><input type="radio" name="q9" value="b"> Use database views to calculate totals dynamically on each query</li>
+                <li><input type="radio" name="q9" value="c"> Use stored procedures with transaction control to calculate and store totals</li>
+                <li><input type="radio" name="q9" value="d"> Let the application calculate totals and hope for accuracy</li>
+            </ul>
+            <div class="explanation">
+                <strong>Correct Answer: C</strong><br>
+                Stored procedures with transaction control ensure calculations are performed consistently within the database, maintaining ACID properties and preventing data inconsistency. Views recalculate every time (performance impact), manual processes are error-prone, and application-level calculations can create inconsistencies if multiple systems access the data.
+            </div>
+        </div>
+
+        <div class="question">
+            <h3>Question 10: Scalability Considerations</h3>
+            <p>A rapidly growing SME expects their transaction volume to increase from 1,000 to 50,000 monthly over 18 months. Which database design consideration is most critical for their automation systems?</p>
+            <ul class="options">
+                <li><input type="radio" name="q10" value="a"> Choosing the most expensive database technology available</li>
+                <li><input type="radio" name="q10" value="b"> Designing efficient indexes and query patterns from the beginning</li>
+                <li><input type="radio" name="q10" value="c"> Avoiding any foreign key constraints to improve performance</li>
+                <li><input type="radio" name="q10" value="d"> Using only NoSQL databases for better scaling</li>
+            </ul>
+            <div class="explanation">
+                <strong>Correct Answer: B</strong><br>
+                Proper indexing and query optimization from the start prevents performance degradation as data volume grows. Expensive technology doesn't solve poor design, removing foreign keys sacrifices data integrity, and NoSQL isn't automatically better for all scaling scenarios. Good relational database design with proper indexes can handle this growth efficiently and cost-effectively.
+            </div>
+        </div>
+
+        <button class="submit-btn" onclick="submitQuiz()">Submit Quiz</button>
+        
+        <div id="result" class="result" style="display: none;"></div>
+        
+        <div class="navigation">
+            <a href="../../Level2_index.html">← Level 2 Index</a>
+            <a href="L2_C3_reading.html">📚 Reading</a>
+            <a href="L2_C3_project.html">🎯 Project</a>
+            <a href="L2_C4_reading.html">Next Chapter →</a>
+        </div>
+    </div>
+
+    <script>
+        // Drag and Drop Functionality
+        let draggedElement = null;
+        const correctMatches = {
+            'repeating': '1nf',
+            'partial': '2nf',
+            'transitive': '3nf'
+        };
+        let dropMatches = {};
+
+        // Initialize drag and drop
+        document.addEventListener('DOMContentLoaded', function() {
+            const dragItems = document.querySelectorAll('.drag-item');
+            const dropZones = document.querySelectorAll('.drop-zone');
+
+            dragItems.forEach(item => {
+                item.addEventListener('dragstart', function(e) {
+                    draggedElement = this;
+                    this.style.opacity = '0.5';
+                });
+
+                item.addEventListener('dragend', function(e) {
+                    this.style.opacity = '1';
+                });
+            });
+
+            dropZones.forEach(zone => {
+                zone.addEventListener('dragover', function(e) {
+                    e.preventDefault();
+                    this.classList.add('drag-over');
+                });
+
+                zone.addEventListener('dragleave', function(e) {
+                    this.classList.remove('drag-over');
+                });
+
+                zone.addEventListener('drop', function(e) {
+                    e.preventDefault();
+                    this.classList.remove('drag-over');
+                    
+                    if (draggedElement) {
+                        this.appendChild(draggedElement);
+                        const violation = draggedElement.getAttribute('data-violation');
+                        const form = this.getAttribute('data-form');
+                        dropMatches[violation] = form;
+                        draggedElement = null;
+                    }
+                });
+            });
+        });
+
+        // Radio button selection highlighting
+        document.addEventListener('change', function(e) {
+            if (e.target.type === 'radio') {
+                // Remove previous selections
+                const questionDiv = e.target.closest('.question');
+                questionDiv.querySelectorAll('.options li').forEach(li => {
+                    li.classList.remove('selected');
+                });
+                
+                // Highlight selected option
+                e.target.closest('li').classList.add('selected');
+            }
+        });
+
+        function submitQuiz() {
+            const answers = {
+                q1: 'b',
+                q2: 'd', 
+                q3: correctMatches, // drag and drop
+                q4: 'c',
+                q5: 'b',
+                q6: 'b',
+                q7: 'foreign_key_explanation', // short answer
+                q8: 'a',
+                q9: 'c',
+                q10: 'b'
+            };
+
+            let score = 0;
+            let totalQuestions = 10;
+
+            // Check multiple choice questions
+            ['q1', 'q2', 'q4', 'q5', 'q6', 'q8', 'q9', 'q10'].forEach(q => {
+                const selected = document.querySelector(`input[name="${q}"]:checked`);
+                const questionDiv = document.querySelector(`input[name="${q}"]`).closest('.question');
+                
+                if (selected && selected.value === answers[q]) {
+                    score++;
+                    questionDiv.querySelector('.explanation').classList.add('show-explanation');
+                    questionDiv.style.borderLeftColor = '#27ae60';
+                } else {
+                    questionDiv.querySelector('.explanation').classList.add('show-explanation');
+                    questionDiv.style.borderLeftColor = '#e74c3c';
+                }
+            });
+
+            // Check drag and drop (q3)
+            let dragDropCorrect = true;
+            for (let violation in correctMatches) {
+                if (dropMatches[violation] !== correctMatches[violation]) {
+                    dragDropCorrect = false;
+                    break;
+                }
+            }
+            if (dragDropCorrect && Object.keys(dropMatches).length === Object.keys(correctMatches).length) {
+                score++;
+                document.querySelector('.question:nth-child(4)').style.borderLeftColor = '#27ae60';
+            } else {
+                document.querySelector('.question:nth-child(4)').style.borderLeftColor = '#e74c3c';
+            }
+            document.querySelector('.question:nth-child(4) .explanation').classList.add('show-explanation');
+
+            // Check short answer (q7) - look for key concepts
+            const shortAnswer = document.querySelector('input[name="q7"]').value.toLowerCase();
+            if ((shortAnswer.includes('integrity') || shortAnswer.includes('valid')) && 
+                (shortAnswer.includes('billing') || shortAnswer.includes('invoice')) &&
+                (shortAnswer.includes('employee') || shortAnswer.includes('work'))) {
+                score++;
+                document.querySelector('.question:nth-child(8)').style.borderLeftColor = '#27ae60';
+            } else {
+                document.querySelector('.question:nth-child(8)').style.borderLeftColor = '#e74c3c';
+            }
+            document.querySelector('.question:nth-child(8) .explanation').classList.add('show-explanation');
+
+            // Calculate percentage
+            const percentage = (score / totalQuestions) * 100;
+            const resultDiv = document.getElementById('result');
+            
+            if (percentage >= 80) {
+                resultDiv.className = 'result pass';
+                resultDiv.innerHTML = `
+                    <h3>🎉 Congratulations! You Passed!</h3>
+                    <p>Score: ${score}/${totalQuestions} (${percentage.toFixed(1)}%)</p>
+                    <p>You've demonstrated strong understanding of database design for process automation. You're ready to explore AI integration in Chapter 2.4.</p>
+                `;
+            } else {
+                resultDiv.className = 'result fail';
+                resultDiv.innerHTML = `
+                    <h3>📚 Additional Study Recommended</h3>
+                    <p>Score: ${score}/${totalQuestions} (${percentage.toFixed(1)}%)</p>
+                    <p>Review the explanations below and revisit the reading material. Focus on entity relationships, normalization principles, and database performance optimization. Retake when ready!</p>
+                `;
+            }
+            
+            resultDiv.style.display = 'block';
+            
+            // Scroll to results
+            resultDiv.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        }
+    </script>
+</body>
+</html>
