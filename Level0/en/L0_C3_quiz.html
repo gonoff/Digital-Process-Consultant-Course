@@ -1,0 +1,396 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Process Mapping with BPMN - Quiz</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #f5f5f5;
+        }
+        .quiz-container {
+            background: white;
+            border-radius: 10px;
+            padding: 30px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        h1 {
+            color: #2c3e50;
+            text-align: center;
+            border-bottom: 3px solid #3498db;
+            padding-bottom: 10px;
+        }
+        .question {
+            margin: 25px 0;
+            padding: 20px;
+            border-left: 4px solid #3498db;
+            background-color: #f8f9fa;
+        }
+        .question h3 {
+            color: #2c3e50;
+            margin-top: 0;
+        }
+        .options {
+            margin: 15px 0;
+        }
+        .option {
+            margin: 10px 0;
+            padding: 10px;
+            border: 2px solid #e0e0e0;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        .option:hover {
+            border-color: #3498db;
+            background-color: #ebf3fd;
+        }
+        .option.selected {
+            border-color: #3498db;
+            background-color: #3498db;
+            color: white;
+        }
+        .option.correct {
+            border-color: #27ae60;
+            background-color: #27ae60;
+            color: white;
+        }
+        .option.incorrect {
+            border-color: #e74c3c;
+            background-color: #e74c3c;
+            color: white;
+        }
+        .diagram-symbol {
+            font-size: 20px;
+            font-weight: bold;
+            padding: 5px;
+            margin: 0 5px;
+            border: 2px solid #3498db;
+            display: inline-block;
+            text-align: center;
+            min-width: 30px;
+        }
+        .circle { border-radius: 50%; }
+        .diamond { transform: rotate(45deg); width: 20px; height: 20px; }
+        .rectangle { border-radius: 5px; }
+        input[type="text"] {
+            width: 100%;
+            padding: 10px;
+            border: 2px solid #e0e0e0;
+            border-radius: 5px;
+            font-size: 14px;
+        }
+        button {
+            background: #3498db;
+            color: white;
+            border: none;
+            padding: 15px 30px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            margin: 20px 10px;
+        }
+        button:hover {
+            background: #2980b9;
+        }
+        .results {
+            margin-top: 30px;
+            padding: 20px;
+            border-radius: 5px;
+            text-align: center;
+        }
+        .pass {
+            background: #d5edda;
+            color: #155724;
+            border: 1px solid #c3e6cb;
+        }
+        .fail {
+            background: #f8d7da;
+            color: #721c24;
+            border: 1px solid #f5c6cb;
+        }
+        .explanation {
+            margin: 15px 0;
+            padding: 15px;
+            background: #fff3cd;
+            border: 1px solid #ffeaa7;
+            border-radius: 5px;
+            display: none;
+        }
+        .explanation.show {
+            display: block;
+        }
+    </style>
+</head>
+<body>
+    <div class="quiz-container">
+        <h1>Process Mapping with BPMN - Quiz</h1>
+        <p>Test your understanding of BPMN notation, process mapping, and swimlane diagrams. You need 80% or higher to pass.</p>
+        
+        <div id="quiz-content">
+            <!-- Question 1 -->
+            <div class="question" data-question="1" data-type="multiple-choice" data-correct="2">
+                <h3>1. What does BPMN stand for?</h3>
+                <div class="options">
+                    <div class="option" data-value="0">Business Process Management Notation</div>
+                    <div class="option" data-value="1">Business Process Mapping Network</div>
+                    <div class="option" data-value="2">Business Process Model and Notation</div>
+                    <div class="option" data-value="3">Business Process Modeling Nomenclature</div>
+                </div>
+                <div class="explanation">
+                    <strong>Correct!</strong> BPMN stands for Business Process Model and Notation, which is an international standard for creating visual diagrams of business processes.
+                </div>
+            </div>
+
+            <!-- Question 2 -->
+            <div class="question" data-question="2" data-type="multiple-choice" data-correct="0">
+                <h3>2. Which BPMN symbol represents a Start Event?</h3>
+                <div class="options">
+                    <div class="option" data-value="0">Thin circle ○</div>
+                    <div class="option" data-value="1">Double circle ◎</div>
+                    <div class="option" data-value="2">Thick circle ●</div>
+                    <div class="option" data-value="3">Diamond ◆</div>
+                </div>
+                <div class="explanation">
+                    <strong>Right!</strong> A thin circle (○) represents a Start Event in BPMN. Double circles are Intermediate Events, thick circles are End Events, and diamonds are Gateways.
+                </div>
+            </div>
+
+            <!-- Question 3 -->
+            <div class="question" data-question="3" data-type="multiple-choice" data-correct="1">
+                <h3>3. In the QuickFix Auto Repair scenario, what was the main process breakdown?</h3>
+                <div class="options">
+                    <div class="option" data-value="0">Lack of skilled technicians</div>
+                    <div class="option" data-value="1">Poor communication and unclear handoffs between roles</div>
+                    <div class="option" data-value="2">Insufficient diagnostic equipment</div>
+                    <div class="option" data-value="3">Inadequate parts inventory</div>
+                </div>
+                <div class="explanation">
+                    <strong>Exactly!</strong> The scenario shows how unclear handoffs between service advisor, technician, and parts department led to delays and customer dissatisfaction. A clear BPMN diagram would define these handoffs and responsibilities.
+                </div>
+            </div>
+
+            <!-- Question 4 -->
+            <div class="question" data-question="4" data-type="multiple-choice" data-correct="3">
+                <h3>4. What type of gateway would you use for an "either/or" decision where only one path can be taken?</h3>
+                <div class="options">
+                    <div class="option" data-value="0">Parallel Gateway (+)</div>
+                    <div class="option" data-value="1">Inclusive Gateway (O)</div>
+                    <div class="option" data-value="2">Event Gateway</div>
+                    <div class="option" data-value="3">Exclusive Gateway (X)</div>
+                </div>
+                <div class="explanation">
+                    <strong>Perfect!</strong> An Exclusive Gateway (X) is used for either/or decisions where only one path is taken. Parallel Gateways (+) execute multiple paths simultaneously, and Inclusive Gateways (O) execute one or more paths based on conditions.
+                </div>
+            </div>
+
+            <!-- Question 5 -->
+            <div class="question" data-question="5" data-type="multiple-choice" data-correct="2">
+                <h3>5. What is the primary purpose of swimlanes in BPMN diagrams?</h3>
+                <div class="options">
+                    <div class="option" data-value="0">To make the diagram look more professional</div>
+                    <div class="option" data-value="1">To separate different types of activities</div>
+                    <div class="option" data-value="2">To organize activities by role or responsibility</div>
+                    <div class="option" data-value="3">To show the sequence of activities</div>
+                </div>
+                <div class="explanation">
+                    <strong>Correct!</strong> Swimlanes organize processes by responsibility, making it clear who performs each activity. This helps identify handoffs and accountability in cross-functional processes.
+                </div>
+            </div>
+
+            <!-- Question 6 - Short Answer -->
+            <div class="question" data-question="6" data-type="short-answer">
+                <h3>6. What naming convention should be used for BPMN activities?</h3>
+                <input type="text" placeholder="Enter your answer here..." data-keywords="verb,noun,action,verb-noun,active,doing">
+                <div class="explanation">
+                    <strong>Good answer!</strong> BPMN activities should use verb-noun phrases that describe actions, such as "Review application," "Process payment," or "Schedule appointment." This makes it clear what work is being performed.
+                </div>
+            </div>
+
+            <!-- Question 7 -->
+            <div class="question" data-question="7" data-type="multiple-choice" data-correct="1">
+                <h3>7. Which type of flow shows communication between different participants in a BPMN diagram?</h3>
+                <div class="options">
+                    <div class="option" data-value="0">Sequence Flow (solid arrow)</div>
+                    <div class="option" data-value="1">Message Flow (dashed arrow)</div>
+                    <div class="option" data-value="2">Association (dotted line)</div>
+                    <div class="option" data-value="3">Data Flow</div>
+                </div>
+                <div class="explanation">
+                    <strong>Right!</strong> Message Flow (dashed arrow) shows communication between different participants, such as customer approval requests or status updates between departments.
+                </div>
+            </div>
+
+            <!-- Question 8 -->
+            <div class="question" data-question="8" data-type="multiple-choice" data-correct="0">
+                <h3>8. What is the standard flow direction for BPMN diagrams?</h3>
+                <div class="options">
+                    <div class="option" data-value="0">Left-to-right, top-to-bottom</div>
+                    <div class="option" data-value="1">Right-to-left, top-to-bottom</div>
+                    <div class="option" data-value="2">Top-to-bottom, left-to-right</div>
+                    <div class="option" data-value="3">Any direction is acceptable</div>
+                </div>
+                <div class="explanation">
+                    <strong>Correct!</strong> Standard BPMN flow direction is left-to-right, top-to-bottom, following typical reading patterns. This makes diagrams easier to follow and understand.
+                </div>
+            </div>
+
+            <!-- Question 9 - Short Answer -->
+            <div class="question" data-question="9" data-type="short-answer">
+                <h3>9. Give an example of when you would use a Parallel Gateway (+) in a process.</h3>
+                <input type="text" placeholder="Enter your answer here..." data-keywords="simultaneous,parallel,same time,concurrent,multiple,both,together">
+                <div class="explanation">
+                    <strong>Great example!</strong> Parallel Gateways are used when multiple activities happen simultaneously, such as: processing payment while preparing shipment, conducting background check while scheduling interview, or sending confirmation email while updating database.
+                </div>
+            </div>
+
+            <!-- Question 10 -->
+            <div class="question" data-question="10" data-type="multiple-choice" data-correct="2">
+                <h3>10. In a BPMN process map, what should happen to every path that splits from a gateway?</h3>
+                <div class="options">
+                    <div class="option" data-value="0">It should lead to a different swimlane</div>
+                    <div class="option" data-value="1">It should contain at least two activities</div>
+                    <div class="option" data-value="2">It should eventually lead to an End Event</div>
+                    <div class="option" data-value="3">It should rejoin at another gateway</div>
+                </div>
+                <div class="explanation">
+                    <strong>Excellent!</strong> Every path in a BPMN diagram must eventually lead to an End Event. This ensures the process has logical completion points and helps identify incomplete process flows.
+                </div>
+            </div>
+
+            <!-- Question 11 -->
+            <div class="question" data-question="11" data-type="multiple-choice" data-correct="1">
+                <h3>11. What is the main difference between Level 2 (Process Maps) and Level 3 (Procedure Maps)?</h3>
+                <div class="options">
+                    <div class="option" data-value="0">Level 2 uses BPMN while Level 3 uses flowcharts</div>
+                    <div class="option" data-value="1">Level 2 shows workflow between activities while Level 3 shows detailed instructions for specific tasks</div>
+                    <div class="option" data-value="2">Level 2 is for managers while Level 3 is for employees</div>
+                    <div class="option" data-value="3">Level 2 includes decision points while Level 3 does not</div>
+                </div>
+                <div class="explanation">
+                    <strong>Right!</strong> Level 2 Process Maps show the overall workflow with activities, decisions, and handoffs. Level 3 Procedure Maps provide step-by-step instructions for performing specific tasks within those activities.
+                </div>
+            </div>
+        </div>
+
+        <button onclick="submitQuiz()">Submit Quiz</button>
+        <button onclick="resetQuiz()" style="background: #95a5a6;">Reset Quiz</button>
+
+        <div id="results" class="results" style="display: none;">
+        </div>
+    </div>
+
+    <script>
+        let userAnswers = {};
+
+        // Handle multiple choice selections
+        document.querySelectorAll('.option').forEach(option => {
+            option.addEventListener('click', function() {
+                const question = this.closest('.question');
+                const questionNum = question.dataset.question;
+                
+                // Clear previous selections
+                question.querySelectorAll('.option').forEach(opt => opt.classList.remove('selected'));
+                
+                // Select current option
+                this.classList.add('selected');
+                userAnswers[questionNum] = parseInt(this.dataset.value);
+            });
+        });
+
+        // Handle short answers
+        document.querySelectorAll('input[type="text"]').forEach(input => {
+            input.addEventListener('input', function() {
+                const questionNum = this.closest('.question').dataset.question;
+                userAnswers[questionNum] = this.value.toLowerCase().trim();
+            });
+        });
+
+        function submitQuiz() {
+            let score = 0;
+            let totalQuestions = 11;
+            
+            document.querySelectorAll('.question').forEach(question => {
+                const questionNum = question.dataset.question;
+                const questionType = question.dataset.type;
+                const explanation = question.querySelector('.explanation');
+                
+                if (questionType === 'multiple-choice') {
+                    const correctAnswer = parseInt(question.dataset.correct);
+                    const userAnswer = userAnswers[questionNum];
+                    
+                    question.querySelectorAll('.option').forEach(option => {
+                        const optionValue = parseInt(option.dataset.value);
+                        if (optionValue === correctAnswer) {
+                            option.classList.add('correct');
+                        } else if (optionValue === userAnswer && optionValue !== correctAnswer) {
+                            option.classList.add('incorrect');
+                        }
+                    });
+                    
+                    if (userAnswer === correctAnswer) {
+                        score++;
+                        explanation.classList.add('show');
+                    }
+                } else if (questionType === 'short-answer') {
+                    const keywords = question.querySelector('input').dataset.keywords.split(',');
+                    const userAnswer = userAnswers[questionNum] || '';
+                    
+                    const hasKeyword = keywords.some(keyword => 
+                        userAnswer.includes(keyword.trim())
+                    );
+                    
+                    if (hasKeyword && userAnswer.length > 5) {
+                        score++;
+                    }
+                    explanation.classList.add('show');
+                }
+            });
+            
+            const percentage = Math.round((score / totalQuestions) * 100);
+            const resultsDiv = document.getElementById('results');
+            
+            if (percentage >= 80) {
+                resultsDiv.className = 'results pass';
+                resultsDiv.innerHTML = `
+                    <h2>Outstanding! 🎉</h2>
+                    <p>You scored ${score}/${totalQuestions} (${percentage}%)</p>
+                    <p>You have mastered BPMN fundamentals and process mapping concepts. You're ready to move on to Lean and Six Sigma principles.</p>
+                `;
+            } else {
+                resultsDiv.className = 'results fail';
+                resultsDiv.innerHTML = `
+                    <h2>Keep Learning 📚</h2>
+                    <p>You scored ${score}/${totalQuestions} (${percentage}%)</p>
+                    <p>You need 80% or higher to pass. Please review BPMN symbols, gateway types, and swimlane concepts.</p>
+                `;
+            }
+            
+            resultsDiv.style.display = 'block';
+            resultsDiv.scrollIntoView({ behavior: 'smooth' });
+        }
+
+        function resetQuiz() {
+            userAnswers = {};
+            
+            document.querySelectorAll('.option').forEach(option => {
+                option.classList.remove('selected', 'correct', 'incorrect');
+            });
+            
+            document.querySelectorAll('.explanation').forEach(exp => {
+                exp.classList.remove('show');
+            });
+            
+            document.querySelectorAll('input[type="text"]').forEach(input => {
+                input.value = '';
+            });
+            
+            document.getElementById('results').style.display = 'none';
+        }
+    </script>
+</body>
+</html>

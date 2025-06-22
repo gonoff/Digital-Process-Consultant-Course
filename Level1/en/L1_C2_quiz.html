@@ -1,0 +1,499 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AS-IS Mapping & Bottleneck Hunting - Quiz</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #f5f5f5;
+        }
+        .quiz-container {
+            background: white;
+            border-radius: 10px;
+            padding: 30px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        h1 {
+            color: #2c3e50;
+            text-align: center;
+            border-bottom: 3px solid #3498db;
+            padding-bottom: 10px;
+        }
+        .question {
+            margin: 25px 0;
+            padding: 20px;
+            border-left: 4px solid #3498db;
+            background-color: #f8f9fa;
+        }
+        .question h3 {
+            color: #2c3e50;
+            margin-top: 0;
+        }
+        .options {
+            margin: 15px 0;
+        }
+        .option {
+            margin: 10px 0;
+            padding: 10px;
+            border: 2px solid #e0e0e0;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        .option:hover {
+            border-color: #3498db;
+            background-color: #ebf3fd;
+        }
+        .option.selected {
+            border-color: #3498db;
+            background-color: #3498db;
+            color: white;
+        }
+        .option.correct {
+            border-color: #27ae60;
+            background-color: #27ae60;
+            color: white;
+        }
+        .option.incorrect {
+            border-color: #e74c3c;
+            background-color: #e74c3c;
+            color: white;
+        }
+        .drag-drop {
+            display: flex;
+            gap: 20px;
+            margin: 20px 0;
+        }
+        .drag-items, .drop-zones {
+            flex: 1;
+        }
+        .drag-item {
+            padding: 10px;
+            margin: 5px 0;
+            background: #3498db;
+            color: white;
+            border-radius: 5px;
+            cursor: move;
+            text-align: center;
+        }
+        .drop-zone {
+            min-height: 50px;
+            border: 2px dashed #bdc3c7;
+            border-radius: 5px;
+            margin: 5px 0;
+            padding: 10px;
+            text-align: center;
+            color: #7f8c8d;
+        }
+        .drop-zone.drag-over {
+            border-color: #3498db;
+            background-color: #ebf3fd;
+        }
+        input[type="text"] {
+            width: 100%;
+            padding: 10px;
+            border: 2px solid #e0e0e0;
+            border-radius: 5px;
+            font-size: 14px;
+        }
+        button {
+            background: #3498db;
+            color: white;
+            border: none;
+            padding: 15px 30px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            margin: 20px 10px;
+        }
+        button:hover {
+            background: #2980b9;
+        }
+        .results {
+            margin-top: 30px;
+            padding: 20px;
+            border-radius: 5px;
+            text-align: center;
+        }
+        .pass {
+            background: #d5edda;
+            color: #155724;
+            border: 1px solid #c3e6cb;
+        }
+        .fail {
+            background: #f8d7da;
+            color: #721c24;
+            border: 1px solid #f5c6cb;
+        }
+        .explanation {
+            margin: 15px 0;
+            padding: 15px;
+            background: #fff3cd;
+            border: 1px solid #ffeaa7;
+            border-radius: 5px;
+            display: none;
+        }
+        .explanation.show {
+            display: block;
+        }
+    </style>
+</head>
+<body>
+    <div class="quiz-container">
+        <h1>AS-IS Mapping & Bottleneck Hunting - Quiz</h1>
+        <p>Test your understanding of AS-IS process mapping, bottleneck identification, time analysis, and value stream mapping. You need 80% or higher to pass.</p>
+        
+        <div id="quiz-content">
+            <!-- Question 1 -->
+            <div class="question" data-question="1" data-type="multiple-choice" data-correct="2">
+                <h3>1. What was the key revelation in Lisa's hospital discharge process observation?</h3>
+                <div class="options">
+                    <div class="option" data-value="0">Pharmacy was consistently the primary bottleneck</div>
+                    <div class="option" data-value="1">Transport delays were the main cause of problems</div>
+                    <div class="option" data-value="2">The process wasn't broken—it was wildly inconsistent</div>
+                    <div class="option" data-value="3">Nurses were not following official procedures</div>
+                </div>
+                <div class="explanation">
+                    <strong>Correct!</strong> Lisa discovered that the process wasn't broken but wildly inconsistent. Some nurses checked orders continuously while others waited for rounds, creating massive variation in cycle times.
+                </div>
+            </div>
+
+            <!-- Question 2 -->
+            <div class="question" data-question="2" data-type="multiple-choice" data-correct="1">
+                <h3>2. What is the primary difference between AS-IS and TO-BE process mapping?</h3>
+                <div class="options">
+                    <div class="option" data-value="0">AS-IS maps are more detailed than TO-BE maps</div>
+                    <div class="option" data-value="1">AS-IS maps document current reality, TO-BE maps design future state</div>
+                    <div class="option" data-value="2">AS-IS maps focus on problems, TO-BE maps focus on solutions</div>
+                    <div class="option" data-value="3">AS-IS maps are temporary, TO-BE maps are permanent</div>
+                </div>
+                <div class="explanation">
+                    <strong>Right!</strong> AS-IS mapping documents how work actually flows through a system today, while TO-BE mapping designs the improved future state process.
+                </div>
+            </div>
+
+            <!-- Question 3 - Drag and Drop -->
+            <div class="question" data-question="3" data-type="drag-drop">
+                <h3>3. Match each bottleneck type with its characteristic:</h3>
+                <div class="drag-drop">
+                    <div class="drag-items">
+                        <div class="drag-item" draggable="true" data-value="physical">Physical Bottleneck</div>
+                        <div class="drag-item" draggable="true" data-value="human">Human Bottleneck</div>
+                        <div class="drag-item" draggable="true" data-value="policy">Policy Bottleneck</div>
+                        <div class="drag-item" draggable="true" data-value="information">Information Bottleneck</div>
+                    </div>
+                    <div class="drop-zones">
+                        <div class="drop-zone" data-target="physical">Limited equipment or workspace</div>
+                        <div class="drop-zone" data-target="human">Limited skilled personnel</div>
+                        <div class="drop-zone" data-target="policy">Rules that limit flow</div>
+                        <div class="drop-zone" data-target="information">Data or communication delays</div>
+                    </div>
+                </div>
+                <div class="explanation">
+                    <strong>Excellent!</strong> Physical bottlenecks involve equipment/space limits, Human bottlenecks involve skilled personnel limits, Policy bottlenecks involve restrictive rules, and Information bottlenecks involve data/communication delays.
+                </div>
+            </div>
+
+            <!-- Question 4 -->
+            <div class="question" data-question="4" data-type="multiple-choice" data-correct="3">
+                <h3>4. What is the formula for calculating Takt Time?</h3>
+                <div class="options">
+                    <div class="option" data-value="0">Total processing time ÷ Number of units</div>
+                    <div class="option" data-value="1">Customer demand ÷ Available work time</div>
+                    <div class="option" data-value="2">Total cycle time ÷ Number of steps</div>
+                    <div class="option" data-value="3">Available work time ÷ Customer demand</div>
+                </div>
+                <div class="explanation">
+                    <strong>Perfect!</strong> Takt Time = Available work time ÷ Customer demand. This sets the rhythm for process design and determines required capacity for each step.
+                </div>
+            </div>
+
+            <!-- Question 5 -->
+            <div class="question" data-question="5" data-type="multiple-choice" data-correct="0">
+                <h3>5. In the hospital example, what was the primary bottleneck for complex medication cases?</h3>
+                <div class="options">
+                    <div class="option" data-value="0">Pharmacy review (150 minutes average)</div>
+                    <div class="option" data-value="1">Nurse rounds schedule (45 minutes average)</div>
+                    <div class="option" data-value="2">Transport availability (90 minutes average)</div>
+                    <div class="option" data-value="3">System access delays (15 minutes average)</div>
+                </div>
+                <div class="explanation">
+                    <strong>Correct!</strong> For complex medication cases, pharmacy review took an average of 150 minutes, making it the primary bottleneck limiting overall throughput.
+                </div>
+            </div>
+
+            <!-- Question 6 - Short Answer -->
+            <div class="question" data-question="6" data-type="short-answer">
+                <h3>6. Name two types of time that should be measured in AS-IS process mapping.</h3>
+                <input type="text" placeholder="Enter your answer here..." data-keywords="cycle,processing,wait,lead,value,non-value,queue,delay">
+                <div class="explanation">
+                    <strong>Good answer!</strong> Key time measurements include: Cycle Time (total elapsed time), Processing Time (value-added work), Wait Time (idle periods), Lead Time (customer perspective), and Queue Time (waiting for capacity).
+                </div>
+            </div>
+
+            <!-- Question 7 -->
+            <div class="question" data-question="7" data-type="multiple-choice" data-correct="2">
+                <h3>7. What percentage of time was non-value-added in the hospital discharge process?</h3>
+                <div class="options">
+                    <div class="option" data-value="0">23%</div>
+                    <div class="option" data-value="1">41%</div>
+                    <div class="option" data-value="2">59%</div>
+                    <div class="option" data-value="3">77%</div>
+                </div>
+                <div class="explanation">
+                    <strong>Right!</strong> The analysis showed 59% non-value-added time, 23% value-added time, and 18% business value-added time in the discharge process.
+                </div>
+            </div>
+
+            <!-- Question 8 - Short Answer -->
+            <div class="question" data-question="8" data-type="short-answer">
+                <h3>8. According to Little's Law, what is the formula for calculating Lead Time?</h3>
+                <input type="text" placeholder="Enter your answer here..." data-keywords="work,process,throughput,rate,wip,divided,lead,time">
+                <div class="explanation">
+                    <strong>Excellent!</strong> Little's Law states: Lead Time = Work in Process ÷ Throughput Rate. This helps calculate how long items wait in queues.
+                </div>
+            </div>
+
+            <!-- Question 9 -->
+            <div class="question" data-question="9" data-type="multiple-choice" data-correct="1">
+                <h3>9. What is the main purpose of value stream mapping in AS-IS analysis?</h3>
+                <div class="options">
+                    <div class="option" data-value="0">To create detailed process documentation</div>
+                    <div class="option" data-value="1">To visualize both material and information flows</div>
+                    <div class="option" data-value="2">To identify all process participants</div>
+                    <div class="option" data-value="3">To calculate total process costs</div>
+                </div>
+                <div class="explanation">
+                    <strong>Correct!</strong> Value stream mapping visualizes both material flow (physical work) and information flow (communication triggers), highlighting waste and improvement opportunities.
+                </div>
+            </div>
+
+            <!-- Question 10 -->
+            <div class="question" data-question="10" data-type="multiple-choice" data-correct="3">
+                <h3>10. Which data collection method provides the most accurate picture of actual process performance?</h3>
+                <div class="options">
+                    <div class="option" data-value="0">Document review of official procedures</div>
+                    <div class="option" data-value="1">Stakeholder interviews about typical performance</div>
+                    <div class="option" data-value="2">System data analysis of average times</div>
+                    <div class="option" data-value="3">Direct observation and time studies</div>
+                </div>
+                <div class="explanation">
+                    <strong>Perfect!</strong> Direct observation and time studies provide the most accurate picture because they capture actual performance, including variations, workarounds, and informal practices.
+                </div>
+            </div>
+
+            <!-- Question 11 -->
+            <div class="question" data-question="11" data-type="multiple-choice" data-correct="0">
+                <h3>11. What was the average cycle time for the hospital discharge process?</h3>
+                <div class="options">
+                    <div class="option" data-value="0">252 minutes (4.2 hours)</div>
+                    <div class="option" data-value="1">150 minutes (2.5 hours)</div>
+                    <div class="option" data-value="2">90 minutes (1.5 hours)</div>
+                    <div class="option" data-value="3">485 minutes (8.1 hours)</div>
+                </div>
+                <div class="explanation">
+                    <strong>Right!</strong> The average cycle time was 252 minutes (4.2 hours), with high variation ranging from 67 minutes minimum to 485 minutes maximum.
+                </div>
+            </div>
+
+            <!-- Question 12 -->
+            <div class="question" data-question="12" data-type="multiple-choice" data-correct="2">
+                <h3>12. In bottleneck analysis, what should you focus on first?</h3>
+                <div class="options">
+                    <div class="option" data-value="0">Eliminating all waste from the process</div>
+                    <div class="option" data-value="1">Speeding up the fastest process steps</div>
+                    <div class="option" data-value="2">Improving the constraint that limits overall throughput</div>
+                    <div class="option" data-value="3">Reducing variation in all process steps</div>
+                </div>
+                <div class="explanation">
+                    <strong>Excellent!</strong> Based on Theory of Constraints, you should focus first on improving the constraint that limits overall system throughput, as this will have the greatest impact.
+                </div>
+            </div>
+        </div>
+
+        <button onclick="submitQuiz()">Submit Quiz</button>
+        <button onclick="resetQuiz()" style="background: #95a5a6;">Reset Quiz</button>
+
+        <div id="results" class="results" style="display: none;">
+        </div>
+    </div>
+
+    <script>
+        let userAnswers = {};
+        let dragDropAnswers = {};
+
+        // Handle multiple choice selections
+        document.querySelectorAll('.option').forEach(option => {
+            option.addEventListener('click', function() {
+                const question = this.closest('.question');
+                const questionNum = question.dataset.question;
+                
+                // Clear previous selections
+                question.querySelectorAll('.option').forEach(opt => opt.classList.remove('selected'));
+                
+                // Select current option
+                this.classList.add('selected');
+                userAnswers[questionNum] = parseInt(this.dataset.value);
+            });
+        });
+
+        // Handle drag and drop
+        let draggedElement = null;
+
+        document.querySelectorAll('.drag-item').forEach(item => {
+            item.addEventListener('dragstart', function(e) {
+                draggedElement = this;
+                e.dataTransfer.effectAllowed = 'move';
+            });
+        });
+
+        document.querySelectorAll('.drop-zone').forEach(zone => {
+            zone.addEventListener('dragover', function(e) {
+                e.preventDefault();
+                this.classList.add('drag-over');
+            });
+
+            zone.addEventListener('dragleave', function() {
+                this.classList.remove('drag-over');
+            });
+
+            zone.addEventListener('drop', function(e) {
+                e.preventDefault();
+                this.classList.remove('drag-over');
+                
+                if (draggedElement) {
+                    this.appendChild(draggedElement);
+                    const questionNum = this.closest('.question').dataset.question;
+                    if (!dragDropAnswers[questionNum]) dragDropAnswers[questionNum] = {};
+                    dragDropAnswers[questionNum][this.dataset.target] = draggedElement.dataset.value;
+                    draggedElement = null;
+                }
+            });
+        });
+
+        // Handle short answers
+        document.querySelectorAll('input[type="text"]').forEach(input => {
+            input.addEventListener('input', function() {
+                const questionNum = this.closest('.question').dataset.question;
+                userAnswers[questionNum] = this.value.toLowerCase().trim();
+            });
+        });
+
+        function submitQuiz() {
+            let score = 0;
+            let totalQuestions = 12;
+            
+            document.querySelectorAll('.question').forEach(question => {
+                const questionNum = question.dataset.question;
+                const questionType = question.dataset.type;
+                const explanation = question.querySelector('.explanation');
+                
+                if (questionType === 'multiple-choice') {
+                    const correctAnswer = parseInt(question.dataset.correct);
+                    const userAnswer = userAnswers[questionNum];
+                    
+                    question.querySelectorAll('.option').forEach(option => {
+                        const optionValue = parseInt(option.dataset.value);
+                        if (optionValue === correctAnswer) {
+                            option.classList.add('correct');
+                        } else if (optionValue === userAnswer && optionValue !== correctAnswer) {
+                            option.classList.add('incorrect');
+                        }
+                    });
+                    
+                    if (userAnswer === correctAnswer) {
+                        score++;
+                        explanation.classList.add('show');
+                    }
+                } else if (questionType === 'drag-drop') {
+                    const answers = dragDropAnswers[questionNum] || {};
+                    const correctMatches = {
+                        'physical': 'physical',
+                        'human': 'human',
+                        'policy': 'policy',
+                        'information': 'information'
+                    };
+                    
+                    let correctCount = 0;
+                    for (let key in correctMatches) {
+                        if (answers[key] === correctMatches[key]) {
+                            correctCount++;
+                        }
+                    }
+                    
+                    if (correctCount === Object.keys(correctMatches).length) {
+                        score++;
+                        explanation.classList.add('show');
+                    }
+                } else if (questionType === 'short-answer') {
+                    const keywords = question.querySelector('input').dataset.keywords.split(',');
+                    const userAnswer = userAnswers[questionNum] || '';
+                    
+                    const hasKeywords = keywords.filter(keyword => 
+                        userAnswer.includes(keyword.trim())
+                    ).length >= 2; // Need at least 2 keywords for short answer questions
+                    
+                    if (hasKeywords && userAnswer.length > 8) {
+                        score++;
+                    }
+                    explanation.classList.add('show');
+                }
+            });
+            
+            const percentage = Math.round((score / totalQuestions) * 100);
+            const resultsDiv = document.getElementById('results');
+            
+            if (percentage >= 80) {
+                resultsDiv.className = 'results pass';
+                resultsDiv.innerHTML = `
+                    <h2>Outstanding Work! 🎉</h2>
+                    <p>You scored ${score}/${totalQuestions} (${percentage}%)</p>
+                    <p>You have mastered AS-IS mapping and bottleneck analysis techniques. You're ready to move on to root cause analysis and data capture methods.</p>
+                `;
+            } else {
+                resultsDiv.className = 'results fail';
+                resultsDiv.innerHTML = `
+                    <h2>Keep Practicing 📚</h2>
+                    <p>You scored ${score}/${totalQuestions} (${percentage}%)</p>
+                    <p>You need 80% or higher to pass. Please review AS-IS mapping concepts, bottleneck types, time analysis methods, and value stream mapping techniques.</p>
+                `;
+            }
+            
+            resultsDiv.style.display = 'block';
+            resultsDiv.scrollIntoView({ behavior: 'smooth' });
+        }
+
+        function resetQuiz() {
+            userAnswers = {};
+            dragDropAnswers = {};
+            
+            document.querySelectorAll('.option').forEach(option => {
+                option.classList.remove('selected', 'correct', 'incorrect');
+            });
+            
+            document.querySelectorAll('.explanation').forEach(exp => {
+                exp.classList.remove('show');
+            });
+            
+            document.querySelectorAll('input[type="text"]').forEach(input => {
+                input.value = '';
+            });
+            
+            // Reset drag and drop items to original positions
+            const dragItems = document.querySelector('.drag-items');
+            if (dragItems) {
+                document.querySelectorAll('.drag-item').forEach(item => {
+                    dragItems.appendChild(item);
+                });
+            }
+            
+            document.getElementById('results').style.display = 'none';
+        }
+    </script>
+</body>
+</html>
