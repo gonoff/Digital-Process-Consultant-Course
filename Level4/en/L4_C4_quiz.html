@@ -1,0 +1,649 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chapter 4.4 Quiz: Post-Implementation Support</title>
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #f8f9fa;
+            color: #333;
+        }
+        .quiz-container {
+            background: white;
+            border-radius: 10px;
+            padding: 30px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        .quiz-header {
+            text-align: center;
+            margin-bottom: 30px;
+            padding-bottom: 20px;
+            border-bottom: 3px solid #007acc;
+        }
+        .quiz-header h1 {
+            color: #007acc;
+            margin-bottom: 10px;
+        }
+        .question {
+            margin-bottom: 25px;
+            padding: 20px;
+            border-left: 4px solid #007acc;
+            background-color: #f8f9fa;
+            border-radius: 5px;
+        }
+        .question h3 {
+            margin-top: 0;
+            color: #333;
+        }
+        .options {
+            margin: 15px 0;
+        }
+        .option {
+            margin: 8px 0;
+            padding: 10px;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.2s;
+        }
+        .option:hover {
+            background-color: #e9ecef;
+        }
+        .option input[type="radio"] {
+            margin-right: 10px;
+        }
+        .text-input {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 14px;
+            margin-top: 10px;
+        }
+        .scenario-box {
+            background-color: #fff3cd;
+            border: 1px solid #ffeaa7;
+            border-radius: 5px;
+            padding: 15px;
+            margin: 10px 0;
+            font-style: italic;
+        }
+        .dashboard-box {
+            background-color: #f8f9fa;
+            border: 1px solid #dee2e6;
+            border-radius: 5px;
+            padding: 15px;
+            margin: 10px 0;
+            font-family: monospace;
+            font-size: 14px;
+        }
+        .drag-container {
+            display: flex;
+            gap: 20px;
+            margin: 15px 0;
+        }
+        .drag-source {
+            flex: 1;
+            min-height: 200px;
+            border: 2px dashed #ccc;
+            border-radius: 5px;
+            padding: 10px;
+            background-color: #f9f9f9;
+        }
+        .drag-target {
+            flex: 1;
+            min-height: 200px;
+            border: 2px solid #007acc;
+            border-radius: 5px;
+            padding: 10px;
+            background-color: #fff;
+        }
+        .drag-item {
+            background: #007acc;
+            color: white;
+            padding: 8px 12px;
+            margin: 5px 0;
+            border-radius: 5px;
+            cursor: move;
+            user-select: none;
+            font-size: 13px;
+        }
+        .drag-item:hover {
+            background: #005c99;
+        }
+        .phase-slot {
+            border: 1px dashed #ccc;
+            padding: 12px;
+            margin: 5px 0;
+            min-height: 45px;
+            border-radius: 5px;
+            background-color: #f8f9fa;
+        }
+        .phase-slot.filled {
+            background-color: #e7f3ff;
+            border-color: #007acc;
+        }
+        .submit-btn {
+            background-color: #007acc;
+            color: white;
+            padding: 12px 30px;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+            cursor: pointer;
+            margin-top: 20px;
+            transition: background-color 0.2s;
+        }
+        .submit-btn:hover {
+            background-color: #005c99;
+        }
+        .results {
+            margin-top: 30px;
+            padding: 20px;
+            border-radius: 5px;
+            display: none;
+        }
+        .results.show {
+            display: block;
+        }
+        .results.pass {
+            background-color: #d4edda;
+            border: 1px solid #c3e6cb;
+            color: #155724;
+        }
+        .results.fail {
+            background-color: #f8d7da;
+            border: 1px solid #f5c6cb;
+            color: #721c24;
+        }
+        .score {
+            font-size: 24px;
+            font-weight: bold;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        .feedback {
+            margin-top: 15px;
+            padding: 10px;
+            background-color: #fff3cd;
+            border: 1px solid #ffeaa7;
+            border-radius: 5px;
+            display: none;
+        }
+        .feedback.show {
+            display: block;
+        }
+    </style>
+</head>
+<body>
+    <div class="quiz-container">
+        <div class="quiz-header">
+            <h1>Chapter 4.4 Quiz: Post-Implementation Support</h1>
+            <p>Test your understanding of hyper-care methodologies, KPI dashboards, and expansion strategies</p>
+            <p><strong>Pass requirement: 80% (8/10 questions correct)</strong></p>
+        </div>
+
+        <form id="quizForm">
+            <!-- Question 1: Multiple Choice -->
+            <div class="question">
+                <h3>1. According to McKinsey & Company studies mentioned in the chapter, what percentage of organizational changes fail to sustain results beyond 18 months without structured support?</h3>
+                <div class="options">
+                    <label class="option">
+                        <input type="radio" name="q1" value="a">
+                        50%
+                    </label>
+                    <label class="option">
+                        <input type="radio" name="q1" value="b">
+                        60%
+                    </label>
+                    <label class="option">
+                        <input type="radio" name="q1" value="c">
+                        70%
+                    </label>
+                    <label class="option">
+                        <input type="radio" name="q1" value="d">
+                        80%
+                    </label>
+                </div>
+                <div class="feedback" id="feedback1">
+                    <strong>Correct Answer: C</strong><br>
+                    McKinsey & Company studies show 70% of organizational changes fail to sustain results beyond 18 months without structured support systems, highlighting the critical importance of post-implementation support.
+                </div>
+            </div>
+
+            <!-- Question 2: Multiple Choice -->
+            <div class="question">
+                <h3>2. In the Implementation Adoption Curve, which phase typically occurs during months 4-8 after implementation?</h3>
+                <div class="options">
+                    <label class="option">
+                        <input type="radio" name="q2" value="a">
+                        Honeymoon Phase
+                    </label>
+                    <label class="option">
+                        <input type="radio" name="q2" value="b">
+                        Reality Phase
+                    </label>
+                    <label class="option">
+                        <input type="radio" name="q2" value="c">
+                        Integration Phase
+                    </label>
+                    <label class="option">
+                        <input type="radio" name="q2" value="d">
+                        Sustainability Phase
+                    </label>
+                </div>
+                <div class="feedback" id="feedback2">
+                    <strong>Correct Answer: B</strong><br>
+                    The Reality Phase (months 4-8) is when day-to-day pressures return, competing priorities emerge, and initial enthusiasm wanes, potentially causing performance decline from peak levels.
+                </div>
+            </div>
+
+            <!-- Question 3: Drag and Drop -->
+            <div class="question">
+                <h3>3. Match the hyper-care methodology phases with their correct timeframes:</h3>
+                <div class="drag-container">
+                    <div class="drag-source">
+                        <h4>Support Phases:</h4>
+                        <div class="drag-item" draggable="true" data-phase="daily">Daily Touchpoints</div>
+                        <div class="drag-item" draggable="true" data-phase="weekly">Weekly Check-ins</div>
+                        <div class="drag-item" draggable="true" data-phase="biweekly">Bi-weekly Reviews</div>
+                        <div class="drag-item" draggable="true" data-phase="monthly">Monthly Optimization</div>
+                    </div>
+                    <div class="drag-target">
+                        <h4>Timeframes:</h4>
+                        <div class="phase-slot" data-position="1">
+                            <strong>Week 1-4:</strong><br>
+                            <span class="phase-content"></span>
+                        </div>
+                        <div class="phase-slot" data-position="2">
+                            <strong>Week 5-12:</strong><br>
+                            <span class="phase-content"></span>
+                        </div>
+                        <div class="phase-slot" data-position="3">
+                            <strong>Month 4-6:</strong><br>
+                            <span class="phase-content"></span>
+                        </div>
+                        <div class="phase-slot" data-position="4">
+                            <strong>Month 7-12:</strong><br>
+                            <span class="phase-content"></span>
+                        </div>
+                    </div>
+                </div>
+                <input type="hidden" name="q3" id="q3_answer">
+                <div class="feedback" id="feedback3">
+                    <strong>Correct Matching:</strong><br>
+                    Week 1-4: Daily Touchpoints<br>
+                    Week 5-12: Weekly Check-ins<br>
+                    Month 4-6: Bi-weekly Reviews<br>
+                    Month 7-12: Monthly Optimization
+                </div>
+            </div>
+
+            <!-- Question 4: Multiple Choice -->
+            <div class="question">
+                <h3>4. What were the results of Jennifer Chen's post-implementation program within two years?</h3>
+                <div class="options">
+                    <label class="option">
+                        <input type="radio" name="q4" value="a">
+                        85% retention, $650,000 follow-on revenue, 65% referral rate
+                    </label>
+                    <label class="option">
+                        <input type="radio" name="q4" value="b">
+                        95% retention, $890,000 follow-on revenue, 78% referral rate
+                    </label>
+                    <label class="option">
+                        <input type="radio" name="q4" value="c">
+                        90% retention, $750,000 follow-on revenue, 70% referral rate
+                    </label>
+                    <label class="option">
+                        <input type="radio" name="q4" value="d">
+                        80% retention, $1,200,000 follow-on revenue, 85% referral rate
+                    </label>
+                </div>
+                <div class="feedback" id="feedback4">
+                    <strong>Correct Answer: B</strong><br>
+                    Jennifer's post-implementation program achieved 95% client retention rate, $890,000 in follow-on revenue, 78% referral rate, and 23 new client engagements.
+                </div>
+            </div>
+
+            <!-- Question 5: Dashboard Analysis -->
+            <div class="question">
+                <h3>5. Based on this dashboard excerpt, what is the Overall Equipment Effectiveness improvement?</h3>
+                <div class="dashboard-box">
+MANUFACTURING EXCELLENCE DASHBOARD
+Strategic Impact Metrics:
+Overall Equipment Effectiveness: 87% (↑12% vs. baseline)
+Production Cycle Time: 4.2 hours (↓30% vs. baseline)
+Quality First Pass Rate: 96% (↑8% vs. baseline)
+Monthly Cost Savings: $28,500
+ROI Achievement: 415% (vs. 320% target)
+                </div>
+                <div class="options">
+                    <label class="option">
+                        <input type="radio" name="q5" value="a">
+                        8% improvement
+                    </label>
+                    <label class="option">
+                        <input type="radio" name="q5" value="b">
+                        12% improvement
+                    </label>
+                    <label class="option">
+                        <input type="radio" name="q5" value="c">
+                        30% improvement
+                    </label>
+                    <label class="option">
+                        <input type="radio" name="q5" value="d">
+                        87% improvement
+                    </label>
+                </div>
+                <div class="feedback" id="feedback5">
+                    <strong>Correct Answer: B</strong><br>
+                    The dashboard shows Overall Equipment Effectiveness at 87% with ↑12% vs. baseline, indicating a 12% improvement from the original baseline.
+                </div>
+            </div>
+
+            <!-- Question 6: Multiple Choice -->
+            <div class="question">
+                <h3>6. In the Client Health Scoring System, what are the three main categories and their respective weights?</h3>
+                <div class="options">
+                    <label class="option">
+                        <input type="radio" name="q6" value="a">
+                        Performance (40%), Adoption (30%), Relationship (30%)
+                    </label>
+                    <label class="option">
+                        <input type="radio" name="q6" value="b">
+                        Performance (50%), Adoption (30%), Relationship (20%)
+                    </label>
+                    <label class="option">
+                        <input type="radio" name="q6" value="c">
+                        Performance (30%), Adoption (40%), Relationship (30%)
+                    </label>
+                    <label class="option">
+                        <input type="radio" name="q6" value="d">
+                        Performance (35%), Adoption (35%), Relationship (30%)
+                    </label>
+                </div>
+                <div class="feedback" id="feedback6">
+                    <strong>Correct Answer: A</strong><br>
+                    The Client Health Scoring System weights Performance Health at 40%, Adoption Health at 30%, and Relationship Health at 30%.
+                </div>
+            </div>
+
+            <!-- Question 7: Text Input -->
+            <div class="question">
+                <h3>7. What action should be taken when a client's overall health score falls below 6.0?</h3>
+                <div class="scenario-box">
+                    A client's health score has dropped to 5.2 due to declining process adherence and reduced leadership commitment. What intervention level is required?
+                </div>
+                <input type="text" name="q7" class="text-input" placeholder="Enter the intervention classification (one word)">
+                <div class="feedback" id="feedback7">
+                    <strong>Correct Answer: "Critical" or "Red"</strong><br>
+                    Health scores below 6.0 trigger Critical (Red) status requiring daily intervention and support, executive escalation if needed, and comprehensive recovery planning.
+                </div>
+            </div>
+
+            <!-- Question 8: Multiple Choice -->
+            <div class="question">
+                <h3>8. Which type of metrics serve as "predictive indicators that signal future performance trends"?</h3>
+                <div class="options">
+                    <label class="option">
+                        <input type="radio" name="q8" value="a">
+                        Lagging Indicators
+                    </label>
+                    <label class="option">
+                        <input type="radio" name="q8" value="b">
+                        Leading Indicators
+                    </label>
+                    <label class="option">
+                        <input type="radio" name="q8" value="c">
+                        Diagnostic Metrics
+                    </label>
+                    <label class="option">
+                        <input type="radio" name="q8" value="d">
+                        Strategic Indicators
+                    </label>
+                </div>
+                <div class="feedback" id="feedback8">
+                    <strong>Correct Answer: B</strong><br>
+                    Leading Indicators are predictive metrics that signal future performance trends and enable proactive intervention before problems impact results.
+                </div>
+            </div>
+
+            <!-- Question 9: Multiple Choice -->
+            <div class="question">
+                <h3>9. What is the recommended approach for presenting expansion opportunities to existing clients?</h3>
+                <div class="options">
+                    <label class="option">
+                        <input type="radio" name="q9" value="a">
+                        Present as separate consulting sales opportunities
+                    </label>
+                    <label class="option">
+                        <input type="radio" name="q9" value="b">
+                        Wait for clients to identify needs independently
+                    </label>
+                    <label class="option">
+                        <input type="radio" name="q9" value="c">
+                        Position as logical next steps in ongoing improvement journey
+                    </label>
+                    <label class="option">
+                        <input type="radio" name="q9" value="d">
+                        Offer discounted rates to encourage additional engagement
+                    </label>
+                </div>
+                <div class="feedback" id="feedback9">
+                    <strong>Correct Answer: C</strong><br>
+                    Expansion opportunities should be positioned as logical next steps in the ongoing improvement journey rather than separate consulting sales.
+                </div>
+            </div>
+
+            <!-- Question 10: Multiple Choice -->
+            <div class="question">
+                <h3>10. What was the initial problem Jennifer Chen faced with TechFlow Industries six months after implementation?</h3>
+                <div class="options">
+                    <label class="option">
+                        <input type="radio" name="q10" value="a">
+                        Complete failure of the implemented improvements
+                    </label>
+                    <label class="option">
+                        <input type="radio" name="q10" value="b">
+                        Client refused to pay final invoices for the project
+                    </label>
+                    <label class="option">
+                        <input type="radio" name="q10" value="c">
+                        Performance backsliding despite initial success
+                    </label>
+                    <label class="option">
+                        <input type="radio" name="q10" value="d">
+                        Competitor implemented superior improvements
+                    </label>
+                </div>
+                <div class="feedback" id="feedback10">
+                    <strong>Correct Answer: C</strong><br>
+                    Jennifer received a call that TechFlow was seeing performance backsliding - results were still better than before but not at initially achieved levels, with team frustration.
+                </div>
+            </div>
+
+            <button type="button" class="submit-btn" onclick="submitQuiz()">Submit Quiz</button>
+        </form>
+
+        <div class="results" id="results">
+            <div class="score" id="score"></div>
+            <div id="resultMessage"></div>
+            <button class="submit-btn" onclick="retakeQuiz()" style="margin-top: 15px;">Retake Quiz</button>
+        </div>
+    </div>
+
+    <script>
+        let draggedElement = null;
+        let phaseSequence = [];
+
+        // Drag and drop functionality
+        document.addEventListener('DOMContentLoaded', function() {
+            const dragItems = document.querySelectorAll('.drag-item');
+            const phaseSlots = document.querySelectorAll('.phase-slot');
+
+            dragItems.forEach(item => {
+                item.addEventListener('dragstart', handleDragStart);
+            });
+
+            phaseSlots.forEach(slot => {
+                slot.addEventListener('dragover', handleDragOver);
+                slot.addEventListener('drop', handleDrop);
+            });
+        });
+
+        function handleDragStart(e) {
+            draggedElement = e.target;
+        }
+
+        function handleDragOver(e) {
+            e.preventDefault();
+        }
+
+        function handleDrop(e) {
+            e.preventDefault();
+            if (draggedElement) {
+                const phaseContent = e.target.querySelector('.phase-content');
+                const position = e.target.dataset.position;
+                
+                if (phaseContent) {
+                    phaseContent.textContent = draggedElement.textContent;
+                    e.target.classList.add('filled');
+                    phaseSequence[position - 1] = draggedElement.dataset.phase;
+                    
+                    // Hide the dragged item
+                    draggedElement.style.display = 'none';
+                    
+                    updateDragAnswer();
+                }
+            }
+        }
+
+        function updateDragAnswer() {
+            document.getElementById('q3_answer').value = phaseSequence.join(',');
+        }
+
+        function submitQuiz() {
+            const form = document.getElementById('quizForm');
+            const formData = new FormData(form);
+            let score = 0;
+            const totalQuestions = 10;
+
+            // Question 1
+            if (formData.get('q1') === 'c') score++;
+
+            // Question 2
+            if (formData.get('q2') === 'b') score++;
+
+            // Question 3 - Check hyper-care sequence
+            const correctPhases = ['daily', 'weekly', 'biweekly', 'monthly'];
+            const userPhases = formData.get('q3').split(',');
+            if (JSON.stringify(userPhases) === JSON.stringify(correctPhases)) score++;
+
+            // Question 4
+            if (formData.get('q4') === 'b') score++;
+
+            // Question 5
+            if (formData.get('q5') === 'b') score++;
+
+            // Question 6
+            if (formData.get('q6') === 'a') score++;
+
+            // Question 7 - Critical or Red intervention
+            const q7Answer = formData.get('q7').toLowerCase().trim();
+            if (q7Answer === 'critical' || q7Answer === 'red') score++;
+
+            // Question 8
+            if (formData.get('q8') === 'b') score++;
+
+            // Question 9
+            if (formData.get('q9') === 'c') score++;
+
+            // Question 10
+            if (formData.get('q10') === 'c') score++;
+
+            displayResults(score, totalQuestions);
+        }
+
+        function displayResults(score, total) {
+            const percentage = Math.round((score / total) * 100);
+            const resultsDiv = document.getElementById('results');
+            const scoreDiv = document.getElementById('score');
+            const messageDiv = document.getElementById('resultMessage');
+
+            scoreDiv.textContent = `${score}/${total} (${percentage}%)`;
+
+            if (percentage >= 80) {
+                resultsDiv.className = 'results show pass';
+                messageDiv.innerHTML = `
+                    <h3>🎉 Congratulations! You passed!</h3>
+                    <p>You have demonstrated strong understanding of post-implementation support methodologies, KPI dashboard systems, and expansion strategies. You're ready to advance to the final chapter.</p>
+                    <p><strong>Key support competencies demonstrated:</strong></p>
+                    <ul>
+                        <li>Understanding of implementation adoption curves and support timing</li>
+                        <li>Mastery of hyper-care methodology phases and intervention strategies</li>
+                        <li>Knowledge of performance measurement frameworks and health scoring systems</li>
+                        <li>Ability to identify and position expansion opportunities for sustained growth</li>
+                    </ul>
+                `;
+            } else {
+                resultsDiv.className = 'results show fail';
+                messageDiv.innerHTML = `
+                    <h3>📚 Additional Study Needed</h3>
+                    <p>You scored ${percentage}%, but need 80% to pass. Please review the chapter material and focus on:</p>
+                    <ul>
+                        <li>Implementation adoption curve phases and support timing requirements</li>
+                        <li>Hyper-care methodology structure and intervention frameworks</li>
+                        <li>KPI dashboard design principles and health scoring systems</li>
+                        <li>Expansion opportunity identification and positioning strategies</li>
+                    </ul>
+                    <p>Retake the quiz when you're ready!</p>
+                `;
+            }
+
+            // Show all feedback
+            for (let i = 1; i <= total; i++) {
+                document.getElementById(`feedback${i}`).classList.add('show');
+            }
+
+            resultsDiv.scrollIntoView({ behavior: 'smooth' });
+        }
+
+        function retakeQuiz() {
+            // Reset form
+            document.getElementById('quizForm').reset();
+            
+            // Reset drag and drop
+            const dragItems = document.querySelectorAll('.drag-item');
+            const phaseSlots = document.querySelectorAll('.phase-slot');
+            
+            dragItems.forEach(item => {
+                item.style.display = 'block';
+            });
+            
+            phaseSlots.forEach(slot => {
+                slot.classList.remove('filled');
+                const phaseContent = slot.querySelector('.phase-content');
+                if (phaseContent) phaseContent.textContent = '';
+            });
+            
+            phaseSequence = [];
+            document.getElementById('q3_answer').value = '';
+            
+            // Hide results and feedback
+            document.getElementById('results').className = 'results';
+            const feedbacks = document.querySelectorAll('.feedback');
+            feedbacks.forEach(feedback => {
+                feedback.classList.remove('show');
+            });
+            
+            // Scroll to top
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+    </script>
+</body>
+</html>

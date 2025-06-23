@@ -1,0 +1,646 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chapter 4.5 Quiz: Personal Brand & Go-to-Market</title>
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #f8f9fa;
+            color: #333;
+        }
+        .quiz-container {
+            background: white;
+            border-radius: 10px;
+            padding: 30px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        .quiz-header {
+            text-align: center;
+            margin-bottom: 30px;
+            padding-bottom: 20px;
+            border-bottom: 3px solid #007acc;
+        }
+        .quiz-header h1 {
+            color: #007acc;
+            margin-bottom: 10px;
+        }
+        .question {
+            margin-bottom: 25px;
+            padding: 20px;
+            border-left: 4px solid #007acc;
+            background-color: #f8f9fa;
+            border-radius: 5px;
+        }
+        .question h3 {
+            margin-top: 0;
+            color: #333;
+        }
+        .options {
+            margin: 15px 0;
+        }
+        .option {
+            margin: 8px 0;
+            padding: 10px;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.2s;
+        }
+        .option:hover {
+            background-color: #e9ecef;
+        }
+        .option input[type="radio"] {
+            margin-right: 10px;
+        }
+        .text-input {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 14px;
+            margin-top: 10px;
+        }
+        .scenario-box {
+            background-color: #fff3cd;
+            border: 1px solid #ffeaa7;
+            border-radius: 5px;
+            padding: 15px;
+            margin: 10px 0;
+            font-style: italic;
+        }
+        .content-example {
+            background-color: #f8f9fa;
+            border: 1px solid #dee2e6;
+            border-radius: 5px;
+            padding: 15px;
+            margin: 10px 0;
+            font-family: Arial, sans-serif;
+            font-size: 14px;
+        }
+        .drag-container {
+            display: flex;
+            gap: 20px;
+            margin: 15px 0;
+        }
+        .drag-source {
+            flex: 1;
+            min-height: 180px;
+            border: 2px dashed #ccc;
+            border-radius: 5px;
+            padding: 10px;
+            background-color: #f9f9f9;
+        }
+        .drag-target {
+            flex: 1;
+            min-height: 180px;
+            border: 2px solid #007acc;
+            border-radius: 5px;
+            padding: 10px;
+            background-color: #fff;
+        }
+        .drag-item {
+            background: #007acc;
+            color: white;
+            padding: 8px 12px;
+            margin: 5px 0;
+            border-radius: 5px;
+            cursor: move;
+            user-select: none;
+            font-size: 13px;
+        }
+        .drag-item:hover {
+            background: #005c99;
+        }
+        .day-slot {
+            border: 1px dashed #ccc;
+            padding: 12px;
+            margin: 5px 0;
+            min-height: 40px;
+            border-radius: 5px;
+            background-color: #f8f9fa;
+        }
+        .day-slot.filled {
+            background-color: #e7f3ff;
+            border-color: #007acc;
+        }
+        .submit-btn {
+            background-color: #007acc;
+            color: white;
+            padding: 12px 30px;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+            cursor: pointer;
+            margin-top: 20px;
+            transition: background-color 0.2s;
+        }
+        .submit-btn:hover {
+            background-color: #005c99;
+        }
+        .results {
+            margin-top: 30px;
+            padding: 20px;
+            border-radius: 5px;
+            display: none;
+        }
+        .results.show {
+            display: block;
+        }
+        .results.pass {
+            background-color: #d4edda;
+            border: 1px solid #c3e6cb;
+            color: #155724;
+        }
+        .results.fail {
+            background-color: #f8d7da;
+            border: 1px solid #f5c6cb;
+            color: #721c24;
+        }
+        .score {
+            font-size: 24px;
+            font-weight: bold;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        .feedback {
+            margin-top: 15px;
+            padding: 10px;
+            background-color: #fff3cd;
+            border: 1px solid #ffeaa7;
+            border-radius: 5px;
+            display: none;
+        }
+        .feedback.show {
+            display: block;
+        }
+    </style>
+</head>
+<body>
+    <div class="quiz-container">
+        <div class="quiz-header">
+            <h1>Chapter 4.5 Quiz: Personal Brand & Go-to-Market</h1>
+            <p>Test your understanding of authority building, LinkedIn strategy, and systematic business development</p>
+            <p><strong>Pass requirement: 80% (8/10 questions correct)</strong></p>
+        </div>
+
+        <form id="quizForm">
+            <!-- Question 1: Multiple Choice -->
+            <div class="question">
+                <h3>1. According to the chapter, recognized authority enables what pricing advantage for identical services?</h3>
+                <div class="options">
+                    <label class="option">
+                        <input type="radio" name="q1" value="a">
+                        15-25% higher pricing
+                    </label>
+                    <label class="option">
+                        <input type="radio" name="q1" value="b">
+                        30-50% higher pricing
+                    </label>
+                    <label class="option">
+                        <input type="radio" name="q1" value="c">
+                        50-75% higher pricing
+                    </label>
+                    <label class="option">
+                        <input type="radio" name="q1" value="d">
+                        75-100% higher pricing
+                    </label>
+                </div>
+                <div class="feedback" id="feedback1">
+                    <strong>Correct Answer: B</strong><br>
+                    Recognized authority enables 30-50% higher pricing for identical services, as clients pay premiums for perceived risk reduction and status association.
+                </div>
+            </div>
+
+            <!-- Question 2: Multiple Choice -->
+            <div class="question">
+                <h3>2. What was the primary reason David Kim lost two significant opportunities to competitors?</h3>
+                <div class="options">
+                    <label class="option">
+                        <input type="radio" name="q2" value="a">
+                        His pricing was too high compared to competitors
+                    </label>
+                    <label class="option">
+                        <input type="radio" name="q2" value="b">
+                        He lacked the technical skills required for the projects
+                    </label>
+                    <label class="option">
+                        <input type="radio" name="q2" value="c">
+                        Competitors had stronger market visibility and thought leadership presence
+                    </label>
+                    <label class="option">
+                        <input type="radio" name="q2" value="d">
+                        His client references were not strong enough
+                    </label>
+                </div>
+                <div class="feedback" id="feedback2">
+                    <strong>Correct Answer: C</strong><br>
+                    David lost opportunities because competitors had stronger market visibility and thought leadership presence, with one prospect stating they "feel like the industry experts."
+                </div>
+            </div>
+
+            <!-- Question 3: Drag and Drop -->
+            <div class="question">
+                <h3>3. Match the content types to the correct days in the Authority Content Calendar:</h3>
+                <div class="drag-container">
+                    <div class="drag-source">
+                        <h4>Content Types:</h4>
+                        <div class="drag-item" draggable="true" data-content="educational">Educational Content</div>
+                        <div class="drag-item" draggable="true" data-content="casestudy">Case Study Content</div>
+                        <div class="drag-item" draggable="true" data-content="insight">Industry Insight</div>
+                        <div class="drag-item" draggable="true" data-content="engagement">Engagement Content</div>
+                    </div>
+                    <div class="drag-target">
+                        <h4>Weekly Schedule:</h4>
+                        <div class="day-slot" data-position="1">
+                            <strong>Monday:</strong><br>
+                            <span class="day-content"></span>
+                        </div>
+                        <div class="day-slot" data-position="2">
+                            <strong>Wednesday:</strong><br>
+                            <span class="day-content"></span>
+                        </div>
+                        <div class="day-slot" data-position="3">
+                            <strong>Friday:</strong><br>
+                            <span class="day-content"></span>
+                        </div>
+                        <div class="day-slot" data-position="4">
+                            <strong>Variable:</strong><br>
+                            <span class="day-content"></span>
+                        </div>
+                    </div>
+                </div>
+                <input type="hidden" name="q3" id="q3_answer">
+                <div class="feedback" id="feedback3">
+                    <strong>Correct Content Calendar:</strong><br>
+                    Monday: Educational Content<br>
+                    Wednesday: Case Study Content<br>
+                    Friday: Industry Insight<br>
+                    Variable: Engagement Content
+                </div>
+            </div>
+
+            <!-- Question 4: Multiple Choice -->
+            <div class="question">
+                <h3>4. What were David Kim's results after implementing his personal brand strategy over 18 months?</h3>
+                <div class="options">
+                    <label class="option">
+                        <input type="radio" name="q4" value="a">
+                        250% lead increase, 45% engagement value increase, $65,000 speaking fees
+                    </label>
+                    <label class="option">
+                        <input type="radio" name="q4" value="b">
+                        340% lead increase, 65% engagement value increase, $85,000 speaking fees
+                    </label>
+                    <label class="option">
+                        <input type="radio" name="q4" value="c">
+                        400% lead increase, 75% engagement value increase, $95,000 speaking fees
+                    </label>
+                    <label class="option">
+                        <input type="radio" name="q4" value="d">
+                        300% lead increase, 55% engagement value increase, $75,000 speaking fees
+                    </label>
+                </div>
+                <div class="feedback" id="feedback4">
+                    <strong>Correct Answer: B</strong><br>
+                    David achieved 340% increase in inbound leads, 65% increase in average engagement value, and $85,000 annual speaking fees, plus $150,000 in vendor partnerships.
+                </div>
+            </div>
+
+            <!-- Question 5: Profile Example -->
+            <div class="question">
+                <h3>5. Which LinkedIn headline example follows the optimization framework from the chapter?</h3>
+                <div class="content-example">
+                    <strong>Option A:</strong> "Process Improvement Consultant | Helping Companies Optimize Operations"<br><br>
+                    <strong>Option B:</strong> "Manufacturing Excellence Expert | $50M+ Saved for SME Manufacturers Through Proven Operational Transformation"
+                </div>
+                <div class="options">
+                    <label class="option">
+                        <input type="radio" name="q5" value="a">
+                        Option A - Clear and professional description
+                    </label>
+                    <label class="option">
+                        <input type="radio" name="q5" value="b">
+                        Option B - Specific expertise and quantified outcomes
+                    </label>
+                    <label class="option">
+                        <input type="radio" name="q5" value="c">
+                        Both are equally effective
+                    </label>
+                    <label class="option">
+                        <input type="radio" name="q5" value="d">
+                        Neither follows best practices
+                    </label>
+                </div>
+                <div class="feedback" id="feedback5">
+                    <strong>Correct Answer: B</strong><br>
+                    Option B follows the optimization framework by communicating specific expertise and client outcomes rather than generic titles, using quantified results ($50M+ saved).
+                </div>
+            </div>
+
+            <!-- Question 6: Text Input -->
+            <div class="question">
+                <h3>6. According to the Authority Building ROI analysis, what is the approximate annual ROI percentage on the $40,000 authority building investment?</h3>
+                <div class="scenario-box">
+                    Annual Investment: $40,000 (time cost + expenses)<br>
+                    Annual Return: $355,000+ (premium pricing, lead generation, speaking revenue, partnerships)
+                </div>
+                <input type="text" name="q6" class="text-input" placeholder="Enter ROI percentage (e.g., 890)">
+                <div class="feedback" id="feedback6">
+                    <strong>Correct Answer: 890% (or close approximation)</strong><br>
+                    Calculation: ($355,000 return - $40,000 investment) ÷ $40,000 investment × 100 = 887.5%, rounded to 890% ROI.
+                </div>
+            </div>
+
+            <!-- Question 7: Multiple Choice -->
+            <div class="question">
+                <h3>7. What are the five main inbound lead sources and their percentages according to the Systematic Business Development Framework?</h3>
+                <div class="options">
+                    <label class="option">
+                        <input type="radio" name="q7" value="a">
+                        LinkedIn (40%), Speaking (25%), Referrals (20%), Publications (10%), Partnerships (5%)
+                    </label>
+                    <label class="option">
+                        <input type="radio" name="q7" value="b">
+                        LinkedIn (35%), Speaking (30%), Referrals (25%), Publications (7%), Partnerships (3%)
+                    </label>
+                    <label class="option">
+                        <input type="radio" name="q7" value="c">
+                        LinkedIn (45%), Speaking (20%), Referrals (15%), Publications (15%), Partnerships (5%)
+                    </label>
+                    <label class="option">
+                        <input type="radio" name="q7" value="d">
+                        LinkedIn (30%), Speaking (25%), Referrals (25%), Publications (15%), Partnerships (5%)
+                    </label>
+                </div>
+                <div class="feedback" id="feedback7">
+                    <strong>Correct Answer: A</strong><br>
+                    The framework shows LinkedIn content and networking (40%), speaking engagements (25%), referrals (20%), industry publications (10%), and strategic partnerships (5%).
+                </div>
+            </div>
+
+            <!-- Question 8: Multiple Choice -->
+            <div class="question">
+                <h3>8. In the BANT-Plus qualification framework, what does the "Plus" factor include?</h3>
+                <div class="options">
+                    <label class="option">
+                        <input type="radio" name="q8" value="a">
+                        Additional budget beyond the minimum threshold
+                    </label>
+                    <label class="option">
+                        <input type="radio" name="q8" value="b">
+                        Multiple decision makers and extended timeline
+                    </label>
+                    <label class="option">
+                        <input type="radio" name="q8" value="c">
+                        Cultural fit, change readiness, and strategic alignment
+                    </label>
+                    <label class="option">
+                        <input type="radio" name="q8" value="d">
+                        Previous consulting experience and implementation success
+                    </label>
+                </div>
+                <div class="feedback" id="feedback8">
+                    <strong>Correct Answer: C</strong><br>
+                    The "Plus" factors in BANT-Plus qualification include cultural fit, change readiness, and strategic alignment beyond the basic Budget, Authority, Need, and Timeline criteria.
+                </div>
+            </div>
+
+            <!-- Question 9: Multiple Choice -->
+            <div class="question">
+                <h3>9. What signature methodology did David Kim develop that became industry-recognized?</h3>
+                <div class="options">
+                    <label class="option">
+                        <input type="radio" name="q9" value="a">
+                        The Process Excellence Framework
+                    </label>
+                    <label class="option">
+                        <input type="radio" name="q9" value="b">
+                        The Manufacturing Excellence Framework
+                    </label>
+                    <label class="option">
+                        <input type="radio" name="q9" value="c">
+                        The Operational Transformation Framework
+                    </label>
+                    <label class="option">
+                        <input type="radio" name="q9" value="d">
+                        The Continuous Improvement Framework
+                    </label>
+                </div>
+                <div class="feedback" id="feedback9">
+                    <strong>Correct Answer: B</strong><br>
+                    David developed "The Manufacturing Excellence Framework" that became industry-recognized as part of his authority building strategy.
+                </div>
+            </div>
+
+            <!-- Question 10: Multiple Choice -->
+            <div class="question">
+                <h3>10. According to the Daily Engagement Protocol, how many meaningful comments should be made on target connections' posts daily?</h3>
+                <div class="options">
+                    <label class="option">
+                        <input type="radio" name="q10" value="a">
+                        3-5 posts
+                    </label>
+                    <label class="option">
+                        <input type="radio" name="q10" value="b">
+                        5-10 posts
+                    </label>
+                    <label class="option">
+                        <input type="radio" name="q10" value="c">
+                        10-15 posts
+                    </label>
+                    <label class="option">
+                        <input type="radio" name="q10" value="d">
+                        15-20 posts
+                    </label>
+                </div>
+                <div class="feedback" id="feedback10">
+                    <strong>Correct Answer: B</strong><br>
+                    The Daily Engagement Protocol recommends commenting meaningfully on 5-10 posts from target connections as part of the systematic networking approach.
+                </div>
+            </div>
+
+            <button type="button" class="submit-btn" onclick="submitQuiz()">Submit Quiz</button>
+        </form>
+
+        <div class="results" id="results">
+            <div class="score" id="score"></div>
+            <div id="resultMessage"></div>
+            <button class="submit-btn" onclick="retakeQuiz()" style="margin-top: 15px;">Retake Quiz</button>
+        </div>
+    </div>
+
+    <script>
+        let draggedElement = null;
+        let contentSequence = [];
+
+        // Drag and drop functionality
+        document.addEventListener('DOMContentLoaded', function() {
+            const dragItems = document.querySelectorAll('.drag-item');
+            const daySlots = document.querySelectorAll('.day-slot');
+
+            dragItems.forEach(item => {
+                item.addEventListener('dragstart', handleDragStart);
+            });
+
+            daySlots.forEach(slot => {
+                slot.addEventListener('dragover', handleDragOver);
+                slot.addEventListener('drop', handleDrop);
+            });
+        });
+
+        function handleDragStart(e) {
+            draggedElement = e.target;
+        }
+
+        function handleDragOver(e) {
+            e.preventDefault();
+        }
+
+        function handleDrop(e) {
+            e.preventDefault();
+            if (draggedElement) {
+                const dayContent = e.target.querySelector('.day-content');
+                const position = e.target.dataset.position;
+                
+                if (dayContent) {
+                    dayContent.textContent = draggedElement.textContent;
+                    e.target.classList.add('filled');
+                    contentSequence[position - 1] = draggedElement.dataset.content;
+                    
+                    // Hide the dragged item
+                    draggedElement.style.display = 'none';
+                    
+                    updateDragAnswer();
+                }
+            }
+        }
+
+        function updateDragAnswer() {
+            document.getElementById('q3_answer').value = contentSequence.join(',');
+        }
+
+        function submitQuiz() {
+            const form = document.getElementById('quizForm');
+            const formData = new FormData(form);
+            let score = 0;
+            const totalQuestions = 10;
+
+            // Question 1
+            if (formData.get('q1') === 'b') score++;
+
+            // Question 2
+            if (formData.get('q2') === 'c') score++;
+
+            // Question 3 - Check content calendar sequence
+            const correctContent = ['educational', 'casestudy', 'insight', 'engagement'];
+            const userContent = formData.get('q3').split(',');
+            if (JSON.stringify(userContent) === JSON.stringify(correctContent)) score++;
+
+            // Question 4
+            if (formData.get('q4') === 'b') score++;
+
+            // Question 5
+            if (formData.get('q5') === 'b') score++;
+
+            // Question 6 - ROI calculation
+            const q6Answer = parseInt(formData.get('q6'));
+            if (q6Answer >= 880 && q6Answer <= 900) score++;
+
+            // Question 7
+            if (formData.get('q7') === 'a') score++;
+
+            // Question 8
+            if (formData.get('q8') === 'c') score++;
+
+            // Question 9
+            if (formData.get('q9') === 'b') score++;
+
+            // Question 10
+            if (formData.get('q10') === 'b') score++;
+
+            displayResults(score, totalQuestions);
+        }
+
+        function displayResults(score, total) {
+            const percentage = Math.round((score / total) * 100);
+            const resultsDiv = document.getElementById('results');
+            const scoreDiv = document.getElementById('score');
+            const messageDiv = document.getElementById('resultMessage');
+
+            scoreDiv.textContent = `${score}/${total} (${percentage}%)`;
+
+            if (percentage >= 80) {
+                resultsDiv.className = 'results show pass';
+                messageDiv.innerHTML = `
+                    <h3>🎉 Congratulations! You passed Level 4!</h3>
+                    <p>You have demonstrated mastery of personal brand development, LinkedIn authority building, and systematic go-to-market strategies. You've completed the final chapter of Level 4: Client Delivery!</p>
+                    <p><strong>Key authority building competencies demonstrated:</strong></p>
+                    <ul>
+                        <li>Understanding of authority economics and premium positioning strategies</li>
+                        <li>Mastery of LinkedIn content strategy and systematic networking approaches</li>
+                        <li>Knowledge of thought leadership development and business development ROI</li>
+                        <li>Ability to design comprehensive go-to-market systems for sustainable growth</li>
+                    </ul>
+                    <p><strong>You're now ready for the Capstone: Full Engagement Simulation!</strong></p>
+                `;
+            } else {
+                resultsDiv.className = 'results show fail';
+                messageDiv.innerHTML = `
+                    <h3>📚 Additional Study Needed</h3>
+                    <p>You scored ${percentage}%, but need 80% to pass. Please review the chapter material and focus on:</p>
+                    <ul>
+                        <li>Authority building economics and premium positioning advantages</li>
+                        <li>LinkedIn optimization frameworks and content calendar strategies</li>
+                        <li>Systematic business development and lead qualification processes</li>
+                        <li>ROI analysis for authority building investments and go-to-market systems</li>
+                    </ul>
+                    <p>Retake the quiz when you're ready!</p>
+                `;
+            }
+
+            // Show all feedback
+            for (let i = 1; i <= total; i++) {
+                document.getElementById(`feedback${i}`).classList.add('show');
+            }
+
+            resultsDiv.scrollIntoView({ behavior: 'smooth' });
+        }
+
+        function retakeQuiz() {
+            // Reset form
+            document.getElementById('quizForm').reset();
+            
+            // Reset drag and drop
+            const dragItems = document.querySelectorAll('.drag-item');
+            const daySlots = document.querySelectorAll('.day-slot');
+            
+            dragItems.forEach(item => {
+                item.style.display = 'block';
+            });
+            
+            daySlots.forEach(slot => {
+                slot.classList.remove('filled');
+                const dayContent = slot.querySelector('.day-content');
+                if (dayContent) dayContent.textContent = '';
+            });
+            
+            contentSequence = [];
+            document.getElementById('q3_answer').value = '';
+            
+            // Hide results and feedback
+            document.getElementById('results').className = 'results';
+            const feedbacks = document.querySelectorAll('.feedback');
+            feedbacks.forEach(feedback => {
+                feedback.classList.remove('show');
+            });
+            
+            // Scroll to top
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+    </script>
+</body>
+</html>

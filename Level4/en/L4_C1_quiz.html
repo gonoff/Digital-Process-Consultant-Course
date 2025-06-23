@@ -1,0 +1,617 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chapter 4.1 Quiz: Discovery & Process X-Ray</title>
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #f8f9fa;
+            color: #333;
+        }
+        .quiz-container {
+            background: white;
+            border-radius: 10px;
+            padding: 30px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        .quiz-header {
+            text-align: center;
+            margin-bottom: 30px;
+            padding-bottom: 20px;
+            border-bottom: 3px solid #007acc;
+        }
+        .quiz-header h1 {
+            color: #007acc;
+            margin-bottom: 10px;
+        }
+        .question {
+            margin-bottom: 25px;
+            padding: 20px;
+            border-left: 4px solid #007acc;
+            background-color: #f8f9fa;
+            border-radius: 5px;
+        }
+        .question h3 {
+            margin-top: 0;
+            color: #333;
+        }
+        .options {
+            margin: 15px 0;
+        }
+        .option {
+            margin: 8px 0;
+            padding: 10px;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.2s;
+        }
+        .option:hover {
+            background-color: #e9ecef;
+        }
+        .option input[type="radio"] {
+            margin-right: 10px;
+        }
+        .text-input {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 14px;
+            margin-top: 10px;
+        }
+        .drag-container {
+            display: flex;
+            gap: 20px;
+            margin: 15px 0;
+        }
+        .drag-source {
+            flex: 1;
+            min-height: 200px;
+            border: 2px dashed #ccc;
+            border-radius: 5px;
+            padding: 10px;
+            background-color: #f9f9f9;
+        }
+        .drag-target {
+            flex: 1;
+            min-height: 200px;
+            border: 2px solid #007acc;
+            border-radius: 5px;
+            padding: 10px;
+            background-color: #fff;
+        }
+        .drag-item {
+            background: #007acc;
+            color: white;
+            padding: 8px 12px;
+            margin: 5px 0;
+            border-radius: 5px;
+            cursor: move;
+            user-select: none;
+        }
+        .drag-item:hover {
+            background: #005c99;
+        }
+        .phase-slot {
+            border: 1px dashed #ccc;
+            padding: 10px;
+            margin: 5px 0;
+            min-height: 40px;
+            border-radius: 5px;
+            background-color: #f8f9fa;
+        }
+        .phase-slot.filled {
+            background-color: #e7f3ff;
+            border-color: #007acc;
+        }
+        .submit-btn {
+            background-color: #007acc;
+            color: white;
+            padding: 12px 30px;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+            cursor: pointer;
+            margin-top: 20px;
+            transition: background-color 0.2s;
+        }
+        .submit-btn:hover {
+            background-color: #005c99;
+        }
+        .results {
+            margin-top: 30px;
+            padding: 20px;
+            border-radius: 5px;
+            display: none;
+        }
+        .results.show {
+            display: block;
+        }
+        .results.pass {
+            background-color: #d4edda;
+            border: 1px solid #c3e6cb;
+            color: #155724;
+        }
+        .results.fail {
+            background-color: #f8d7da;
+            border: 1px solid #f5c6cb;
+            color: #721c24;
+        }
+        .score {
+            font-size: 24px;
+            font-weight: bold;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        .feedback {
+            margin-top: 15px;
+            padding: 10px;
+            background-color: #fff3cd;
+            border: 1px solid #ffeaa7;
+            border-radius: 5px;
+            display: none;
+        }
+        .feedback.show {
+            display: block;
+        }
+    </style>
+</head>
+<body>
+    <div class="quiz-container">
+        <div class="quiz-header">
+            <h1>Chapter 4.1 Quiz: Discovery & Process X-Ray</h1>
+            <p>Test your understanding of productized discovery methodology and assessment frameworks</p>
+            <p><strong>Pass requirement: 80% (8/10 questions correct)</strong></p>
+        </div>
+
+        <form id="quizForm">
+            <!-- Question 1: Multiple Choice -->
+            <div class="question">
+                <h3>1. What is the primary business advantage of a productized Process X-Ray over traditional discovery approaches?</h3>
+                <div class="options">
+                    <label class="option">
+                        <input type="radio" name="q1" value="a">
+                        It allows consultants to charge higher hourly rates for discovery work
+                    </label>
+                    <label class="option">
+                        <input type="radio" name="q1" value="b">
+                        It eliminates unpaid discovery work while delivering immediate client value
+                    </label>
+                    <label class="option">
+                        <input type="radio" name="q1" value="c">
+                        It reduces the time required for process mapping from days to hours
+                    </label>
+                    <label class="option">
+                        <input type="radio" name="q1" value="d">
+                        It guarantees follow-on engagement wins for larger transformation projects
+                    </label>
+                </div>
+                <div class="feedback" id="feedback1">
+                    <strong>Correct Answer: B</strong><br>
+                    The Process X-Ray eliminates the consultant risk of unpaid discovery while providing clients with immediate value regardless of follow-on decisions. This creates a win-win situation that traditional discovery approaches cannot match.
+                </div>
+            </div>
+
+            <!-- Question 2: Multiple Choice -->
+            <div class="question">
+                <h3>2. According to the pricing strategy outlined, what should drive Process X-Ray pricing decisions?</h3>
+                <div class="options">
+                    <label class="option">
+                        <input type="radio" name="q2" value="a">
+                        Consultant's hourly rate multiplied by 8 hours of engagement time
+                    </label>
+                    <label class="option">
+                        <input type="radio" name="q2" value="b">
+                        Competitive pricing based on other consulting firms' discovery rates
+                    </label>
+                    <label class="option">
+                        <input type="radio" name="q2" value="c">
+                        Value delivered including executive access, documentation, and decision support
+                    </label>
+                    <label class="option">
+                        <input type="radio" name="q2" value="d">
+                        Client's annual revenue divided by a standard industry percentage
+                    </label>
+                </div>
+                <div class="feedback" id="feedback2">
+                    <strong>Correct Answer: C</strong><br>
+                    Value-based pricing considers the immediate value delivered: executive access, professional documentation, quantified recommendations, and decision support - not just time invested.
+                </div>
+            </div>
+
+            <!-- Question 3: Drag and Drop -->
+            <div class="question">
+                <h3>3. Arrange the five Process X-Ray phases in the correct sequence by dragging them to the timeline:</h3>
+                <div class="drag-container">
+                    <div class="drag-source">
+                        <h4>Available Phases:</h4>
+                        <div class="drag-item" draggable="true" data-phase="reconnaissance">Operational Reconnaissance</div>
+                        <div class="drag-item" draggable="true" data-phase="synthesis">Strategic Synthesis</div>
+                        <div class="drag-item" draggable="true" data-phase="presentation">Executive Presentation</div>
+                        <div class="drag-item" draggable="true" data-phase="analysis">Process Flow Analysis</div>
+                        <div class="drag-item" draggable="true" data-phase="assessment">Technology & Data Assessment</div>
+                    </div>
+                    <div class="drag-target">
+                        <h4>Correct Sequence:</h4>
+                        <div class="phase-slot" data-position="1">Phase 1: <span class="phase-content"></span></div>
+                        <div class="phase-slot" data-position="2">Phase 2: <span class="phase-content"></span></div>
+                        <div class="phase-slot" data-position="3">Phase 3: <span class="phase-content"></span></div>
+                        <div class="phase-slot" data-position="4">Phase 4: <span class="phase-content"></span></div>
+                        <div class="phase-slot" data-position="5">Phase 5: <span class="phase-content"></span></div>
+                    </div>
+                </div>
+                <input type="hidden" name="q3" id="q3_answer">
+                <div class="feedback" id="feedback3">
+                    <strong>Correct Sequence:</strong><br>
+                    1. Operational Reconnaissance (90 min) - Stakeholder interviews<br>
+                    2. Process Flow Analysis (120 min) - Collaborative process mapping<br>
+                    3. Technology & Data Assessment (90 min) - Systems evaluation<br>
+                    4. Strategic Synthesis (60 min) - Internal analysis and recommendation development<br>
+                    5. Executive Presentation (90 min) - Findings presentation and next steps
+                </div>
+            </div>
+
+            <!-- Question 4: Multiple Choice -->
+            <div class="question">
+                <h3>4. What is the recommended approach for balancing standardization with customization in Process X-Ray delivery?</h3>
+                <div class="options">
+                    <label class="option">
+                        <input type="radio" name="q4" value="a">
+                        Use completely standardized templates with no client-specific modifications
+                    </label>
+                    <label class="option">
+                        <input type="radio" name="q4" value="b">
+                        Customize every element of the engagement for each individual client
+                    </label>
+                    <label class="option">
+                        <input type="radio" name="q4" value="c">
+                        Standardize methodology and tools while customizing examples and terminology
+                    </label>
+                    <label class="option">
+                        <input type="radio" name="q4" value="d">
+                        Let each consultant develop their own approach based on personal preferences
+                    </label>
+                </div>
+                <div class="feedback" id="feedback4">
+                    <strong>Correct Answer: C</strong><br>
+                    Successful productization requires standardized methodology and tools for consistency, while customizing industry examples, terminology, and business context for relevance.
+                </div>
+            </div>
+
+            <!-- Question 5: Text Input -->
+            <div class="question">
+                <h3>5. Calculate the ROI for Sarah Martinez's Process X-Ray program based on the scenario data:</h3>
+                <p><strong>Given:</strong> 23 X-Ray engagements at $4,000 each = $92,000 revenue<br>
+                19 follow-on projects averaging $68,421 each = $1,300,000 revenue<br>
+                Total time investment: 350 hours</p>
+                <p>What is the effective hourly rate for Sarah's combined X-Ray and follow-on work?</p>
+                <input type="text" name="q5" class="text-input" placeholder="Enter your answer (round to nearest dollar)">
+                <div class="feedback" id="feedback5">
+                    <strong>Calculation:</strong><br>
+                    Total Revenue: $92,000 + $1,300,000 = $1,392,000<br>
+                    Total Hours: 350 hours<br>
+                    Effective Hourly Rate: $1,392,000 ÷ 350 = $3,977 per hour<br>
+                    <em>Accept answers between $3,970-$3,985</em>
+                </div>
+            </div>
+
+            <!-- Question 6: Multiple Choice -->
+            <div class="question">
+                <h3>6. During the Executive Interview phase, which question type is MOST important for positioning follow-on engagements?</h3>
+                <div class="options">
+                    <label class="option">
+                        <input type="radio" name="q6" value="a">
+                        Technical questions about current system capabilities and limitations
+                    </label>
+                    <label class="option">
+                        <input type="radio" name="q6" value="b">
+                        Strategic context questions linking operational improvements to business priorities
+                    </label>
+                    <label class="option">
+                        <input type="radio" name="q6" value="c">
+                        Detailed process questions about current workflow inefficiencies
+                    </label>
+                    <label class="option">
+                        <input type="radio" name="q6" value="d">
+                        Budget questions about available funding for improvement initiatives
+                    </label>
+                </div>
+                <div class="feedback" id="feedback6">
+                    <strong>Correct Answer: B</strong><br>
+                    Strategic context questions help position follow-on engagements by connecting operational improvements to business priorities that executives care about most.
+                </div>
+            </div>
+
+            <!-- Question 7: Multiple Choice -->
+            <div class="question">
+                <h3>7. What is the optimal pricing range for a Process X-Ray engagement with a mid-market company (50-500 employees)?</h3>
+                <div class="options">
+                    <label class="option">
+                        <input type="radio" name="q7" value="a">
+                        $1,500-$2,500
+                    </label>
+                    <label class="option">
+                        <input type="radio" name="q7" value="b">
+                        $4,000-$7,500
+                    </label>
+                    <label class="option">
+                        <input type="radio" name="q7" value="c">
+                        $7,500-$15,000
+                    </label>
+                    <label class="option">
+                        <input type="radio" name="q7" value="d">
+                        $15,000-$25,000
+                    </label>
+                </div>
+                <div class="feedback" id="feedback7">
+                    <strong>Correct Answer: B</strong><br>
+                    Mid-market companies (50-500 employees) should be priced in the $4,000-$7,500 range, balancing value delivered with budget constraints typical for this segment.
+                </div>
+            </div>
+
+            <!-- Question 8: Multiple Choice -->
+            <div class="question">
+                <h3>8. Which deliverable from the Process X-Ray provides the MOST immediate standalone value to clients?</h3>
+                <div class="options">
+                    <label class="option">
+                        <input type="radio" name="q8" value="a">
+                        Follow-on engagement proposals with detailed scope and pricing
+                    </label>
+                    <label class="option">
+                        <input type="radio" name="q8" value="b">
+                        Professional BPMN process maps with quantified inefficiency identification
+                    </label>
+                    <label class="option">
+                        <input type="radio" name="q8" value="c">
+                        Technology vendor recommendations with implementation timelines
+                    </label>
+                    <label class="option">
+                        <input type="radio" name="q8" value="d">
+                        Competitive analysis comparing client processes to industry benchmarks
+                    </label>
+                </div>
+                <div class="feedback" id="feedback8">
+                    <strong>Correct Answer: B</strong><br>
+                    Professional BPMN process maps with quantified inefficiencies provide immediate value that clients can use for training, compliance, and improvement planning regardless of follow-on decisions.
+                </div>
+            </div>
+
+            <!-- Question 9: Multiple Choice -->
+            <div class="question">
+                <h3>9. How should a consultant respond to the objection: "We can do this analysis internally"?</h3>
+                <div class="options">
+                    <label class="option">
+                        <input type="radio" name="q9" value="a">
+                        Argue that internal analysis is always inferior to external consulting expertise
+                    </label>
+                    <label class="option">
+                        <input type="radio" name="q9" value="b">
+                        Acknowledge internal capability while highlighting external perspective and speed benefits
+                    </label>
+                    <label class="option">
+                        <input type="radio" name="q9" value="c">
+                        Offer to reduce the price to make external analysis more cost-effective
+                    </label>
+                    <label class="option">
+                        <input type="radio" name="q9" value="d">
+                        Emphasize the complexity of the analysis requiring specialized consulting tools
+                    </label>
+                </div>
+                <div class="feedback" id="feedback9">
+                    <strong>Correct Answer: B</strong><br>
+                    The recommended response acknowledges internal capability while highlighting the external perspective, proven methodology, and speed (1 day vs. 6-8 weeks) as key differentiators.
+                </div>
+            </div>
+
+            <!-- Question 10: Multiple Choice -->
+            <div class="question">
+                <h3>10. What percentage of David Chen's Strategic Health Check clients engaged for follow-on work, and what was the average engagement value?</h3>
+                <div class="options">
+                    <label class="option">
+                        <input type="radio" name="q10" value="a">
+                        65% conversion rate with $65,000 average follow-on value
+                    </label>
+                    <label class="option">
+                        <input type="radio" name="q10" value="b">
+                        78% conversion rate with $85,000 average follow-on value
+                    </label>
+                    <label class="option">
+                        <input type="radio" name="q10" value="c">
+                        82% conversion rate with $95,000 average follow-on value
+                    </label>
+                    <label class="option">
+                        <input type="radio" name="q10" value="d">
+                        85% conversion rate with $75,000 average follow-on value
+                    </label>
+                </div>
+                <div class="feedback" id="feedback10">
+                    <strong>Correct Answer: B</strong><br>
+                    David Chen's firm achieved a 78% conversion rate from Strategic Health Check clients to follow-on engagements averaging $85,000, demonstrating the business development power of productized discovery.
+                </div>
+            </div>
+
+            <button type="button" class="submit-btn" onclick="submitQuiz()">Submit Quiz</button>
+        </form>
+
+        <div class="results" id="results">
+            <div class="score" id="score"></div>
+            <div id="resultMessage"></div>
+            <button class="submit-btn" onclick="retakeQuiz()" style="margin-top: 15px;">Retake Quiz</button>
+        </div>
+    </div>
+
+    <script>
+        let draggedElement = null;
+        let phaseSequence = [];
+
+        // Drag and drop functionality
+        document.addEventListener('DOMContentLoaded', function() {
+            const dragItems = document.querySelectorAll('.drag-item');
+            const phaseSlots = document.querySelectorAll('.phase-slot');
+
+            dragItems.forEach(item => {
+                item.addEventListener('dragstart', handleDragStart);
+            });
+
+            phaseSlots.forEach(slot => {
+                slot.addEventListener('dragover', handleDragOver);
+                slot.addEventListener('drop', handleDrop);
+            });
+        });
+
+        function handleDragStart(e) {
+            draggedElement = e.target;
+        }
+
+        function handleDragOver(e) {
+            e.preventDefault();
+        }
+
+        function handleDrop(e) {
+            e.preventDefault();
+            if (draggedElement) {
+                const phaseContent = e.target.querySelector('.phase-content');
+                const position = e.target.dataset.position;
+                
+                if (phaseContent) {
+                    phaseContent.textContent = draggedElement.textContent;
+                    e.target.classList.add('filled');
+                    phaseSequence[position - 1] = draggedElement.dataset.phase;
+                    
+                    // Hide the dragged item
+                    draggedElement.style.display = 'none';
+                    
+                    updateDragAnswer();
+                }
+            }
+        }
+
+        function updateDragAnswer() {
+            document.getElementById('q3_answer').value = phaseSequence.join(',');
+        }
+
+        function submitQuiz() {
+            const form = document.getElementById('quizForm');
+            const formData = new FormData(form);
+            let score = 0;
+            const totalQuestions = 10;
+
+            // Question 1
+            if (formData.get('q1') === 'b') score++;
+
+            // Question 2
+            if (formData.get('q2') === 'c') score++;
+
+            // Question 3 - Check drag and drop sequence
+            const correctSequence = ['reconnaissance', 'analysis', 'assessment', 'synthesis', 'presentation'];
+            const userSequence = formData.get('q3').split(',');
+            if (JSON.stringify(userSequence) === JSON.stringify(correctSequence)) score++;
+
+            // Question 4
+            if (formData.get('q4') === 'c') score++;
+
+            // Question 5 - ROI calculation
+            const q5Answer = parseInt(formData.get('q5'));
+            if (q5Answer >= 3970 && q5Answer <= 3985) score++;
+
+            // Question 6
+            if (formData.get('q6') === 'b') score++;
+
+            // Question 7
+            if (formData.get('q7') === 'b') score++;
+
+            // Question 8
+            if (formData.get('q8') === 'b') score++;
+
+            // Question 9
+            if (formData.get('q9') === 'b') score++;
+
+            // Question 10
+            if (formData.get('q10') === 'b') score++;
+
+            displayResults(score, totalQuestions);
+        }
+
+        function displayResults(score, total) {
+            const percentage = Math.round((score / total) * 100);
+            const resultsDiv = document.getElementById('results');
+            const scoreDiv = document.getElementById('score');
+            const messageDiv = document.getElementById('resultMessage');
+
+            scoreDiv.textContent = `${score}/${total} (${percentage}%)`;
+
+            if (percentage >= 80) {
+                resultsDiv.className = 'results show pass';
+                messageDiv.innerHTML = `
+                    <h3>🎉 Congratulations! You passed!</h3>
+                    <p>You have demonstrated strong understanding of productized discovery methodology and Process X-Ray frameworks. You're ready to advance to the next chapter.</p>
+                    <p><strong>Key strengths demonstrated:</strong></p>
+                    <ul>
+                        <li>Understanding of value-based pricing for consulting services</li>
+                        <li>Knowledge of systematic discovery methodology</li>
+                        <li>Ability to balance standardization with customization</li>
+                        <li>Comprehension of business development through productized offerings</li>
+                    </ul>
+                `;
+            } else {
+                resultsDiv.className = 'results show fail';
+                messageDiv.innerHTML = `
+                    <h3>📚 Additional Study Needed</h3>
+                    <p>You scored ${percentage}%, but need 80% to pass. Please review the chapter material and focus on:</p>
+                    <ul>
+                        <li>Process X-Ray methodology and phase sequencing</li>
+                        <li>Value-based pricing strategies for productized consulting</li>
+                        <li>Client objection handling and positioning techniques</li>
+                        <li>Business development metrics and conversion calculations</li>
+                    </ul>
+                    <p>Retake the quiz when you're ready!</p>
+                `;
+            }
+
+            // Show all feedback
+            for (let i = 1; i <= total; i++) {
+                document.getElementById(`feedback${i}`).classList.add('show');
+            }
+
+            resultsDiv.scrollIntoView({ behavior: 'smooth' });
+        }
+
+        function retakeQuiz() {
+            // Reset form
+            document.getElementById('quizForm').reset();
+            
+            // Reset drag and drop
+            const dragItems = document.querySelectorAll('.drag-item');
+            const phaseSlots = document.querySelectorAll('.phase-slot');
+            
+            dragItems.forEach(item => {
+                item.style.display = 'block';
+            });
+            
+            phaseSlots.forEach(slot => {
+                slot.classList.remove('filled');
+                const phaseContent = slot.querySelector('.phase-content');
+                if (phaseContent) phaseContent.textContent = '';
+            });
+            
+            phaseSequence = [];
+            document.getElementById('q3_answer').value = '';
+            
+            // Hide results and feedback
+            document.getElementById('results').className = 'results';
+            const feedbacks = document.querySelectorAll('.feedback');
+            feedbacks.forEach(feedback => {
+                feedback.classList.remove('show');
+            });
+            
+            // Scroll to top
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+    </script>
+</body>
+</html>

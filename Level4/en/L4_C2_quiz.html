@@ -1,0 +1,627 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chapter 4.2 Quiz: Pricing & Proposals</title>
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #f8f9fa;
+            color: #333;
+        }
+        .quiz-container {
+            background: white;
+            border-radius: 10px;
+            padding: 30px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        .quiz-header {
+            text-align: center;
+            margin-bottom: 30px;
+            padding-bottom: 20px;
+            border-bottom: 3px solid #007acc;
+        }
+        .quiz-header h1 {
+            color: #007acc;
+            margin-bottom: 10px;
+        }
+        .question {
+            margin-bottom: 25px;
+            padding: 20px;
+            border-left: 4px solid #007acc;
+            background-color: #f8f9fa;
+            border-radius: 5px;
+        }
+        .question h3 {
+            margin-top: 0;
+            color: #333;
+        }
+        .options {
+            margin: 15px 0;
+        }
+        .option {
+            margin: 8px 0;
+            padding: 10px;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.2s;
+        }
+        .option:hover {
+            background-color: #e9ecef;
+        }
+        .option input[type="radio"] {
+            margin-right: 10px;
+        }
+        .text-input {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 14px;
+            margin-top: 10px;
+        }
+        .calculation-box {
+            background-color: #f8f9fa;
+            border: 1px solid #dee2e6;
+            border-radius: 5px;
+            padding: 15px;
+            margin: 10px 0;
+            font-family: monospace;
+        }
+        .drag-container {
+            display: flex;
+            gap: 20px;
+            margin: 15px 0;
+        }
+        .drag-source {
+            flex: 1;
+            min-height: 200px;
+            border: 2px dashed #ccc;
+            border-radius: 5px;
+            padding: 10px;
+            background-color: #f9f9f9;
+        }
+        .drag-target {
+            flex: 1;
+            min-height: 200px;
+            border: 2px solid #007acc;
+            border-radius: 5px;
+            padding: 10px;
+            background-color: #fff;
+        }
+        .drag-item {
+            background: #007acc;
+            color: white;
+            padding: 8px 12px;
+            margin: 5px 0;
+            border-radius: 5px;
+            cursor: move;
+            user-select: none;
+        }
+        .drag-item:hover {
+            background: #005c99;
+        }
+        .tier-slot {
+            border: 1px dashed #ccc;
+            padding: 15px;
+            margin: 5px 0;
+            min-height: 60px;
+            border-radius: 5px;
+            background-color: #f8f9fa;
+        }
+        .tier-slot.filled {
+            background-color: #e7f3ff;
+            border-color: #007acc;
+        }
+        .submit-btn {
+            background-color: #007acc;
+            color: white;
+            padding: 12px 30px;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+            cursor: pointer;
+            margin-top: 20px;
+            transition: background-color 0.2s;
+        }
+        .submit-btn:hover {
+            background-color: #005c99;
+        }
+        .results {
+            margin-top: 30px;
+            padding: 20px;
+            border-radius: 5px;
+            display: none;
+        }
+        .results.show {
+            display: block;
+        }
+        .results.pass {
+            background-color: #d4edda;
+            border: 1px solid #c3e6cb;
+            color: #155724;
+        }
+        .results.fail {
+            background-color: #f8d7da;
+            border: 1px solid #f5c6cb;
+            color: #721c24;
+        }
+        .score {
+            font-size: 24px;
+            font-weight: bold;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        .feedback {
+            margin-top: 15px;
+            padding: 10px;
+            background-color: #fff3cd;
+            border: 1px solid #ffeaa7;
+            border-radius: 5px;
+            display: none;
+        }
+        .feedback.show {
+            display: block;
+        }
+    </style>
+</head>
+<body>
+    <div class="quiz-container">
+        <div class="quiz-header">
+            <h1>Chapter 4.2 Quiz: Pricing & Proposals</h1>
+            <p>Test your understanding of value-based pricing strategies and proposal development frameworks</p>
+            <p><strong>Pass requirement: 80% (8/10 questions correct)</strong></p>
+        </div>
+
+        <form id="quizForm">
+            <!-- Question 1: Multiple Choice -->
+            <div class="question">
+                <h3>1. According to the value creation hierarchy, what is the key difference between Level 2 (Fixed-Scope Projects) and Level 3 (Outcome-Based Pricing)?</h3>
+                <div class="options">
+                    <label class="option">
+                        <input type="radio" name="q1" value="a">
+                        Fixed-scope projects have predetermined timelines while outcome-based pricing is flexible
+                    </label>
+                    <label class="option">
+                        <input type="radio" name="q1" value="b">
+                        Fixed-scope focuses on deliverables while outcome-based focuses on business value
+                    </label>
+                    <label class="option">
+                        <input type="radio" name="q1" value="c">
+                        Fixed-scope requires more detailed contracts while outcome-based is simpler
+                    </label>
+                    <label class="option">
+                        <input type="radio" name="q1" value="d">
+                        Fixed-scope projects are always more profitable for consultants
+                    </label>
+                </div>
+                <div class="feedback" id="feedback1">
+                    <strong>Correct Answer: B</strong><br>
+                    Fixed-scope pricing focuses on defined deliverables and activities, while outcome-based pricing ties investment to measurable business results and value creation.
+                </div>
+            </div>
+
+            <!-- Question 2: Calculation -->
+            <div class="question">
+                <h3>2. Calculate the ROI for Marcus Thompson's pricing transformation:</h3>
+                <div class="calculation-box">
+                    Before: 32 billable hours/week × 50 weeks × $150/hour = $240,000 annual revenue
+                    After: Same work time, $312 effective hourly rate
+                    
+                    What is Marcus's new annual revenue? (Round to nearest $1,000)
+                </div>
+                <input type="text" name="q2" class="text-input" placeholder="Enter annual revenue in dollars (e.g., 500000)">
+                <div class="feedback" id="feedback2">
+                    <strong>Calculation:</strong><br>
+                    32 hours/week × 50 weeks × $312/hour = $499,200<br>
+                    <em>Accept answers between $499,000-$500,000</em>
+                </div>
+            </div>
+
+            <!-- Question 3: Drag and Drop -->
+            <div class="question">
+                <h3>3. Match each pricing tier with its typical client adoption rate and value proposition:</h3>
+                <div class="drag-container">
+                    <div class="drag-source">
+                        <h4>Available Options:</h4>
+                        <div class="drag-item" draggable="true" data-tier="foundation">Foundation Tier</div>
+                        <div class="drag-item" draggable="true" data-tier="transformation">Transformation Tier</div>
+                        <div class="drag-item" draggable="true" data-tier="partnership">Partnership Tier</div>
+                    </div>
+                    <div class="drag-target">
+                        <h4>Client Adoption Rates:</h4>
+                        <div class="tier-slot" data-position="1">
+                            <strong>50-60% of clients</strong><br>
+                            Assessment + implementation + change management<br>
+                            <span class="tier-content"></span>
+                        </div>
+                        <div class="tier-slot" data-position="2">
+                            <strong>25-35% of clients</strong><br>
+                            Assessment and roadmap development only<br>
+                            <span class="tier-content"></span>
+                        </div>
+                        <div class="tier-slot" data-position="3">
+                            <strong>15-25% of clients</strong><br>
+                            Comprehensive transformation + ongoing optimization<br>
+                            <span class="tier-content"></span>
+                        </div>
+                    </div>
+                </div>
+                <input type="hidden" name="q3" id="q3_answer">
+                <div class="feedback" id="feedback3">
+                    <strong>Correct Matching:</strong><br>
+                    50-60%: Transformation Tier (most common engagement)<br>
+                    25-35%: Foundation Tier (lowest risk option)<br>
+                    15-25%: Partnership Tier (premium, long-term relationships)
+                </div>
+            </div>
+
+            <!-- Question 4: Multiple Choice -->
+            <div class="question">
+                <h3>4. When responding to the objection "The investment seems high for our budget," what is the most effective approach?</h3>
+                <div class="options">
+                    <label class="option">
+                        <input type="radio" name="q4" value="a">
+                        Immediately offer a discount to make the price more acceptable
+                    </label>
+                    <label class="option">
+                        <input type="radio" name="q4" value="b">
+                        Reframe as business investment with ROI calculation and explore payment options
+                    </label>
+                    <label class="option">
+                        <input type="radio" name="q4" value="c">
+                        Explain that quality consulting requires significant investment
+                    </label>
+                    <label class="option">
+                        <input type="radio" name="q4" value="d">
+                        Compare your rates to more expensive Big Four consulting firms
+                    </label>
+                </div>
+                <div class="feedback" id="feedback4">
+                    <strong>Correct Answer: B</strong><br>
+                    Effective objection handling reframes investment as business decision with clear ROI, then explores flexible payment options to accommodate budget constraints.
+                </div>
+            </div>
+
+            <!-- Question 5: Multiple Choice -->
+            <div class="question">
+                <h3>5. In the MidTex Manufacturing example, what annual savings were projected, and what was the engagement investment?</h3>
+                <div class="options">
+                    <label class="option">
+                        <input type="radio" name="q5" value="a">
+                        $150,000 savings with $25,000 investment
+                    </label>
+                    <label class="option">
+                        <input type="radio" name="q5" value="b">
+                        $200,000 savings with $35,000 investment
+                    </label>
+                    <label class="option">
+                        <input type="radio" name="q5" value="c">
+                        $240,000 savings with $75,000 investment
+                    </label>
+                    <label class="option">
+                        <input type="radio" name="q5" value="d">
+                        $300,000 savings with $85,000 investment
+                    </label>
+                </div>
+                <div class="feedback" id="feedback5">
+                    <strong>Correct Answer: C</strong><br>
+                    MidTex Manufacturing projected $240,000 annual savings with $75,000 program investment, delivering 320% ROI with 4.5-month payback period.
+                </div>
+            </div>
+
+            <!-- Question 6: Multiple Choice -->
+            <div class="question">
+                <h3>6. What is the recommended payment structure for managing consultant cash flow while reducing client risk?</h3>
+                <div class="options">
+                    <label class="option">
+                        <input type="radio" name="q6" value="a">
+                        100% payment upfront before any work begins
+                    </label>
+                    <label class="option">
+                        <input type="radio" name="q6" value="b">
+                        40% / 40% / 20% aligned with phase completion and value delivery
+                    </label>
+                    <label class="option">
+                        <input type="radio" name="q6" value="c">
+                        Equal monthly payments throughout the engagement period
+                    </label>
+                    <label class="option">
+                        <input type="radio" name="q6" value="d">
+                        Payment only upon final project completion and approval
+                    </label>
+                </div>
+                <div class="feedback" id="feedback6">
+                    <strong>Correct Answer: B</strong><br>
+                    The 40% / 40% / 20% structure aligns payments with value delivery milestones while ensuring adequate cash flow for the consultant.
+                </div>
+            </div>
+
+            <!-- Question 7: Text Input -->
+            <div class="question">
+                <h3>7. Using the ROI Calculator Framework, calculate the ROI percentage for this scenario:</h3>
+                <div class="calculation-box">
+                    Current Annual Cost: $180,000
+                    Optimized Annual Cost: $95,000
+                    Implementation Investment: $25,000
+                    Consulting Investment: $30,000
+                    
+                    What is the ROI percentage? (Round to nearest whole number)
+                </div>
+                <input type="text" name="q7" class="text-input" placeholder="Enter ROI percentage (e.g., 155)">
+                <div class="feedback" id="feedback7">
+                    <strong>Calculation:</strong><br>
+                    Annual Savings: $180,000 - $95,000 = $85,000<br>
+                    Total Investment: $25,000 + $30,000 = $55,000<br>
+                    Net Annual Value: $85,000 - $55,000 = $30,000<br>
+                    ROI: ($30,000 ÷ $55,000) × 100 = 55%<br>
+                    <em>Accept answers between 54-56%</em>
+                </div>
+            </div>
+
+            <!-- Question 8: Multiple Choice -->
+            <div class="question">
+                <h3>8. When positioning proposals for different stakeholders, what should be the primary focus for CFO messaging?</h3>
+                <div class="options">
+                    <label class="option">
+                        <input type="radio" name="q8" value="a">
+                        Process improvement methodologies and team development
+                    </label>
+                    <label class="option">
+                        <input type="radio" name="q8" value="b">
+                        Strategic outcomes and competitive advantage creation
+                    </label>
+                    <label class="option">
+                        <input type="radio" name="q8" value="c">
+                        Financial returns, risk mitigation, and cash flow impact
+                    </label>
+                    <label class="option">
+                        <input type="radio" name="q8" value="d">
+                        Technology capabilities and automation potential
+                    </label>
+                </div>
+                <div class="feedback" id="feedback8">
+                    <strong>Correct Answer: C</strong><br>
+                    CFO messaging should focus on financial returns, risk mitigation, and cash flow impact with specific ROI calculations and payback periods.
+                </div>
+            </div>
+
+            <!-- Question 9: Multiple Choice -->
+            <div class="question">
+                <h3>9. What was Marcus Thompson's effective hourly rate before his pricing transformation?</h3>
+                <div class="options">
+                    <label class="option">
+                        <input type="radio" name="q9" value="a">
+                        $89 per hour after accounting for unbillable time
+                    </label>
+                    <label class="option">
+                        <input type="radio" name="q9" value="b">
+                        $150 per hour based on his standard rate
+                    </label>
+                    <label class="option">
+                        <input type="radio" name="q9" value="c">
+                        $175 per hour during analysis phases
+                    </label>
+                    <label class="option">
+                        <input type="radio" name="q9" value="d">
+                        $200 per hour for implementation work
+                    </label>
+                </div>
+                <div class="feedback" id="feedback9">
+                    <strong>Correct Answer: A</strong><br>
+                    Marcus worked 55 hours per week but only billed 32 hours, making his effective rate $89 per hour before business expenses - demonstrating the problem with hourly pricing.
+                </div>
+            </div>
+
+            <!-- Question 10: Multiple Choice -->
+            <div class="question">
+                <h3>10. In value-based pricing, what should be the relationship between consultant investment and annual business impact?</h3>
+                <div class="options">
+                    <label class="option">
+                        <input type="radio" name="q10" value="a">
+                        Investment should equal 25-50% of first-year impact
+                    </label>
+                    <label class="option">
+                        <input type="radio" name="q10" value="b">
+                        Investment should be 5-25% of annual opportunity value depending on tier
+                    </label>
+                    <label class="option">
+                        <input type="radio" name="q10" value="c">
+                        Investment should match internal cost of developing the capability
+                    </label>
+                    <label class="option">
+                        <input type="radio" name="q10" value="d">
+                        Investment should be based on consultant's hourly rate and time required
+                    </label>
+                </div>
+                <div class="feedback" id="feedback10">
+                    <strong>Correct Answer: B</strong><br>
+                    Value-based pricing should represent 5-25% of annual opportunity value: Foundation tier (15-25%), Transformation tier (8-15%), Partnership tier (5-12%).
+                </div>
+            </div>
+
+            <button type="button" class="submit-btn" onclick="submitQuiz()">Submit Quiz</button>
+        </form>
+
+        <div class="results" id="results">
+            <div class="score" id="score"></div>
+            <div id="resultMessage"></div>
+            <button class="submit-btn" onclick="retakeQuiz()" style="margin-top: 15px;">Retake Quiz</button>
+        </div>
+    </div>
+
+    <script>
+        let draggedElement = null;
+        let tierSequence = [];
+
+        // Drag and drop functionality
+        document.addEventListener('DOMContentLoaded', function() {
+            const dragItems = document.querySelectorAll('.drag-item');
+            const tierSlots = document.querySelectorAll('.tier-slot');
+
+            dragItems.forEach(item => {
+                item.addEventListener('dragstart', handleDragStart);
+            });
+
+            tierSlots.forEach(slot => {
+                slot.addEventListener('dragover', handleDragOver);
+                slot.addEventListener('drop', handleDrop);
+            });
+        });
+
+        function handleDragStart(e) {
+            draggedElement = e.target;
+        }
+
+        function handleDragOver(e) {
+            e.preventDefault();
+        }
+
+        function handleDrop(e) {
+            e.preventDefault();
+            if (draggedElement) {
+                const tierContent = e.target.querySelector('.tier-content');
+                const position = e.target.dataset.position;
+                
+                if (tierContent) {
+                    tierContent.textContent = draggedElement.textContent;
+                    e.target.classList.add('filled');
+                    tierSequence[position - 1] = draggedElement.dataset.tier;
+                    
+                    // Hide the dragged item
+                    draggedElement.style.display = 'none';
+                    
+                    updateDragAnswer();
+                }
+            }
+        }
+
+        function updateDragAnswer() {
+            document.getElementById('q3_answer').value = tierSequence.join(',');
+        }
+
+        function submitQuiz() {
+            const form = document.getElementById('quizForm');
+            const formData = new FormData(form);
+            let score = 0;
+            const totalQuestions = 10;
+
+            // Question 1
+            if (formData.get('q1') === 'b') score++;
+
+            // Question 2 - Marcus annual revenue calculation
+            const q2Answer = parseInt(formData.get('q2'));
+            if (q2Answer >= 499000 && q2Answer <= 500000) score++;
+
+            // Question 3 - Check tier matching
+            const correctTiers = ['transformation', 'foundation', 'partnership'];
+            const userTiers = formData.get('q3').split(',');
+            if (JSON.stringify(userTiers) === JSON.stringify(correctTiers)) score++;
+
+            // Question 4
+            if (formData.get('q4') === 'b') score++;
+
+            // Question 5
+            if (formData.get('q5') === 'c') score++;
+
+            // Question 6
+            if (formData.get('q6') === 'b') score++;
+
+            // Question 7 - ROI calculation
+            const q7Answer = parseInt(formData.get('q7'));
+            if (q7Answer >= 54 && q7Answer <= 56) score++;
+
+            // Question 8
+            if (formData.get('q8') === 'c') score++;
+
+            // Question 9
+            if (formData.get('q9') === 'a') score++;
+
+            // Question 10
+            if (formData.get('q10') === 'b') score++;
+
+            displayResults(score, totalQuestions);
+        }
+
+        function displayResults(score, total) {
+            const percentage = Math.round((score / total) * 100);
+            const resultsDiv = document.getElementById('results');
+            const scoreDiv = document.getElementById('score');
+            const messageDiv = document.getElementById('resultMessage');
+
+            scoreDiv.textContent = `${score}/${total} (${percentage}%)`;
+
+            if (percentage >= 80) {
+                resultsDiv.className = 'results show pass';
+                messageDiv.innerHTML = `
+                    <h3>🎉 Congratulations! You passed!</h3>
+                    <p>You have demonstrated strong understanding of value-based pricing strategies and proposal development frameworks. You're ready to advance to the next chapter.</p>
+                    <p><strong>Key competencies demonstrated:</strong></p>
+                    <ul>
+                        <li>Understanding of value-based pricing hierarchy and positioning</li>
+                        <li>Ability to calculate ROI and structure compelling business cases</li>
+                        <li>Knowledge of tiered service offerings and client adoption patterns</li>
+                        <li>Competence in objection handling and stakeholder-specific messaging</li>
+                    </ul>
+                `;
+            } else {
+                resultsDiv.className = 'results show fail';
+                messageDiv.innerHTML = `
+                    <h3>📚 Additional Study Needed</h3>
+                    <p>You scored ${percentage}%, but need 80% to pass. Please review the chapter material and focus on:</p>
+                    <ul>
+                        <li>Value-based pricing methodology and tier structure design</li>
+                        <li>ROI calculation frameworks and financial justification techniques</li>
+                        <li>Objection handling scripts and positioning strategies</li>
+                        <li>Proposal development and stakeholder-specific messaging</li>
+                    </ul>
+                    <p>Retake the quiz when you're ready!</p>
+                `;
+            }
+
+            // Show all feedback
+            for (let i = 1; i <= total; i++) {
+                document.getElementById(`feedback${i}`).classList.add('show');
+            }
+
+            resultsDiv.scrollIntoView({ behavior: 'smooth' });
+        }
+
+        function retakeQuiz() {
+            // Reset form
+            document.getElementById('quizForm').reset();
+            
+            // Reset drag and drop
+            const dragItems = document.querySelectorAll('.drag-item');
+            const tierSlots = document.querySelectorAll('.tier-slot');
+            
+            dragItems.forEach(item => {
+                item.style.display = 'block';
+            });
+            
+            tierSlots.forEach(slot => {
+                slot.classList.remove('filled');
+                const tierContent = slot.querySelector('.tier-content');
+                if (tierContent) tierContent.textContent = '';
+            });
+            
+            tierSequence = [];
+            document.getElementById('q3_answer').value = '';
+            
+            // Hide results and feedback
+            document.getElementById('results').className = 'results';
+            const feedbacks = document.querySelectorAll('.feedback');
+            feedbacks.forEach(feedback => {
+                feedback.classList.remove('show');
+            });
+            
+            // Scroll to top
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+    </script>
+</body>
+</html>
