@@ -19,11 +19,13 @@ This comprehensive course trains business process consultants in digital transfo
 #### Level 1: Analysis & Design ✅
 - [[Level1_index|Level 1 Index]] - Stakeholder interviews, process mapping
 
-#### Level 2: Tech Integration 🚧
-- *Coming Soon* - RPA, Zapier, n8n, AI agents
+#### Level 2: Tech Integration ✅
+- [[Level2_index|Level 2 Index]] - RPA, Zapier, n8n, AI agents
+- [[Level2_Summary|Level 2 Completion Summary]]
 
-#### Level 3: Strategy & Change 🚧
-- *Coming Soon* - Digital transformation, change management
+#### Level 3: Strategy & Change ✅
+- [[Level3_index|Level 3 Index]] - Digital transformation, change management
+- [[Level3_Summary|Level 3 Completion Summary]]
 
 #### Level 4: Client Delivery 🚧
 - *Coming Soon* - Discovery, pricing, proposals

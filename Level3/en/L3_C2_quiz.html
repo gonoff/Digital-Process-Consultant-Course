@@ -1,0 +1,440 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Change Management - Quiz</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #f5f5f5;
+        }
+        .quiz-container {
+            background: white;
+            border-radius: 10px;
+            padding: 30px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        h1 {
+            color: #2c3e50;
+            text-align: center;
+            border-bottom: 3px solid #3498db;
+            padding-bottom: 10px;
+        }
+        .question {
+            margin: 25px 0;
+            padding: 20px;
+            border-left: 4px solid #3498db;
+            background-color: #f8f9fa;
+        }
+        .question h3 {
+            color: #2c3e50;
+            margin-top: 0;
+        }
+        .options {
+            list-style: none;
+            padding: 0;
+        }
+        .options li {
+            margin: 10px 0;
+            padding: 10px;
+            background: white;
+            border: 2px solid #e9ecef;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        .options li:hover {
+            border-color: #3498db;
+            background-color: #f0f8ff;
+        }
+        .options li.selected {
+            border-color: #3498db;
+            background-color: #e3f2fd;
+        }
+        .options li.correct {
+            border-color: #27ae60;
+            background-color: #d4edda;
+        }
+        .options li.incorrect {
+            border-color: #e74c3c;
+            background-color: #f8d7da;
+        }
+        input[type="radio"], input[type="text"] {
+            margin-right: 10px;
+        }
+        input[type="text"] {
+            padding: 8px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            width: 200px;
+        }
+        .scenario-box {
+            background-color: #f8f9fa;
+            border: 1px solid #dee2e6;
+            border-radius: 5px;
+            padding: 15px;
+            margin: 15px 0;
+            font-style: italic;
+        }
+        .drag-drop-area {
+            min-height: 100px;
+            border: 2px dashed #ced4da;
+            border-radius: 5px;
+            padding: 20px;
+            margin: 10px 0;
+            background-color: #f8f9fa;
+        }
+        .draggable-item {
+            display: inline-block;
+            background-color: #e9ecef;
+            border: 1px solid #ced4da;
+            border-radius: 3px;
+            padding: 8px 12px;
+            margin: 5px;
+            cursor: move;
+            user-select: none;
+        }
+        .draggable-item.dragging {
+            opacity: 0.5;
+        }
+        .submit-btn {
+            background-color: #3498db;
+            color: white;
+            padding: 12px 30px;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+            cursor: pointer;
+            display: block;
+            margin: 30px auto;
+            transition: background-color 0.3s ease;
+        }
+        .submit-btn:hover {
+            background-color: #2980b9;
+        }
+        .result {
+            margin: 20px 0;
+            padding: 15px;
+            border-radius: 5px;
+            text-align: center;
+            font-weight: bold;
+        }
+        .success {
+            background-color: #d4edda;
+            color: #155724;
+            border: 1px solid #c3e6cb;
+        }
+        .failure {
+            background-color: #f8d7da;
+            color: #721c24;
+            border: 1px solid #f5c6cb;
+        }
+        .feedback {
+            margin-top: 10px;
+            padding: 10px;
+            background-color: #e3f2fd;
+            border-radius: 5px;
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="quiz-container">
+        <h1>Change Management Quiz</h1>
+        <p><strong>Instructions:</strong> Answer all questions to test your understanding of change management methodologies. You need 80% (8/10) to pass.</p>
+        
+        <form id="quizForm">
+            <!-- Question 1: ADKAR Understanding -->
+            <div class="question">
+                <h3>Question 1: ADKAR Components</h3>
+                <p>What does the "R" in ADKAR stand for?</p>
+                <ul class="options">
+                    <li><input type="radio" name="q1" value="a"> Results</li>
+                    <li><input type="radio" name="q1" value="b"> Reinforcement</li>
+                    <li><input type="radio" name="q1" value="c"> Resources</li>
+                    <li><input type="radio" name="q1" value="d"> Requirements</li>
+                </ul>
+                <div class="feedback" id="feedback1">
+                    <strong>Correct Answer:</strong> Reinforcement. The R in ADKAR stands for Reinforcement - sustaining the change to prevent reverting to old behaviors.
+                </div>
+            </div>
+
+            <!-- Question 2: Kotter's 8 Steps -->
+            <div class="question">
+                <h3>Question 2: Kotter's 8-Step Process</h3>
+                <p>According to Kotter, what is the FIRST step in successful change management?</p>
+                <ul class="options">
+                    <li><input type="radio" name="q2" value="a"> Form a powerful coalition</li>
+                    <li><input type="radio" name="q2" value="b"> Create a vision for change</li>
+                    <li><input type="radio" name="q2" value="c"> Create urgency</li>
+                    <li><input type="radio" name="q2" value="d"> Communicate the vision</li>
+                </ul>
+                <div class="feedback" id="feedback2">
+                    <strong>Correct Answer:</strong> Create urgency. Step 1 is creating urgency around the need for change to motivate people to act.
+                </div>
+            </div>
+
+            <!-- Question 3: Scenario Application -->
+            <div class="question">
+                <h3>Question 3: Change Resistance Scenario</h3>
+                <div class="scenario-box">
+                    Sarah, a 15-year employee at MedCare Clinic, refuses to use the new EHR system, saying "The old paper charts worked fine for decades." She's influencing other staff to resist the change.
+                </div>
+                <p>Which ADKAR element is Sarah lacking MOST?</p>
+                <ul class="options">
+                    <li><input type="radio" name="q3" value="a"> Awareness of why change is needed</li>
+                    <li><input type="radio" name="q3" value="b"> Desire to participate in the change</li>
+                    <li><input type="radio" name="q3" value="c"> Knowledge of how to change</li>
+                    <li><input type="radio" name="q3" value="d"> Ability to implement the change</li>
+                </ul>
+                <div class="feedback" id="feedback3">
+                    <strong>Correct Answer:</strong> Desire to participate in the change. Sarah understands the change but doesn't want to embrace it, showing lack of Desire.
+                </div>
+            </div>
+
+            <!-- Question 4: Change Champions -->
+            <div class="question">
+                <h3>Question 4: Change Champion Selection</h3>
+                <p>When selecting change champions for a digital transformation, which characteristic is MOST important?</p>
+                <ul class="options">
+                    <li><input type="radio" name="q4" value="a"> Highest technical skills</li>
+                    <li><input type="radio" name="q4" value="b"> Formal leadership position</li>
+                    <li><input type="radio" name="q4" value="c"> Informal influence and credibility</li>
+                    <li><input type="radio" name="q4" value="d"> Longest tenure with company</li>
+                </ul>
+                <div class="feedback" id="feedback4">
+                    <strong>Correct Answer:</strong> Informal influence and credibility. Change champions are most effective when they have peer respect and influence, regardless of formal position.
+                </div>
+            </div>
+
+            <!-- Question 5: Communication Strategy -->
+            <div class="question">
+                <h3>Question 5: Communication Frequency</h3>
+                <p>Research shows that people need to hear a message how many times before they internalize it?</p>
+                <ul class="options">
+                    <li><input type="radio" name="q5" value="a"> 3-4 times</li>
+                    <li><input type="radio" name="q5" value="b"> 5-6 times</li>
+                    <li><input type="radio" name="q5" value="c"> 7-8 times</li>
+                    <li><input type="radio" name="q5" value="d"> 10+ times</li>
+                </ul>
+                <div class="feedback" id="feedback5">
+                    <strong>Correct Answer:</strong> 7-8 times. The "Rule of 7" in communication suggests people need to hear a message 7-8 times before it sticks.
+                </div>
+            </div>
+
+            <!-- Question 6: Drag and Drop - Change Process Order -->
+            <div class="question">
+                <h3>Question 6: Kotter's 8 Steps Order</h3>
+                <p>Drag the following steps into the correct order for Kotter's 8-Step Process (first 4 steps only):</p>
+                <div id="dragItems">
+                    <span class="draggable-item" draggable="true" data-step="1">Create urgency</span>
+                    <span class="draggable-item" draggable="true" data-step="2">Form a powerful coalition</span>
+                    <span class="draggable-item" draggable="true" data-step="3">Create a vision for change</span>
+                    <span class="draggable-item" draggable="true" data-step="4">Communicate the vision</span>
+                </div>
+                <div class="drag-drop-area" id="dropZone1">Step 1: Drop here</div>
+                <div class="drag-drop-area" id="dropZone2">Step 2: Drop here</div>
+                <div class="drag-drop-area" id="dropZone3">Step 3: Drop here</div>
+                <div class="drag-drop-area" id="dropZone4">Step 4: Drop here</div>
+                <input type="hidden" name="q6" id="q6Answer">
+                <div class="feedback" id="feedback6">
+                    <strong>Correct Order:</strong> 1) Create urgency, 2) Form a powerful coalition, 3) Create a vision for change, 4) Communicate the vision.
+                </div>
+            </div>
+
+            <!-- Question 7: Resistance Calculation -->
+            <div class="question">
+                <h3>Question 7: Change Impact Analysis</h3>
+                <p>A company has 200 employees. After change implementation, 140 employees are fully engaged, 40 are neutral, and 20 are resistant. What is the engagement rate?</p>
+                <ul class="options">
+                    <li><input type="radio" name="q7" value="a"> 60%</li>
+                    <li><input type="radio" name="q7" value="b"> 70%</li>
+                    <li><input type="radio" name="q7" value="c"> 80%</li>
+                    <li><input type="radio" name="q7" value="d"> 90%</li>
+                </ul>
+                <div class="feedback" id="feedback7">
+                    <strong>Correct Answer:</strong> 70%. Engagement rate = 140 engaged ÷ 200 total = 70%.
+                </div>
+            </div>
+
+            <!-- Question 8: Short Answer -->
+            <div class="question">
+                <h3>Question 8: Training Strategy</h3>
+                <p>Name TWO types of training approaches mentioned in the reading for building employee Knowledge and Ability:</p>
+                <input type="text" name="q8" placeholder="Type your answer here" style="width: 400px;">
+                <div class="feedback" id="feedback8">
+                    <strong>Sample Answers:</strong> Just-in-time training, Hands-on workshops, Peer mentoring, Job aids, Self-paced learning, Train-the-trainer programs.
+                </div>
+            </div>
+
+            <!-- Question 9: Change Timeline -->
+            <div class="question">
+                <h3>Question 9: Implementation Timeline</h3>
+                <p>For major organizational changes, what is the typical timeline for successful implementation?</p>
+                <ul class="options">
+                    <li><input type="radio" name="q9" value="a"> 3-6 months</li>
+                    <li><input type="radio" name="q9" value="b"> 6-12 months</li>
+                    <li><input type="radio" name="q9" value="c"> 12-24 months</li>
+                    <li><input type="radio" name="q9" value="d"> 24+ months</li>
+                </ul>
+                <div class="feedback" id="feedback9">
+                    <strong>Correct Answer:</strong> 12-24 months. Major organizational changes typically require 12-24 months for full implementation and adoption.
+                </div>
+            </div>
+
+            <!-- Question 10: Application Scenario -->
+            <div class="question">
+                <h3>Question 10: Real-World Application</h3>
+                <div class="scenario-box">
+                    AutoFix Garage is implementing a new customer management system. The owner notices that older mechanics are struggling with the technology while younger staff are adapting quickly. Productivity has dropped 15% in the first month.
+                </div>
+                <p>Which change management action should be the IMMEDIATE priority?</p>
+                <ul class="options">
+                    <li><input type="radio" name="q10" value="a"> Provide additional technical training</li>
+                    <li><input type="radio" name="q10" value="b"> Replace resistant employees</li>
+                    <li><input type="radio" name="q10" value="c"> Revert to the old system</li>
+                    <li><input type="radio" name="q10" value="d"> Create peer mentoring pairs</li>
+                </ul>
+                <div class="feedback" id="feedback10">
+                    <strong>Correct Answer:</strong> Create peer mentoring pairs. This addresses the Ability gap by leveraging the Knowledge of younger staff to help older mechanics.
+                </div>
+            </div>
+
+            <button type="button" class="submit-btn" onclick="submitQuiz()">Submit Quiz</button>
+        </form>
+
+        <div id="results" class="result" style="display: none;"></div>
+    </div>
+
+    <script>
+        // Drag and drop functionality
+        const dragItems = document.querySelectorAll('.draggable-item');
+        const dropZones = document.querySelectorAll('.drag-drop-area');
+        
+        dragItems.forEach(item => {
+            item.addEventListener('dragstart', handleDragStart);
+            item.addEventListener('dragend', handleDragEnd);
+        });
+        
+        dropZones.forEach(zone => {
+            zone.addEventListener('dragover', handleDragOver);
+            zone.addEventListener('drop', handleDrop);
+        });
+        
+        let draggedElement = null;
+        
+        function handleDragStart(e) {
+            draggedElement = this;
+            this.classList.add('dragging');
+        }
+        
+        function handleDragEnd(e) {
+            this.classList.remove('dragging');
+        }
+        
+        function handleDragOver(e) {
+            e.preventDefault();
+        }
+        
+        function handleDrop(e) {
+            e.preventDefault();
+            if (draggedElement) {
+                // Clear existing content and add dragged item
+                e.target.innerHTML = draggedElement.textContent;
+                e.target.dataset.step = draggedElement.dataset.step;
+                updateDragAnswer();
+            }
+        }
+        
+        function updateDragAnswer() {
+            const zones = ['dropZone1', 'dropZone2', 'dropZone3', 'dropZone4'];
+            const order = zones.map(id => document.getElementById(id).dataset.step || '0').join(',');
+            document.getElementById('q6Answer').value = order;
+        }
+
+        function submitQuiz() {
+            const answers = {
+                q1: 'b', q2: 'c', q3: 'b', q4: 'c', q5: 'c',
+                q6: '1,2,3,4', q7: 'b', q8: 'open', q9: 'c', q10: 'd'
+            };
+            
+            let score = 0;
+            let total = 10;
+            
+            // Check multiple choice answers
+            Object.keys(answers).forEach(q => {
+                if (q === 'q8') return; // Skip open-ended question
+                
+                const userAnswer = q === 'q6' ? 
+                    document.getElementById('q6Answer').value : 
+                    document.querySelector(`input[name="${q}"]:checked`)?.value;
+                
+                const isCorrect = userAnswer === answers[q];
+                if (isCorrect) score++;
+                
+                // Show feedback
+                document.getElementById(`feedback${q.slice(1)}`).style.display = 'block';
+                
+                // Highlight options for multiple choice
+                if (q !== 'q6' && q !== 'q8') {
+                    const options = document.querySelectorAll(`input[name="${q}"]`);
+                    options.forEach(option => {
+                        const li = option.parentElement;
+                        if (option.value === answers[q]) {
+                            li.classList.add('correct');
+                        } else if (option.checked && option.value !== answers[q]) {
+                            li.classList.add('incorrect');
+                        }
+                    });
+                }
+            });
+            
+            // Check short answer (generous scoring)
+            const q8Answer = document.querySelector('input[name="q8"]').value.toLowerCase();
+            const acceptableTerms = ['just-in-time', 'hands-on', 'workshop', 'mentoring', 'peer', 'job aid', 'self-paced', 'train-the-trainer'];
+            const matchCount = acceptableTerms.filter(term => q8Answer.includes(term)).length;
+            if (matchCount >= 1) score++; // Give credit for any relevant answer
+            
+            document.getElementById('feedback8').style.display = 'block';
+            
+            const percentage = Math.round((score / total) * 100);
+            const passed = percentage >= 80;
+            
+            const resultsDiv = document.getElementById('results');
+            resultsDiv.className = `result ${passed ? 'success' : 'failure'}`;
+            resultsDiv.innerHTML = `
+                <h3>${passed ? 'Congratulations! 🎉' : 'Keep Learning 📚'}</h3>
+                <p>Your Score: ${score}/${total} (${percentage}%)</p>
+                <p>${passed ? 
+                    'You have successfully mastered change management fundamentals! You\'re ready to move on to the next chapter.' : 
+                    'You need 80% to pass. Review the feedback above and retake the quiz when ready.'}
+                </p>
+            `;
+            resultsDiv.style.display = 'block';
+            
+            // Scroll to results
+            resultsDiv.scrollIntoView({ behavior: 'smooth' });
+        }
+
+        // Add click handlers for better UX
+        document.querySelectorAll('.options li').forEach(li => {
+            li.addEventListener('click', function() {
+                const radio = this.querySelector('input[type="radio"]');
+                if (radio) {
+                    radio.checked = true;
+                    // Remove selected class from siblings
+                    this.parentElement.querySelectorAll('li').forEach(sibling => {
+                        sibling.classList.remove('selected');
+                    });
+                    // Add selected class to this option
+                    this.classList.add('selected');
+                }
+            });
+        });
+    </script>
+</body>
+</html>

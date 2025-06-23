@@ -9,12 +9,12 @@ This repository contains a blueprint for generating an AI-Powered Digital Proces
 ## Core Architecture
 
 The course structure follows a 5-level progression with capstone:
-- **Level 0**: Foundations (Systems thinking, BPMN, Lean/Six Sigma)
-- **Level 1**: Analysis & Design (Stakeholder interviews, process mapping)
-- **Level 2**: Tech Integration (RPA, Zapier, n8n, AI agents)
-- **Level 3**: Strategy & Change (Digital transformation, change management)
-- **Level 4**: Client Delivery (Discovery, pricing, proposals)
-- **Capstone**: Full engagement simulation
+- **Level 0**: Foundations (Systems thinking, BPMN, Lean/Six Sigma) ✅
+- **Level 1**: Analysis & Design (Stakeholder interviews, process mapping) ✅
+- **Level 2**: Tech Integration (RPA, Zapier, n8n, AI agents) ✅
+- **Level 3**: Strategy & Change (Digital transformation, change management) ✅
+- **Level 4**: Client Delivery (Discovery, pricing, proposals) - Ready to start
+- **Capstone**: Full engagement simulation - Planned
 
 ## File Structure Convention
 
@@ -26,88 +26,134 @@ The course structure follows a 5-level progression with capstone:
     LX_CY_project.md
     LX_CY_solutions.md
   /pt/
-    (translated equivalents, same filenames w/ _pt suffix)
+    (translated equivalents)
 /common/
   glossary_en_pt.csv
-  assets/diagrams/*.png
 /capstone/
   client_brief.md
   final_report_template.docx
   certificate_template.pdf
+LevelX_index.md (level navigation hubs)
+index.md (course home)
 ```
 
 ## Content Generation Workflow
 
-1. Generate level-by-level, pausing for review after each level
-2. Create both English and Portuguese versions for all content
-3. Follow the exact chapter template structure specified in the blueprint
-4. Generate HTML-based interactive quizzes with inline CSS/JS
-5. Create Mermaid diagrams for process flows and BPMN models
+1. **Always start by reading** `COURSE_PROGRESS_LOG.md` to understand current status and quality standards
+2. Generate level-by-level, pausing for review after each level completion
+3. Create English content first, Portuguese translations after approval
+4. Follow exact chapter template structure from blueprint
+5. Use TodoWrite tool to track multi-step content generation tasks
 
-## Key Content Requirements
+## Chapter Template Structure
 
-- **Bilingual Output**: All materials in English first, then Portuguese translation preserving US business context
-- **Interactive Elements**: HTML/JS quizzes with immediate feedback, 80% pass requirement
-- **Real-World Focus**: Use US SME scenarios, particularly print-shop examples
-- **Portfolio-Driven**: Each level produces tangible deliverables for professional portfolio
-- **Practical Tools**: Hands-on labs with Zapier, process mapping, ROI calculators
+Each chapter MUST follow this exact pattern:
+1. **Learning Objectives** (3-5 bullet points)
+2. **Scenario** (150+ words, specific US business context)
+3. **Core Theory** (≤800 words, practical focus)
+4. **Tool Demonstration** (numbered steps, screenshots where applicable)
+5. **Practical Application** (bridge theory to project)
+6. **Project Assignment** (separate file, portfolio deliverable)
+7. **Quiz** (separate HTML file, 8-12 interactive questions)
+8. **Solutions Guide** (separate file, sample work + rubrics)
 
-## Translation Guidelines
+## Obsidian Navigation Pattern
 
-- Maintain US cultural context and business examples
-- Translate prose but keep technical terms and tool names in English
-- Create side-by-side glossary (English, Portuguese, definitions)
-- Target 150+ terms in final glossary
+Apply to ALL markdown files:
+
+**Top Navigation**:
+```markdown
+## Navigation
+**Course**: [[../../index|Course Home]] > [[../../LevelX_index|Level X]] > Chapter Y  
+**Previous**: [[LX_CY_reading|Chapter Title]]  
+**Next**: [[LX_CZ_reading|Chapter Title]]
+
+---
+```
+
+**Bottom Navigation**:
+```markdown
+---
+
+## Chapter Links
+- 🧠 **Quiz**: [[LX_CY_quiz.html|Take the [Chapter Title] Quiz]]
+- 🎯 **Project**: [[LX_CY_project|Project Assignment]]  
+- ✅ **Solutions**: [[LX_CY_solutions|Solutions Guide]]
+
+## Navigation
+**Previous**: [[LX_CY_reading|Chapter Title]]  
+**Next**: [[LX_CZ_reading|Chapter Title]]  
+**Up**: [[../../LevelX_index|Level X Index]]
+```
+
+## Quality Standards
+
+### Content Requirements
+- **Tone**: Professional, concise, skeptical of hype
+- **Voice**: Second-person singular ("you")
+- **Examples**: Real US SME scenarios (print shops, auto repair, office supplies)
+- **Metrics**: Specific ROI calculations ($12K/year savings, 30% cycle reduction)
+- **Business Context**: Named businesses, quantified problems, measurable outcomes
+
+### Technical Standards
+- **BPMN Diagrams**: Proper notation using Mermaid syntax in code blocks
+- **Process Tools**: SIPOC frameworks, value stream maps, swimlanes
+- **Interactive Quizzes**: Self-contained HTML with inline CSS/JS only
+- **Pass Requirement**: 80% score with immediate feedback
+- **File Naming**: Strict `LX_CY_[type].format` convention
+
+### Portfolio Focus
+Every project must produce a tangible deliverable:
+- Process maps (BPMN, value stream)
+- Analysis documents (root cause, stakeholder maps)
+- Automation scripts (Zapier flows, n8n workflows)
+- Client deliverables (proposals, ROI calculators)
+- Strategic documents (transformation roadmaps)
 
 ## Research Requirements
 
 When generating content, conduct web searches for current information on:
-- **Tool Features & Pricing**: Zapier, n8n, Make (current capabilities, pricing tiers, integration limits)
-- **Market Rates**: Process consulting fees, hourly rates, project pricing for US SMEs
-- **Compliance Requirements**: Current regulations affecting US SME business processes
-- **Technology Updates**: Latest RPA tools, AI automation capabilities, API limitations
+- **Tool Features & Pricing**: Zapier, n8n, Make capabilities and limits
+- **Market Rates**: Process consulting fees for US SMEs
+- **Compliance**: Current US SME regulations
+- **Technology**: Latest RPA/AI automation capabilities
 
-## Quality Standards
+## Translation Guidelines
 
-- Professional, concise tone avoiding hype
-- Include specific metrics and ROI calculations
-- Use second-person singular ("you")
-- Break content with clear sub-headings
-- Require user review at each level completion checkpoint
+- Maintain US cultural context and business examples
+- Translate prose but keep technical terms in English
+- Update `glossary_en_pt.csv` with new terms (target: 150+ terms)
+- Preserve file naming conventions for Portuguese versions
 
-## Capstone Project Specifications
+## Capstone Specifications
 
 - **Client**: 200-employee light-manufacturing company in Ohio
 - **Goal**: Reduce order-to-cash cycle by 30% within 6 months
 - **Deliverables**: Discovery transcript, process maps, automation PoC, 25-page report, executive deck, certificate
 
-## Development Workflow
+## Progress Tracking
 
-### Content Generation Process
-1. Generate level-by-level, pausing for user review after each level completion
-2. Always read `COURSE_PROGRESS_LOG.md` first to understand current status and maintain quality standards
-3. Follow exact chapter template structure from the blueprint
-4. Use TodoWrite tool to track multi-step content generation tasks
-
-### File Management Standards
-- Use exact naming convention: `LX_CY_[type].format` (e.g., `L1_C1_reading.md`)
-- Always create 4 files per chapter: reading, quiz, project, solutions
-- Maintain bilingual structure with `/en/` and `/pt/` subdirectories
-- Update `glossary_en_pt.csv` with new technical terms as content is generated
-
-### Quiz Generation Requirements
-- Self-contained HTML files with inline CSS/JS only
-- 8-12 questions mixing multiple choice, drag-and-drop, short answer
-- 80% pass requirement with immediate feedback
-- Auto-scoring functionality built into each quiz
-
-### Quality Control Checkpoints
-- **Content Quality**: Professional tone, specific metrics, real business scenarios
-- **Technical Standards**: Proper BPMN notation, Mermaid diagrams in code blocks
-- **Educational Design**: Learning objectives → Scenario → Theory (≤800 words) → Tool demo → Project → Quiz
-- **Portfolio Focus**: Every project must produce tangible deliverable for professional portfolio
-
-### Progress Tracking
 - Update `COURSE_PROGRESS_LOG.md` after each level completion
-- Reference established quality patterns from completed levels
-- Maintain consistency with successful content structures already created
+- Reference established patterns from completed levels (0, 1, 2, 3)
+- User feedback: "Level 0 is fantastic, keep this same quality"
+- Current status: 66 files completed, ready for Level 4
+
+## Key Success Patterns (from completed levels)
+
+### Scenario Writing
+- Specific business names (PrintPro Solutions, AutoFix Garage)
+- Quantified problems (15% error rate, $50K revenue loss)
+- Named stakeholders (Maria - Operations Manager)
+- Clear pain points leading to learning need
+
+### Project Design
+- Clear deliverable specifications (PDF format, 2-3 pages)
+- Step-by-step instructions with sub-tasks
+- Evaluation rubrics in solutions guide
+- Real-world constraints (budget limits, time pressures)
+
+### Quiz Development
+- Mix question types: multiple choice, drag-drop, short answer
+- Scenario-based questions testing application
+- Inline CSS/JS for self-contained functionality
+- Clear feedback messages for wrong answers

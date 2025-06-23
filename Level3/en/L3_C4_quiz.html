@@ -1,0 +1,461 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ROI & Benefits Realization - Quiz</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #f5f5f5;
+        }
+        .quiz-container {
+            background: white;
+            border-radius: 10px;
+            padding: 30px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        h1 {
+            color: #2c3e50;
+            text-align: center;
+            border-bottom: 3px solid #3498db;
+            padding-bottom: 10px;
+        }
+        .question {
+            margin: 25px 0;
+            padding: 20px;
+            border-left: 4px solid #3498db;
+            background-color: #f8f9fa;
+        }
+        .question h3 {
+            color: #2c3e50;
+            margin-top: 0;
+        }
+        .options {
+            list-style: none;
+            padding: 0;
+        }
+        .options li {
+            margin: 10px 0;
+            padding: 10px;
+            background: white;
+            border: 2px solid #e9ecef;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        .options li:hover {
+            border-color: #3498db;
+            background-color: #f0f8ff;
+        }
+        .options li.selected {
+            border-color: #3498db;
+            background-color: #e3f2fd;
+        }
+        .options li.correct {
+            border-color: #27ae60;
+            background-color: #d4edda;
+        }
+        .options li.incorrect {
+            border-color: #e74c3c;
+            background-color: #f8d7da;
+        }
+        input[type="radio"], input[type="text"], input[type="number"] {
+            margin-right: 10px;
+        }
+        input[type="text"], input[type="number"] {
+            padding: 8px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            width: 150px;
+        }
+        .scenario-box {
+            background-color: #f8f9fa;
+            border: 1px solid #dee2e6;
+            border-radius: 5px;
+            padding: 15px;
+            margin: 15px 0;
+            font-style: italic;
+        }
+        .calculation-box {
+            background-color: #f4f4f4;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            padding: 15px;
+            margin: 15px 0;
+            font-family: 'Courier New', monospace;
+            font-size: 13px;
+        }
+        .drag-drop-area {
+            min-height: 60px;
+            border: 2px dashed #ced4da;
+            border-radius: 5px;
+            padding: 10px;
+            margin: 10px 0;
+            background-color: #f8f9fa;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+        }
+        .draggable-item {
+            display: inline-block;
+            background-color: #e9ecef;
+            border: 1px solid #ced4da;
+            border-radius: 3px;
+            padding: 6px 10px;
+            margin: 3px;
+            cursor: move;
+            user-select: none;
+            font-size: 12px;
+        }
+        .draggable-item.dragging {
+            opacity: 0.5;
+        }
+        .submit-btn {
+            background-color: #3498db;
+            color: white;
+            padding: 12px 30px;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+            cursor: pointer;
+            display: block;
+            margin: 30px auto;
+            transition: background-color 0.3s ease;
+        }
+        .submit-btn:hover {
+            background-color: #2980b9;
+        }
+        .result {
+            margin: 20px 0;
+            padding: 15px;
+            border-radius: 5px;
+            text-align: center;
+            font-weight: bold;
+        }
+        .success {
+            background-color: #d4edda;
+            color: #155724;
+            border: 1px solid #c3e6cb;
+        }
+        .failure {
+            background-color: #f8d7da;
+            color: #721c24;
+            border: 1px solid #f5c6cb;
+        }
+        .feedback {
+            margin-top: 10px;
+            padding: 10px;
+            background-color: #e3f2fd;
+            border-radius: 5px;
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="quiz-container">
+        <h1>ROI & Benefits Realization Quiz</h1>
+        <p><strong>Instructions:</strong> Answer all questions to test your understanding of ROI calculation, benefits realization, and financial analysis. You need 80% (8/10) to pass.</p>
+        
+        <form id="quizForm">
+            <!-- Question 1: NPV Understanding -->
+            <div class="question">
+                <h3>Question 1: NPV Interpretation</h3>
+                <p>If a project has an NPV of $125,000, what does this indicate?</p>
+                <ul class="options">
+                    <li><input type="radio" name="q1" value="a"> The project will cost $125,000</li>
+                    <li><input type="radio" name="q1" value="b"> The project will create $125,000 in value above the initial investment</li>
+                    <li><input type="radio" name="q1" value="c"> The project has a 12.5% return rate</li>
+                    <li><input type="radio" name="q1" value="d"> The project will pay back in 1.25 years</li>
+                </ul>
+                <div class="feedback" id="feedback1">
+                    <strong>Correct Answer:</strong> The project will create $125,000 in value above the initial investment. NPV represents net value creation after recovering the initial investment.
+                </div>
+            </div>
+
+            <!-- Question 2: IRR vs Cost of Capital -->
+            <div class="question">
+                <h3>Question 2: IRR Decision Rule</h3>
+                <p>A project has an IRR of 15% and your company's cost of capital is 10%. What should you conclude?</p>
+                <ul class="options">
+                    <li><input type="radio" name="q2" value="a"> The project should be rejected</li>
+                    <li><input type="radio" name="q2" value="b"> The project should be accepted</li>
+                    <li><input type="radio" name="q2" value="c"> More information is needed</li>
+                    <li><input type="radio" name="q2" value="d"> The project is exactly at breakeven</li>
+                </ul>
+                <div class="feedback" id="feedback2">
+                    <strong>Correct Answer:</strong> The project should be accepted. When IRR exceeds the cost of capital, the project creates value.
+                </div>
+            </div>
+
+            <!-- Question 3: Payback Period Calculation -->
+            <div class="question">
+                <h3>Question 3: Payback Period Calculation</h3>
+                <div class="calculation-box">
+Initial Investment: $80,000
+Annual Cash Flow: $25,000
+                </div>
+                <p>What is the simple payback period in years?</p>
+                <input type="number" name="q3" placeholder="Enter years" min="0" max="10" step="0.1">
+                <div class="feedback" id="feedback3">
+                    <strong>Correct Answer:</strong> 3.2 years. Payback Period = $80,000 ÷ $25,000 = 3.2 years.
+                </div>
+            </div>
+
+            <!-- Question 4: Leading vs Lagging Indicators -->
+            <div class="question">
+                <h3>Question 4: Indicator Classification</h3>
+                <p>Which of the following is a LEADING indicator of ROI success?</p>
+                <ul class="options">
+                    <li><input type="radio" name="q4" value="a"> Actual cost savings achieved</li>
+                    <li><input type="radio" name="q4" value="b"> Customer satisfaction improvement</li>
+                    <li><input type="radio" name="q4" value="c"> User adoption rate of new processes</li>
+                    <li><input type="radio" name="q4" value="d"> Final project ROI percentage</li>
+                </ul>
+                <div class="feedback" id="feedback4">
+                    <strong>Correct Answer:</strong> User adoption rate of new processes. Leading indicators predict future performance, while the others measure results.
+                </div>
+            </div>
+
+            <!-- Question 5: Scenario Application -->
+            <div class="question">
+                <h3>Question 5: Benefits Realization Scenario</h3>
+                <div class="scenario-box">
+                    MedTech Services projected $150,000 annual savings from process automation. After 6 months, they've achieved only $60,000 in savings. The project manager wants to declare the project a failure and halt implementation.
+                </div>
+                <p>What should be the FIRST step in addressing this situation?</p>
+                <ul class="options">
+                    <li><input type="radio" name="q5" value="a"> Immediately halt the project to prevent further losses</li>
+                    <li><input type="radio" name="q5" value="b"> Analyze leading indicators to understand why benefits are delayed</li>
+                    <li><input type="radio" name="q5" value="c"> Double the implementation effort to catch up</li>
+                    <li><input type="radio" name="q5" value="d"> Revise projections downward to match current performance</li>
+                </ul>
+                <div class="feedback" id="feedback5">
+                    <strong>Correct Answer:</strong> Analyze leading indicators to understand why benefits are delayed. Investigation should precede decisions about project continuation.
+                </div>
+            </div>
+
+            <!-- Question 6: Drag and Drop - Business Case Structure -->
+            <div class="question">
+                <h3>Question 6: Business Case Structure</h3>
+                <p>Drag the business case sections into the correct order for executive presentation:</p>
+                <div id="dragItems">
+                    <span class="draggable-item" draggable="true" data-order="1">Executive Summary</span>
+                    <span class="draggable-item" draggable="true" data-order="2">Problem Statement</span>
+                    <span class="draggable-item" draggable="true" data-order="3">Solution Overview</span>
+                    <span class="draggable-item" draggable="true" data-order="4">Financial Analysis</span>
+                </div>
+                <div class="drag-drop-area" id="dropZone1">First Section</div>
+                <div class="drag-drop-area" id="dropZone2">Second Section</div>
+                <div class="drag-drop-area" id="dropZone3">Third Section</div>
+                <div class="drag-drop-area" id="dropZone4">Fourth Section</div>
+                <input type="hidden" name="q6" id="q6Answer">
+                <div class="feedback" id="feedback6">
+                    <strong>Correct Order:</strong> 1) Executive Summary, 2) Problem Statement, 3) Solution Overview, 4) Financial Analysis.
+                </div>
+            </div>
+
+            <!-- Question 7: NPV Calculation -->
+            <div class="question">
+                <h3>Question 7: NPV Calculation</h3>
+                <div class="calculation-box">
+Project Investment: $50,000
+Annual Benefit: $20,000 for 3 years
+Discount Rate: 10%
+PV Factors: Year 1: 0.909, Year 2: 0.826, Year 3: 0.751
+                </div>
+                <p>What is the NPV? (Round to nearest thousand)</p>
+                <input type="number" name="q7" placeholder="Enter NPV in $000s" min="-50" max="50" step="1">
+                <div class="feedback" id="feedback7">
+                    <strong>Correct Answer:</strong> $0 (thousand). NPV = ($20K×0.909) + ($20K×0.826) + ($20K×0.751) - $50K = $49.72K - $50K ≈ $0K.
+                </div>
+            </div>
+
+            <!-- Question 8: Risk Assessment -->
+            <div class="question">
+                <h3>Question 8: Sensitivity Analysis</h3>
+                <p>In sensitivity analysis, if a 10% reduction in benefits causes NPV to drop by 25%, this indicates:</p>
+                <ul class="options">
+                    <li><input type="radio" name="q8" value="a"> The project is very robust to benefit variations</li>
+                    <li><input type="radio" name="q8" value="b"> The project is highly sensitive to benefit assumptions</li>
+                    <li><input type="radio" name="q8" value="c"> The project should definitely be approved</li>
+                    <li><input type="radio" name="q8" value="d"> The discount rate is too high</li>
+                </ul>
+                <div class="feedback" id="feedback8">
+                    <strong>Correct Answer:</strong> The project is highly sensitive to benefit assumptions. A 2.5x impact ratio indicates high sensitivity and risk.
+                </div>
+            </div>
+
+            <!-- Question 9: Benefits Categories -->
+            <div class="question">
+                <h3>Question 9: Benefit Type Classification</h3>
+                <p>Reduced insurance premiums due to improved safety processes would be classified as:</p>
+                <ul class="options">
+                    <li><input type="radio" name="q9" value="a"> Direct cost savings</li>
+                    <li><input type="radio" name="q9" value="b"> Revenue enhancement</li>
+                    <li><input type="radio" name="q9" value="c"> Risk mitigation value</li>
+                    <li><input type="radio" name="q9" value="d"> Intangible benefits</li>
+                </ul>
+                <div class="feedback" id="feedback9">
+                    <strong>Correct Answer:</strong> Risk mitigation value. Insurance premium reductions result from lowered risk profile rather than direct operational improvements.
+                </div>
+            </div>
+
+            <!-- Question 10: Implementation Success -->
+            <div class="question">
+                <h3>Question 10: Benefits Realization Success Factor</h3>
+                <div class="scenario-box">
+                    Atlantic Logistics implemented process automation and achieved 127% of projected savings. When asked about the key success factor, the COO emphasized one critical element that distinguished this project from previous failures.
+                </div>
+                <p>Based on the reading, what was likely the MOST important success factor?</p>
+                <ul class="options">
+                    <li><input type="radio" name="q10" value="a"> Using the most advanced technology available</li>
+                    <li><input type="radio" name="q10" value="b"> Creating evidence-based projections through pilot testing</li>
+                    <li><input type="radio" name="q10" value="c"> Having the largest implementation budget</li>
+                    <li><input type="radio" name="q10" value="d"> Implementing everything at once for maximum impact</li>
+                </ul>
+                <div class="feedback" id="feedback10">
+                    <strong>Correct Answer:</strong> Creating evidence-based projections through pilot testing. The reading emphasized this as the breakthrough that gave the board confidence.
+                </div>
+            </div>
+
+            <button type="button" class="submit-btn" onclick="submitQuiz()">Submit Quiz</button>
+        </form>
+
+        <div id="results" class="result" style="display: none;"></div>
+    </div>
+
+    <script>
+        // Drag and drop functionality
+        const dragItems = document.querySelectorAll('.draggable-item');
+        const dropZones = document.querySelectorAll('.drag-drop-area');
+        
+        dragItems.forEach(item => {
+            item.addEventListener('dragstart', handleDragStart);
+            item.addEventListener('dragend', handleDragEnd);
+        });
+        
+        dropZones.forEach(zone => {
+            zone.addEventListener('dragover', handleDragOver);
+            zone.addEventListener('drop', handleDrop);
+        });
+        
+        let draggedElement = null;
+        
+        function handleDragStart(e) {
+            draggedElement = this;
+            this.classList.add('dragging');
+        }
+        
+        function handleDragEnd(e) {
+            this.classList.remove('dragging');
+        }
+        
+        function handleDragOver(e) {
+            e.preventDefault();
+        }
+        
+        function handleDrop(e) {
+            e.preventDefault();
+            if (draggedElement) {
+                // Clear existing content and add dragged item
+                e.target.innerHTML = draggedElement.textContent;
+                e.target.dataset.order = draggedElement.dataset.order;
+                updateDragAnswer();
+            }
+        }
+        
+        function updateDragAnswer() {
+            const zones = ['dropZone1', 'dropZone2', 'dropZone3', 'dropZone4'];
+            const order = zones.map(id => document.getElementById(id).dataset.order || '0').join(',');
+            document.getElementById('q6Answer').value = order;
+        }
+
+        function submitQuiz() {
+            const answers = {
+                q1: 'b', q2: 'b', q3: '3.2', q4: 'c', q5: 'b',
+                q6: '1,2,3,4', q7: '0', q8: 'b', q9: 'c', q10: 'b'
+            };
+            
+            let score = 0;
+            let total = 10;
+            
+            // Check answers
+            Object.keys(answers).forEach(q => {
+                let userAnswer;
+                let isCorrect = false;
+                
+                if (q === 'q6') {
+                    userAnswer = document.getElementById('q6Answer').value;
+                    isCorrect = userAnswer === answers[q];
+                } else if (q === 'q3') {
+                    userAnswer = document.querySelector(`input[name="${q}"]`).value;
+                    isCorrect = Math.abs(parseFloat(userAnswer) - 3.2) < 0.1;
+                } else if (q === 'q7') {
+                    userAnswer = document.querySelector(`input[name="${q}"]`).value;
+                    isCorrect = Math.abs(parseFloat(userAnswer) - 0) <= 1; // Allow ±1K margin
+                } else {
+                    userAnswer = document.querySelector(`input[name="${q}"]:checked`)?.value;
+                    isCorrect = userAnswer === answers[q];
+                }
+                
+                if (isCorrect) score++;
+                
+                // Show feedback
+                document.getElementById(`feedback${q.slice(1)}`).style.display = 'block';
+                
+                // Highlight options for multiple choice
+                if (q !== 'q6' && q !== 'q3' && q !== 'q7') {
+                    const options = document.querySelectorAll(`input[name="${q}"]`);
+                    options.forEach(option => {
+                        const li = option.parentElement;
+                        if (option.value === answers[q]) {
+                            li.classList.add('correct');
+                        } else if (option.checked && option.value !== answers[q]) {
+                            li.classList.add('incorrect');
+                        }
+                    });
+                }
+            });
+            
+            const percentage = Math.round((score / total) * 100);
+            const passed = percentage >= 80;
+            
+            const resultsDiv = document.getElementById('results');
+            resultsDiv.className = `result ${passed ? 'success' : 'failure'}`;
+            resultsDiv.innerHTML = `
+                <h3>${passed ? 'Congratulations! 🎉' : 'Keep Learning 📚'}</h3>
+                <p>Your Score: ${score}/${total} (${percentage}%)</p>
+                <p>${passed ? 
+                    'You have successfully mastered ROI and benefits realization fundamentals! You\'re ready to move on to Level 4.' : 
+                    'You need 80% to pass. Review the feedback above and retake the quiz when ready.'}
+                </p>
+            `;
+            resultsDiv.style.display = 'block';
+            
+            // Scroll to results
+            resultsDiv.scrollIntoView({ behavior: 'smooth' });
+        }
+
+        // Add click handlers for better UX
+        document.querySelectorAll('.options li').forEach(li => {
+            li.addEventListener('click', function() {
+                const radio = this.querySelector('input[type="radio"]');
+                if (radio) {
+                    radio.checked = true;
+                    // Remove selected class from siblings
+                    this.parentElement.querySelectorAll('li').forEach(sibling => {
+                        sibling.classList.remove('selected');
+                    });
+                    // Add selected class to this option
+                    this.classList.add('selected');
+                }
+            });
+        });
+    </script>
+</body>
+</html>

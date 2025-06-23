@@ -1,0 +1,546 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Digital Transformation Frameworks - Quiz</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #f5f5f5;
+        }
+        .quiz-container {
+            background: white;
+            border-radius: 10px;
+            padding: 30px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        h1 {
+            color: #2c3e50;
+            text-align: center;
+            border-bottom: 3px solid #3498db;
+            padding-bottom: 10px;
+        }
+        .question {
+            margin: 25px 0;
+            padding: 20px;
+            border-left: 4px solid #3498db;
+            background-color: #f8f9fa;
+        }
+        .question h3 {
+            color: #2c3e50;
+            margin-top: 0;
+        }
+        .options {
+            list-style: none;
+            padding: 0;
+        }
+        .options li {
+            margin: 10px 0;
+            padding: 10px;
+            background: white;
+            border: 2px solid #e9ecef;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        .options li:hover {
+            border-color: #3498db;
+            background-color: #f0f8ff;
+        }
+        .options li.selected {
+            border-color: #3498db;
+            background-color: #e3f2fd;
+        }
+        .options li.correct {
+            border-color: #27ae60;
+            background-color: #d4edda;
+        }
+        .options li.incorrect {
+            border-color: #e74c3c;
+            background-color: #f8d7da;
+        }
+        input[type="radio"] {
+            margin-right: 10px;
+        }
+        .framework-box {
+            background-color: #f4f4f4;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            padding: 15px;
+            margin: 15px 0;
+            font-size: 14px;
+        }
+        .submit-btn {
+            background-color: #3498db;
+            color: white;
+            padding: 12px 30px;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+            cursor: pointer;
+            display: block;
+            margin: 30px auto;
+            transition: background-color 0.3s ease;
+        }
+        .submit-btn:hover {
+            background-color: #2980b9;
+        }
+        .result {
+            margin: 20px 0;
+            padding: 15px;
+            border-radius: 5px;
+            text-align: center;
+            font-weight: bold;
+        }
+        .pass {
+            background-color: #d4edda;
+            color: #155724;
+            border: 1px solid #c3e6cb;
+        }
+        .fail {
+            background-color: #f8d7da;
+            color: #721c24;
+            border: 1px solid #f5c6cb;
+        }
+        .explanation {
+            margin-top: 10px;
+            padding: 10px;
+            background-color: #e9ecef;
+            border-radius: 5px;
+            font-size: 14px;
+            display: none;
+        }
+        .show-explanation {
+            display: block;
+        }
+        .short-answer {
+            width: 100%;
+            padding: 10px;
+            border: 2px solid #e9ecef;
+            border-radius: 5px;
+            font-size: 14px;
+        }
+        .navigation {
+            text-align: center;
+            margin: 30px 0;
+            padding-top: 20px;
+            border-top: 1px solid #ddd;
+        }
+        .navigation a {
+            color: #3498db;
+            text-decoration: none;
+            margin: 0 15px;
+            font-weight: 500;
+        }
+        .navigation a:hover {
+            text-decoration: underline;
+        }
+        .drag-drop {
+            display: flex;
+            gap: 20px;
+            margin: 20px 0;
+            flex-wrap: wrap;
+        }
+        .model-box {
+            flex: 1;
+            min-width: 200px;
+        }
+        .characteristics-box {
+            flex: 1;
+            min-width: 200px;
+        }
+        .drop-zone {
+            min-height: 80px;
+            border: 2px dashed #ccc;
+            border-radius: 5px;
+            padding: 10px;
+            background-color: #f8f9fa;
+            margin: 5px 0;
+        }
+        .drag-item {
+            background: #3498db;
+            color: white;
+            padding: 8px 12px;
+            margin: 5px 0;
+            border-radius: 5px;
+            cursor: move;
+            user-select: none;
+            font-size: 13px;
+        }
+        .drop-zone.drag-over {
+            border-color: #3498db;
+            background-color: #e3f2fd;
+        }
+        .scenario-box {
+            background-color: #f0f8ff;
+            border: 1px solid #3498db;
+            border-radius: 5px;
+            padding: 15px;
+            margin: 15px 0;
+        }
+    </style>
+</head>
+<body>
+    <div class="quiz-container">
+        <h1>Level 3.1: Digital Transformation Frameworks Quiz</h1>
+        
+        <div class="question">
+            <h3>Question 1: MIT CISR Business Model Selection</h3>
+            <p>TechFlow Solutions, a 200-employee software company, builds HR management tools that integrate with multiple payroll systems. They have detailed knowledge of their direct customers (HR departments) but limited visibility into end-users (employees). Which MIT CISR digital business model best fits their current position?</p>
+            <ul class="options">
+                <li><input type="radio" name="q1" value="a"> Supplier - They focus on operational excellence</li>
+                <li><input type="radio" name="q1" value="b"> Omnichannel - They have complete customer knowledge</li>
+                <li><input type="radio" name="q1" value="c"> Modular Producer - They create plug-and-play ecosystem products</li>
+                <li><input type="radio" name="q1" value="d"> Ecosystem Driver - They orchestrate multi-party value creation</li>
+            </ul>
+            <div class="explanation">
+                <strong>Correct Answer: C</strong><br>
+                TechFlow Solutions fits the Modular Producer model because they operate in an ecosystem (integrating with multiple payroll systems) but have partial customer knowledge (know HR departments but not end-users). Their plug-and-play HR tools are designed to work within partner ecosystems, which is the hallmark of a Modular Producer.
+            </div>
+        </div>
+
+        <div class="question">
+            <h3>Question 2: McKinsey 7-S Assessment Priority</h3>
+            <p>A regional bank attempting digital transformation finds that despite investing in new technology (Systems), their initiatives keep failing. Staff survey reveals: "We have the tools, but nobody uses them properly. Different departments work in silos, and leadership still makes all decisions top-down." Which 7-S element should be addressed FIRST?</p>
+            <ul class="options">
+                <li><input type="radio" name="q2" value="a"> Skills - Train staff on the new technology</li>
+                <li><input type="radio" name="q2" value="b"> Structure - Address siloed departments and decision-making</li>
+                <li><input type="radio" name="q2" value="c"> Strategy - Develop a clearer digital vision</li>
+                <li><input type="radio" name="q2" value="d"> Systems - Upgrade to better technology</li>
+            </ul>
+            <div class="explanation">
+                <strong>Correct Answer: B</strong><br>
+                The Structure element should be addressed first. The survey reveals organizational silos and centralized decision-making are blocking technology adoption. Without fixing the structural issues that prevent collaboration and empowerment, training (Skills) or better technology (Systems) won't solve the problem. Structure changes enable other improvements.
+            </div>
+        </div>
+
+        <div class="question">
+            <h3>Question 3: Drag and Drop - Match Business Models to Characteristics</h3>
+            <p>Match each MIT CISR business model with its primary characteristics:</p>
+            <div class="drag-drop">
+                <div class="model-box">
+                    <h4>Business Models:</h4>
+                    <div class="drag-item" draggable="true" data-model="supplier">Supplier Model</div>
+                    <div class="drag-item" draggable="true" data-model="omnichannel">Omnichannel Model</div>
+                    <div class="drag-item" draggable="true" data-model="modular">Modular Producer</div>
+                    <div class="drag-item" draggable="true" data-model="ecosystem">Ecosystem Driver</div>
+                </div>
+                <div class="characteristics-box">
+                    <div class="drop-zone" data-characteristic="efficiency">
+                        <h4>Operational Excellence Focus</h4>
+                        <p>Lowest cost, best quality, most reliable</p>
+                    </div>
+                    <div class="drop-zone" data-characteristic="experience">
+                        <h4>Seamless Customer Experience</h4>
+                        <p>Unified across all touchpoints</p>
+                    </div>
+                    <div class="drop-zone" data-characteristic="integration">
+                        <h4>Plug-and-Play Products</h4>
+                        <p>Works with partner systems</p>
+                    </div>
+                    <div class="drop-zone" data-characteristic="platform">
+                        <h4>Multi-Party Orchestration</h4>
+                        <p>Connects buyers and sellers</p>
+                    </div>
+                </div>
+            </div>
+            <div class="explanation">
+                <strong>Correct Matches:</strong><br>
+                • Supplier Model → Operational Excellence Focus<br>
+                • Omnichannel Model → Seamless Customer Experience<br>
+                • Modular Producer → Plug-and-Play Products<br>
+                • Ecosystem Driver → Multi-Party Orchestration
+            </div>
+        </div>
+
+        <div class="question">
+            <h3>Question 4: Gartner Dual-Track Resource Allocation</h3>
+            <p>A traditional manufacturing company operates in a stable industry with minimal digital disruption. They have $1M annual budget for digital initiatives. According to Gartner's framework, how should they allocate resources between optimization and transformation?</p>
+            <ul class="options">
+                <li><input type="radio" name="q4" value="a"> 80% transformation ($800K), 20% optimization ($200K)</li>
+                <li><input type="radio" name="q4" value="b"> 50% transformation ($500K), 50% optimization ($500K)</li>
+                <li><input type="radio" name="q4" value="c"> 20% transformation ($200K), 80% optimization ($800K)</li>
+                <li><input type="radio" name="q4" value="d"> 100% optimization ($1M), 0% transformation</li>
+            </ul>
+            <div class="explanation">
+                <strong>Correct Answer: C</strong><br>
+                For companies in stable industries with low disruption, Gartner recommends allocating 80% to optimization and 20% to transformation. This allows them to improve efficiency and modernize existing processes while still exploring some transformative initiatives. Complete avoidance of transformation (Option D) leaves them vulnerable to future disruption.
+            </div>
+        </div>
+
+        <div class="question">
+            <h3>Question 5: Digital Maturity Progression</h3>
+            <div class="scenario-box">
+                <strong>Current State:</strong> Regional insurance broker with paper applications, phone-based customer service, Excel-based tracking, and email communication between agents.
+                <br><br>
+                <strong>3-Year Target:</strong> Digital-first operations with integrated systems and data-driven decision making.
+            </div>
+            <p>What is the most realistic maturity level progression for this company?</p>
+            <ul class="options">
+                <li><input type="radio" name="q5" value="a"> Digital Resistant → Digital Disruptor</li>
+                <li><input type="radio" name="q5" value="b"> Digital Resistant → Digital Player</li>
+                <li><input type="radio" name="q5" value="c"> Digital Explorer → Digital Transformer</li>
+                <li><input type="radio" name="q5" value="d"> Digital Player → Digital Disruptor</li>
+            </ul>
+            <div class="explanation">
+                <strong>Correct Answer: B</strong><br>
+                The company is currently Digital Resistant (paper-based, minimal technology). Reaching Digital Player (digital-first, integrated systems, data-driven) in 3 years is ambitious but realistic. Jumping to Disruptor (platform models, industry leadership) is unrealistic for a traditional broker. The progression must be gradual and sustainable.
+            </div>
+        </div>
+
+        <div class="question">
+            <h3>Question 6: 7-S Interdependency Analysis</h3>
+            <p>A healthcare network implements a new patient portal (Systems) but adoption is only 12%. Investigation reveals: doctors weren't consulted (Style), nurses lack digital skills (Skills), and the portal doesn't align with the mission of "personal patient care" (Shared Values). This scenario best illustrates which principle?</p>
+            <ul class="options">
+                <li><input type="radio" name="q6" value="a"> Hard elements are more important than soft elements</li>
+                <li><input type="radio" name="q6" value="b"> Technology implementation should always come first</li>
+                <li><input type="radio" name="q6" value="c"> All seven elements must be aligned for successful change</li>
+                <li><input type="radio" name="q6" value="d"> Shared values can be ignored in digital transformation</li>
+            </ul>
+            <div class="explanation">
+                <strong>Correct Answer: C</strong><br>
+                This scenario perfectly illustrates that all seven elements must be aligned for successful change. The technology (Systems) failed because it wasn't supported by leadership approach (Style), staff capabilities (Skills), or organizational culture (Shared Values). McKinsey 7-S emphasizes that changing one element requires adjusting others for balance.
+            </div>
+        </div>
+
+        <div class="question">
+            <h3>Question 7: Short Answer - ROI Calculation</h3>
+            <p>A specialty retailer plans digital transformation with these projections:<br>
+            - Year 1: $500K investment, $200K returns<br>
+            - Year 2: $300K investment, $600K returns<br>
+            - Year 3: $100K investment, $800K returns<br>
+            Calculate the 3-year ROI percentage.</p>
+            <input type="text" class="short-answer" name="q7" placeholder="Show your calculation and final ROI percentage">
+            <div class="explanation">
+                <strong>Sample Answer:</strong><br>
+                Total Investment: $500K + $300K + $100K = $900K<br>
+                Total Returns: $200K + $600K + $800K = $1,600K<br>
+                Net Benefit: $1,600K - $900K = $700K<br>
+                ROI = (Net Benefit / Total Investment) × 100<br>
+                ROI = ($700K / $900K) × 100 = 77.8%<br>
+                <br>
+                <em>Accept answers between 75-80% with reasonable calculation shown.</em>
+            </div>
+        </div>
+
+        <div class="question">
+            <h3>Question 8: Transformation vs. Optimization Decision</h3>
+            <p>Which initiative represents digital TRANSFORMATION rather than optimization?</p>
+            <ul class="options">
+                <li><input type="radio" name="q8" value="a"> Moving from paper invoices to digital PDF invoices</li>
+                <li><input type="radio" name="q8" value="b"> Implementing automated email responses for common questions</li>
+                <li><input type="radio" name="q8" value="c"> Launching a subscription-based service model instead of one-time sales</li>
+                <li><input type="radio" name="q8" value="d"> Upgrading from on-premise servers to cloud hosting</li>
+            </ul>
+            <div class="explanation">
+                <strong>Correct Answer: C</strong><br>
+                Launching a subscription model represents transformation because it fundamentally changes the business model and how value is delivered to customers. The other options (digital invoices, automated emails, cloud migration) are optimizations that improve existing processes without changing the core business model or value proposition.
+            </div>
+        </div>
+
+        <div class="question">
+            <h3>Question 9: Framework Application Scenario</h3>
+            <div class="framework-box">
+                <strong>Company:</strong> 75-person accounting firm losing clients to automated tax software<br>
+                <strong>Current Model:</strong> Traditional hourly billing for tax preparation<br>
+                <strong>Resources:</strong> $2M available for 3-year transformation<br>
+                <strong>Industry:</strong> Highly disrupted by TurboTax, QuickBooks, etc.
+            </div>
+            <p>Which strategic approach is most appropriate?</p>
+            <ul class="options">
+                <li><input type="radio" name="q9" value="a"> Focus 80% on optimizing current tax prep processes</li>
+                <li><input type="radio" name="q9" value="b"> Develop new digital advisory services while maintaining tax prep</li>
+                <li><input type="radio" name="q9" value="c"> Completely abandon tax prep for consulting only</li>
+                <li><input type="radio" name="q9" value="d"> Wait for the disruption to pass before investing</li>
+            </ul>
+            <div class="explanation">
+                <strong>Correct Answer: B</strong><br>
+                In a highly disrupted industry, the firm needs significant transformation (developing new digital services) while optimizing core business. This dual-track approach follows Gartner's framework for disrupted industries (40% optimization, 60% transformation). Complete abandonment is too risky, while focusing only on optimization ignores the existential threat.
+            </div>
+        </div>
+
+        <div class="question">
+            <h3>Question 10: Digital Roadmap Sequencing</h3>
+            <p>For a Digital Explorer-stage company, which transformation sequence is most logical?</p>
+            <ul class="options">
+                <li><input type="radio" name="q10" value="a"> Platform development → Data analytics → Process digitization → Skills training</li>
+                <li><input type="radio" name="q10" value="b"> Skills training → Process digitization → Data analytics → Platform development</li>
+                <li><input type="radio" name="q10" value="c"> Data analytics → Platform development → Skills training → Process digitization</li>
+                <li><input type="radio" name="q10" value="d"> Process digitization → Platform development → Data analytics → Skills training</li>
+            </ul>
+            <div class="explanation">
+                <strong>Correct Answer: B</strong><br>
+                The logical sequence starts with skills training (building digital capabilities), then process digitization (creating digital workflows), followed by data analytics (leveraging digital data), and finally platform development (most advanced). This progression builds foundational capabilities before attempting complex transformations, matching the learning curve and resource requirements.
+            </div>
+        </div>
+
+        <button class="submit-btn" onclick="submitQuiz()">Submit Quiz</button>
+        
+        <div id="result" class="result" style="display: none;"></div>
+        
+        <div class="navigation">
+            <a href="../../Level3_index.html">← Level 3 Index</a>
+            <a href="L3_C1_reading.html">📚 Reading</a>
+            <a href="L3_C1_project.html">🎯 Project</a>
+            <a href="L3_C2_reading.html">Next Chapter →</a>
+        </div>
+    </div>
+
+    <script>
+        // Drag and Drop Functionality
+        let draggedElement = null;
+        const correctMatches = {
+            'supplier': 'efficiency',
+            'omnichannel': 'experience',
+            'modular': 'integration',
+            'ecosystem': 'platform'
+        };
+        let dropMatches = {};
+
+        // Initialize drag and drop
+        document.addEventListener('DOMContentLoaded', function() {
+            const dragItems = document.querySelectorAll('.drag-item');
+            const dropZones = document.querySelectorAll('.drop-zone');
+
+            dragItems.forEach(item => {
+                item.addEventListener('dragstart', function(e) {
+                    draggedElement = this;
+                    this.style.opacity = '0.5';
+                });
+
+                item.addEventListener('dragend', function(e) {
+                    this.style.opacity = '1';
+                });
+            });
+
+            dropZones.forEach(zone => {
+                zone.addEventListener('dragover', function(e) {
+                    e.preventDefault();
+                    this.classList.add('drag-over');
+                });
+
+                zone.addEventListener('dragleave', function(e) {
+                    this.classList.remove('drag-over');
+                });
+
+                zone.addEventListener('drop', function(e) {
+                    e.preventDefault();
+                    this.classList.remove('drag-over');
+                    
+                    if (draggedElement) {
+                        this.appendChild(draggedElement);
+                        const model = draggedElement.getAttribute('data-model');
+                        const characteristic = this.getAttribute('data-characteristic');
+                        dropMatches[model] = characteristic;
+                        draggedElement = null;
+                    }
+                });
+            });
+        });
+
+        // Radio button selection highlighting
+        document.addEventListener('change', function(e) {
+            if (e.target.type === 'radio') {
+                // Remove previous selections
+                const questionDiv = e.target.closest('.question');
+                questionDiv.querySelectorAll('.options li').forEach(li => {
+                    li.classList.remove('selected');
+                });
+                
+                // Highlight selected option
+                e.target.closest('li').classList.add('selected');
+            }
+        });
+
+        function submitQuiz() {
+            const answers = {
+                q1: 'c',
+                q2: 'b', 
+                q3: correctMatches, // drag and drop
+                q4: 'c',
+                q5: 'b',
+                q6: 'c',
+                q7: 'calculation', // short answer
+                q8: 'c',
+                q9: 'b',
+                q10: 'b'
+            };
+
+            let score = 0;
+            let totalQuestions = 10;
+
+            // Check multiple choice questions
+            ['q1', 'q2', 'q4', 'q5', 'q6', 'q8', 'q9', 'q10'].forEach(q => {
+                const selected = document.querySelector(`input[name="${q}"]:checked`);
+                const questionDiv = document.querySelector(`input[name="${q}"]`).closest('.question');
+                
+                if (selected && selected.value === answers[q]) {
+                    score++;
+                    questionDiv.querySelector('.explanation').classList.add('show-explanation');
+                    questionDiv.style.borderLeftColor = '#27ae60';
+                } else {
+                    questionDiv.querySelector('.explanation').classList.add('show-explanation');
+                    questionDiv.style.borderLeftColor = '#e74c3c';
+                }
+            });
+
+            // Check drag and drop (q3)
+            let dragDropCorrect = true;
+            for (let model in correctMatches) {
+                if (dropMatches[model] !== correctMatches[model]) {
+                    dragDropCorrect = false;
+                    break;
+                }
+            }
+            if (dragDropCorrect && Object.keys(dropMatches).length === Object.keys(correctMatches).length) {
+                score++;
+                document.querySelector('.question:nth-child(4)').style.borderLeftColor = '#27ae60';
+            } else {
+                document.querySelector('.question:nth-child(4)').style.borderLeftColor = '#e74c3c';
+            }
+            document.querySelector('.question:nth-child(4) .explanation').classList.add('show-explanation');
+
+            // Check short answer (q7) - look for key calculations
+            const shortAnswer = document.querySelector('input[name="q7"]').value.toLowerCase();
+            if ((shortAnswer.includes('77.8') || shortAnswer.includes('78') || shortAnswer.includes('77') || 
+                shortAnswer.includes('700') && shortAnswer.includes('900')) && 
+                (shortAnswer.includes('roi') || shortAnswer.includes('%'))) {
+                score++;
+                document.querySelector('.question:nth-child(8)').style.borderLeftColor = '#27ae60';
+            } else {
+                document.querySelector('.question:nth-child(8)').style.borderLeftColor = '#e74c3c';
+            }
+            document.querySelector('.question:nth-child(8) .explanation').classList.add('show-explanation');
+
+            // Calculate percentage
+            const percentage = (score / totalQuestions) * 100;
+            const resultDiv = document.getElementById('result');
+            
+            if (percentage >= 80) {
+                resultDiv.className = 'result pass';
+                resultDiv.innerHTML = `
+                    <h3>🎉 Congratulations! You Passed!</h3>
+                    <p>Score: ${score}/${totalQuestions} (${percentage.toFixed(1)}%)</p>
+                    <p>You've demonstrated strong understanding of digital transformation frameworks. You're ready to apply MIT CISR, McKinsey 7-S, and Gartner methodologies to real transformation initiatives!</p>
+                `;
+            } else {
+                resultDiv.className = 'result fail';
+                resultDiv.innerHTML = `
+                    <h3>📚 Additional Study Recommended</h3>
+                    <p>Score: ${score}/${totalQuestions} (${percentage.toFixed(1)}%)</p>
+                    <p>Review the explanations below and revisit the reading material. Focus on the differences between transformation and optimization, the 7-S alignment principles, and business model selection criteria.</p>
+                `;
+            }
+            
+            resultDiv.style.display = 'block';
+            
+            // Scroll to results
+            resultDiv.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        }
+    </script>
+</body>
+</html>
