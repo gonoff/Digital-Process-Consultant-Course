@@ -11,10 +11,14 @@
             "id": "d18ec056f211e3a6",
             "type": "leaf",
             "state": {
-              "type": "graph",
-              "state": {},
-              "icon": "lucide-git-fork",
-              "title": "Graph view"
+              "type": "markdown",
+              "state": {
+                "file": "story/story_index.md",
+                "mode": "preview",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "story_index"
             }
           }
         ]
@@ -163,6 +167,8 @@
   },
   "active": "d18ec056f211e3a6",
   "lastOpenFiles": [
+    "Level0/en/L0_C1_reading.md",
+    "Level0_index.md",
     "Level2_Summary.md",
     "Level2/en/L2_C4_solutions.md",
     "Level2/en/L2_C4_quiz.html",
@@ -177,7 +183,6 @@
     "Level2/en/L2_C2_project.md",
     "OBSIDIAN_NAVIGATION_PATTERN.md",
     "Level1_index.md",
-    "Level0_index.md",
     "index.md",
     "Level1/en/L1_C4_solutions.md",
     "Level1/en/L1_C4_project.md",
@@ -188,7 +193,6 @@
     "COURSE_PROGRESS_LOG.md",
     "ai_powered_digital_process_consultant_course_blueprint.md",
     "Level0/en/L0_C1_solutions.md",
-    "Level0/en/L0_C1_reading.md",
     "Level0/en/L0_C1_project.md"
   ]
 }
