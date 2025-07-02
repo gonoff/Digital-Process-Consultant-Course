@@ -213,3 +213,40 @@ When generating content, conduct web searches for current information on:
 - Character growth mirrors student learning progression
 - Business contexts provide realistic application scenarios
 - Narrative continuity creates emotional investment in learning outcomes
+
+## Development Commands
+
+### Content Validation
+- **Quiz Testing**: Open HTML files directly in browser to test interactive functionality
+- **Navigation Check**: Use Obsidian or similar markdown viewer to verify wiki-link navigation
+- **Mermaid Diagrams**: Validate BPMN syntax using online Mermaid live editor
+
+### File Generation Patterns
+- Always check existing files in level before creating new ones
+- Use Task tool for multi-file searches across levels
+- Reference completed levels for pattern consistency
+
+## Critical Implementation Notes
+
+### When Modifying Content
+1. **Preserve US Context**: Never localize US business examples when translating to Portuguese
+2. **Maintain File Links**: Update all navigation links when adding/removing chapters
+3. **Version Control**: Commit after each level completion with descriptive message
+
+### Common Development Tasks
+- **Adding a Chapter**: Create all 4 files (reading, quiz, project, solutions) before moving to next
+- **Updating Navigation**: Modify both source and destination files when changing links
+- **Translation Work**: Complete English version fully before starting Portuguese
+
+### Quality Checklist
+Before marking any content complete:
+- [ ] All file naming follows LX_CY_[type] convention
+- [ ] Navigation links work in both directions
+- [ ] Quiz achieves 80% pass threshold
+- [ ] Project produces portfolio-ready deliverable
+- [ ] Solutions include detailed rubric
+- [ ] Business examples use specific metrics/names
+
+## Alternative AI Context
+- **GEMINI.md** exists as alternative AI assistant context with similar structure
+- Primary persona is "Haniel" - maintain this perspective throughout

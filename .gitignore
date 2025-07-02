@@ -1,0 +1,137 @@
+# =============================================================================
+# Digital Process Consultant Course - Git Ignore Rules
+# =============================================================================
+
+# AWS Credentials and Keys
+# ========================
+*.csv
+*credentials*
+*keys*
+*access*
+aws-credentials.csv
+rootkey.csv
+polly_test.py
+generate_audio.py
+accessKeys.csv
+new_user_credentials.csv
+
+# Audio Files (Large Binary Files)
+# =================================
+*.mp3
+*.wav
+*.m4a
+*.aac
+*.flac
+story_audio/
+audio_output/
+generated_audio/
+
+# Text Processing Output
+# ======================
+story_audio/
+processing_manifest.txt
+audio_index.json
+
+# Python Cache & Virtual Environment
+# ===================================
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+pip-wheel-metadata/
+share/python-wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+MANIFEST
+
+# Virtual Environments
+venv/
+env/
+ENV/
+env.bak/
+venv.bak/
+
+# IDE and Editor Files
+# ====================
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+.DS_Store
+Thumbs.db
+
+# Temporary Files
+# ===============
+*.tmp
+*.temp
+*.log
+*.bak
+*.backup
+temp/
+tmp/
+
+# Configuration Files with Secrets
+# =================================
+config.json
+settings.json
+.env
+.env.local
+.env.production
+.env.staging
+
+# AWS and Cloud Provider Files
+# =============================
+.aws/
+aws-config
+.boto
+boto.cfg
+
+# Jupyter Notebook Checkpoints
+# =============================
+.ipynb_checkpoints
+
+# OS Generated Files
+# ==================
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+
+# Large Binary Files (General)
+# =============================
+*.zip
+*.tar.gz
+*.rar
+*.7z
+*.dmg
+*.iso
+
+# Backup Files
+# ============
+*_backup.*
+*.orig
+*.rej
+
+# Test Output Files
+# =================
+test_output/
+polly_output.mp3
+test_audio.mp3
